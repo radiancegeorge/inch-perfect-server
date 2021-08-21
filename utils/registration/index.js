@@ -2,8 +2,10 @@ require("dotenv").config();
 const { Op } = require("sequelize");
 const { Users } = require("../../models");
 const bcrypt = require("bcrypt");
-const { salt } = process.env;
+const { salt, server_url, app_url } = process.env;
 const uuid = require("uuid").v1;
+const verification_code = require("uuid").v1;
+const sendMail = require("../mailer");
 
 /**
  *
@@ -12,6 +14,7 @@ const uuid = require("uuid").v1;
  */
 const registration = async (data) => {
   const { email } = data;
+  const code = verification_code();
   if (!data.first_name) throw " first name cannot be undefined";
   if (!data.last_name) throw " last name cannot be undefined";
   if (!data.password) throw " password name cannot be undefined";
@@ -19,15 +22,28 @@ const registration = async (data) => {
 
   const isMailInUse = await checkEmail(email);
   if (isMailInUse) throw "Email already in use!";
+
+  //creating account
   try {
     await Users.create({
       ...data,
       password: await hashText(data.password),
       id: uuid(),
+      verification_id: code,
+    });
+    await sendMail({
+      html: `<a href="${server_url}verify_email?email=${email}&code=${code}">click to verify</a>`,
+      to: [email],
+      subject: "Email Verification",
     });
     return (await getUser(email)).dataValues;
   } catch (error) {
-    throw " error registering account";
+    await Users.destroy({
+      where: {
+        email,
+      },
+    });
+    throw error;
   }
 };
 

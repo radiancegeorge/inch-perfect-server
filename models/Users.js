@@ -43,5 +43,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: "1",
     },
+    verification_id: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   });
 };
