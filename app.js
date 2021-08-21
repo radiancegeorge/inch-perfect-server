@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const error = require("./middlewares/error.middleware");
 const app = express();
 const { sequelize } = require("./models");
 const user = require("./route/user");
@@ -11,8 +12,10 @@ app.use(express.urlencoded({ extended: true }));
 
 //routes
 app.use("/uploads", express.static("./uploads"));
-app.use("/register", user);
+app.use("/user", user);
 
+//handle error
+app.use(error);
 sequelize.sync().then((e) => {
   app.listen(port, () => {
     console.log(`Server started on port ${port}`);

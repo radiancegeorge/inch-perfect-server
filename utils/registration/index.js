@@ -32,11 +32,11 @@ const registration = async (data) => {
       verification_id: code,
     });
     await sendMail({
-      html: `<a href="${server_url}verify_email?email=${email}&code=${code}">click to verify</a>`,
+      html: `<a href="${server_url}user/verify_email?email=${email}&code=${code}">click to verify</a>`,
       to: [email],
       subject: "Email Verification",
     });
-    return (await getUser(email)).dataValues;
+    return await getUser(email);
   } catch (error) {
     await Users.destroy({
       where: {
@@ -84,29 +84,54 @@ const hashText = async (text, defaultSalt = Number(salt)) => {
  * @param {array} exclude
  * @returns matching user
  */
-const getUser = async (data, exclude = ["password"]) => {
-  const user = await Users.findOne({
-    where: {
-      [Op.or]: [
-        {
-          email: {
-            [Op.like]: `%${data}%`,
+const getUser = async (data, exclude = ["password", "verification_id"]) => {
+  const user = (
+    await Users.findOne({
+      where: {
+        [Op.or]: [
+          {
+            email: {
+              [Op.like]: `%${data}%`,
+            },
           },
-        },
-        {
-          id: {
-            [Op.like]: `%${data}%`,
+          {
+            id: {
+              [Op.like]: `%${data}%`,
+            },
           },
-        },
-      ],
-    },
-    attributes: {
-      exclude,
-    },
-  });
+        ],
+      },
+      attributes: {
+        exclude,
+      },
+    })
+  ).dataValues;
   return user;
 };
 
+const verifyEmail = async (email, verification_id) => {
+  const user = await Users.findOne({
+    where: {
+      [Op.and]: [{ email }, { verification_id }],
+    },
+  });
+  console.log(user);
+  if (user) {
+    await Users.update(
+      {
+        verification_id: null,
+        verified: "2",
+      },
+      {
+        where: {
+          email,
+        },
+      }
+    );
+    return await getUser(email);
+  }
+  if (!user) throw "invalid token";
+};
 // getUser("radiancegeorge@gmail.com").then((e) => console.log(e?.dataValues));
 
 module.exports = {
@@ -114,4 +139,5 @@ module.exports = {
   hashText,
   checkEmail,
   registration,
+  verifyEmail,
 };
