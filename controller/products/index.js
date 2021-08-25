@@ -1,5 +1,9 @@
 const asyncHandler = require("express-async-handler");
-const { registerProducts, getProducts } = require("../../utils/products");
+const {
+  registerProducts,
+  getProducts,
+  getSingleProduct,
+} = require("../../utils/products");
 
 const register = asyncHandler(async (req, res, next) => {
   const { files } = req;
@@ -24,7 +28,15 @@ const fetchProducts = asyncHandler(async (req, res, next) => {
   const { body } = req;
   res.status(200).json(await getProducts(body));
 });
+
+const fetchProductById = asyncHandler(async (req, res, next) => {
+  const { id } = req.query;
+  const product = await getSingleProduct(id);
+  if (!product) throw "no product with such id found";
+  res.status(200).json();
+});
 module.exports = {
   register,
   fetchProducts,
+  fetchProductById,
 };

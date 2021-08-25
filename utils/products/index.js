@@ -47,11 +47,13 @@ const getProducts = async ({
 };
 
 const getSingleProduct = async (id) => {
-  return await Products.findOne({
-    where: {
-      id,
-    },
-  });
+  return (
+    await Products.findOne({
+      where: {
+        id,
+      },
+    })
+  )?.dataValues;
 };
 
 const registerProducts = async ({ id = UUIDV1(), ...rest }) => {
