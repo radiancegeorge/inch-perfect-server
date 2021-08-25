@@ -1,6 +1,6 @@
 const { Products } = require("../../models");
 const UUIDV1 = require("uuid").v1;
-
+const { Op } = require("sequelize");
 const getProducts = async ({
   limit = 10,
   order = [["createdAt", "DESC"]],
@@ -26,17 +26,24 @@ const getProducts = async ({
         sold_out,
         ...(category && { category }),
         ...(pattern && { pattern }),
-        ...(color && { color }),
+        ...(color && {
+          color: {
+            [Op.like]: `%${color}%`,
+          },
+        }),
         ...(rating && { rating }),
       },
-      limit,
+      limit: Number(limit),
       order,
-      offset,
+      ...(offset && { offset: Number(offset) }),
     })
   )?.map((item) => item.dataValues);
-
-  console.log(products);
-  return products;
+  return {
+    data: products,
+    page,
+    totalPages,
+    totalProducts: maxColumns,
+  };
 };
 
 const getSingleProduct = async (id) => {
