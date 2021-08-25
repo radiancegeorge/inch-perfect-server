@@ -26,11 +26,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: "0",
     },
-    product_Detail: {
+    product_detail: {
       type: DataTypes.STRING(500),
       allowNull: true,
     },
-    product_images: {
+    product_image: {
       type: DataTypes.STRING(500),
       allowNull: false,
     },

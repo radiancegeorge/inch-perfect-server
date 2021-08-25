@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { Categories } = require("../models");
+const { Categories } = require("../../models");
 const uuid = require("uuid").v1;
 
 const getCategories = async () => {
@@ -39,12 +39,12 @@ const checkCategory = async (category) => {
   return exists;
 };
 
-const removeCategory = async (category) => {
+const removeCategory = async (id) => {
   try {
     await Categories.destroy({
       where: {
-        category: {
-          [Op.like]: `%${category}%`,
+        id: {
+          [Op.like]: `%${id}%`,
         },
       },
     });
