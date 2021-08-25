@@ -3,6 +3,7 @@ const {
   registerProducts,
   getProducts,
   getSingleProduct,
+  deleteProduct,
 } = require("../../utils/products");
 
 const register = asyncHandler(async (req, res, next) => {
@@ -35,8 +36,16 @@ const fetchProductById = asyncHandler(async (req, res, next) => {
   if (!product) throw "no product with such id found";
   res.status(200).json();
 });
+
+const removeProduct = asyncHandler(async (req, res, next) => {
+  const { id } = req.query;
+  const isDeleted = await deleteProduct(id);
+  if (!isDeleted) throw "there was an error deleting this product!";
+  res.status(200).json("deleted");
+});
 module.exports = {
   register,
   fetchProducts,
   fetchProductById,
+  removeProduct,
 };

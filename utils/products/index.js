@@ -66,4 +66,17 @@ const registerProducts = async ({ id = UUIDV1(), ...rest }) => {
     ...rest,
   };
 };
-module.exports = { getSingleProduct, getProducts, registerProducts };
+const deleteProduct = async (id) => {
+  await Products.destroy({
+    where: {
+      id,
+    },
+  });
+  return true;
+};
+module.exports = {
+  getSingleProduct,
+  getProducts,
+  registerProducts,
+  deleteProduct,
+};
