@@ -20,6 +20,7 @@ const protect = (req, res, next) => {
         error: "unauthorized!",
       });
     req.user = user;
+    next();
   } catch (error) {
     console.log(error);
     next("unauthorized, please make sure tokens are provided!");

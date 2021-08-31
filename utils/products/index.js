@@ -1,4 +1,6 @@
-const { Products } = require("../../models");
+require("dotenv").config();
+const { maxRating } = process.env;
+const { Products, Rating } = require("../../models");
 const UUIDV1 = require("uuid").v1;
 const { Op } = require("sequelize");
 const getProducts = async ({
@@ -74,9 +76,65 @@ const deleteProduct = async (id) => {
   });
   return true;
 };
+
+const addRating = async ({ id, product_id, rate }) => {
+  if (!(await getSingleProduct(product_id))) throw "invalid product id!";
+  if (await checkIfRated(id, product_id))
+    throw "You've already rated this product!";
+  await Rating.create({
+    id,
+    product_id,
+    rate: rate.toString(),
+  });
+
+  //update product table
+  const rating = await (await getRating(product_id)).toString();
+  await Products.update(
+    {
+      rating,
+    },
+    {
+      where: {
+        id: product_id,
+      },
+    }
+  );
+  return rating;
+};
+const checkIfRated = async (id, product_id) => {
+  return (
+    await Rating.findOne({
+      where: {
+        [Op.and]: [{ product_id }, { id }],
+      },
+    })
+  )?.dataValues;
+};
+const getRating = async (product_id) => {
+  const sum = await getTotalRating(product_id);
+  if (!sum) return false;
+  const count = await Rating.count({
+    where: {
+      product_id,
+    },
+  });
+  const rating = Math.floor(sum / count);
+  return rating;
+};
+const getTotalRating = async (product_id) => {
+  const sum = await Rating.sum("rate", {
+    where: {
+      product_id,
+    },
+  });
+  return sum;
+};
 module.exports = {
   getSingleProduct,
   getProducts,
   registerProducts,
   deleteProduct,
+  addRating,
+  checkIfRated,
+  getRating,
 };
