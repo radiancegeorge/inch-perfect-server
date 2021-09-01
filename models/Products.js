@@ -14,11 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
     price_usd: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 3),
       allowNull: false,
     },
     price_ngn: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 3),
       allowNull: false,
     },
     rating: {

@@ -1,8 +1,8 @@
 require("dotenv").config();
 const { maxRating } = process.env;
 const { Products, Rating } = require("../../models");
-const UUIDV1 = require("uuid").v1;
-const { Op } = require("sequelize");
+const UUIDV1 = require("uuid").v4;
+const { Op, UUID } = require("sequelize");
 const getProducts = async ({
   limit = 10,
   order = [["createdAt", "DESC"]],
