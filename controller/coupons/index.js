@@ -1,9 +1,13 @@
 const asyncHandler = require("express-async-handler");
-const { generateCoupon, addUsage } = require("../../utils/coupons");
+const {
+  generateCoupon,
+  addUsage,
+  getCoupon: fetchCoupon,
+} = require("../../utils/coupons");
 
 const getCoupon = asyncHandler(async (req, res, next) => {
   const { id } = req.body;
-  const coupon = await getCoupon(id);
+  const coupon = await fetchCoupon(id);
   res.status(200).json(coupon);
 });
 
