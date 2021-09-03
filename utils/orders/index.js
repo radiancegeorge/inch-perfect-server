@@ -1,6 +1,6 @@
 const { Op } = require("sequelize");
 const { v4 } = require("uuid");
-const { Users, Products, Orders } = require("../../models");
+const { Products, Orders } = require("../../models");
 const { getCoupon, addUsage } = require("../coupons");
 const { getUser } = require("../registration");
 
@@ -12,7 +12,7 @@ const createOrder = async (id, orderObject) => {
   });
   orderObject.id = v4();
   const { currency } = await getUser(id);
-
+  orderObject.currency = currency;
   const prices = orderObject.product.map(async (orderProduct) => {
     const { id, unit } = orderProduct;
     const { price_ngn, price_usd } = (
@@ -45,14 +45,14 @@ const createOrder = async (id, orderObject) => {
     await addToOrder(orderObject);
     const isAdded = await getSingleOrder(orderObject.id);
     if (!isAdded) throw "an error with adding to order";
-    return orderObject;
+    return await getSingleOrder(orderObject.id);
   }
   //handle transactions with automatic payments
 
   //after successful payments;
   await addToOrder(orderObject);
   await setProcessing(orderObject.id);
-  return orderObject;
+  return await getSingleOrder(orderObject.id);
 };
 
 const getSingleOrder = async (

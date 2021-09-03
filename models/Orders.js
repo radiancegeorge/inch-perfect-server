@@ -70,5 +70,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: "AUTOMATIC",
     },
+    currency: {
+      type: DataTypes.ENUM("USD", "NGN"),
+      allowNull: false,
+    },
   });
 };
