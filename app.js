@@ -4,6 +4,7 @@ const error = require("./middlewares/error.middleware");
 const app = express();
 const { sequelize } = require("./models");
 const coupons = require("./route/coupons");
+const orders = require("./route/orders");
 const product = require("./route/products");
 const user = require("./route/user");
 const port = process.env.port || 4000;
@@ -17,6 +18,7 @@ app.use("/uploads", express.static("./uploads"));
 app.use("/user", user);
 app.use("/products", product);
 app.use("/coupon", coupons);
+app.use("/orders", orders);
 //handle error
 app.use(error);
 sequelize.sync().then((e) => {

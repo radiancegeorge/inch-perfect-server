@@ -1,8 +1,9 @@
 const { Op } = require("sequelize");
 const { v4 } = require("uuid");
 const { Users, Products, Orders } = require("../../models");
-const { getCoupon } = require("../coupons");
+const { getCoupon, addUsage } = require("../coupons");
 const { getUser } = require("../registration");
+
 const createOrder = async (id, orderObject) => {
   //handle invalid fields
   const invalidKeys = ["total", "processing", "shipped", "delivered"];
@@ -12,7 +13,7 @@ const createOrder = async (id, orderObject) => {
   orderObject.id = v4();
   const { currency } = await getUser(id);
 
-  const prices = orderObject.product.map((orderProduct) => {
+  const prices = orderObject.product.map(async (orderProduct) => {
     const { id, unit } = orderProduct;
     const { price_ngn, price_usd } = (
       await Products.findOne({
@@ -21,30 +22,49 @@ const createOrder = async (id, orderObject) => {
         },
       })
     ).dataValues;
-    console.log(price_usd, price_ngn);
     const price = currency === "NGN" ? price_ngn : price_usd;
     return Number(unit) * Number(price);
   });
-  console.log(prices, "prices");
-  let totalPrice = prices.reduce(
-    (prevVal, currentVal) => Number(prevVal) + Number(currentVal),
-    0
-  );
+  let totalPrice = await prices.reduce(async (prevVal, currentVal) => {
+    return Number(await prevVal) + Number(await currentVal);
+  }, 0);
   if (orderObject.coupon) {
     const { percentage_off } = await getCoupon(orderObject.coupon);
     totalPrice = totalPrice - (totalPrice * Number(percentage_off)) / 100;
+    orderObject.total = totalPrice;
+    try {
+      await addUsage(orderObject.coupon);
+    } catch (err) {
+      console.log(err);
+    }
   }
+
+  orderObject.total = totalPrice;
+
   if (orderObject.method === "MANUAL") {
     await addToOrder(orderObject);
-    return await getSingleOrder(orderObject.id);
+    const isAdded = await getSingleOrder(orderObject.id);
+    if (!isAdded) throw "an error with adding to order";
+    return orderObject;
   }
   //handle transactions with automatic payments
+
+  //after successful payments;
+  await addToOrder(orderObject);
+  await setProcessing(orderObject.id);
+  return orderObject;
 };
 
-const getSingleOrder = async (id) => {
+const getSingleOrder = async (
+  id,
+  exclude = ["delivered", "processing", "method", "shipped"]
+) => {
   return await Orders.findOne({
     where: {
       id,
+    },
+    attributes: {
+      exclude,
     },
   });
 };
@@ -64,21 +84,84 @@ const getOrderedProducts = async (arrayOfId) => {
   });
 };
 
-const testProduct = JSON.stringify([
-  {
-    id: "276b0250-05fa-11ec-bbde-01744762fce4",
-    unit: 4,
-  },
-  {
-    id: "9a26d530-05d2-11ec-9b10-0749ad05a6de",
-    unit: 5,
-  },
-  {
-    id: "3b57e5d0-05d2-11ec-a102-f17ad12f4502",
-    unit: 7,
-  },
-  {
-    id: "8a31cab0-05f8-11ec-8f55-c12fef5a281b",
-    unit: 8,
-  },
-]);
+const setProcessing = async (id) => {
+  const { processing } = (
+    await Orders.findOne({
+      where: {
+        id,
+      },
+    })
+  ).dataValues;
+  if (!processing) throw "cannot find order!";
+  await Orders.update(
+    {
+      processing: processing === "1" ? "2" : "1",
+    },
+    {
+      where: {
+        id,
+      },
+    }
+  );
+};
+const setDelivered = async (id) => {
+  const { delivered } = (
+    await Orders.findOne({
+      where: {
+        id,
+      },
+    })
+  ).dataValues;
+  if (!delivered) throw "cannot find order!";
+  await Orders.update(
+    {
+      delivered: delivered === "1" ? "2" : "1",
+    },
+    {
+      where: {
+        id,
+      },
+    }
+  );
+};
+const setShipped = async (id) => {
+  const { shipped } = (
+    await Orders.findOne({
+      where: {
+        id,
+      },
+    })
+  ).dataValues;
+  if (!shipped) throw "cannot find order!";
+  await Orders.update(
+    {
+      shipped: shipped === "1" ? "2" : "1",
+    },
+    {
+      where: {
+        id,
+      },
+    }
+  );
+};
+
+// const testOrder = JSON.stringify([
+//   {
+//     id: "276b0250-05fa-11ec-bbde-01744762fce4",
+//     unit: 4,
+//     product: ,
+//     country: "nigeria",
+//     state: "imo",
+//     town: "world bank",
+//   },
+// ]);
+// console.log(testOrder);
+module.exports = {
+  addToOrder,
+  getOrderedProducts,
+  getSingleOrder,
+  createOrder,
+  setShipped,
+  setDelivered,
+  setProcessing,
+};
