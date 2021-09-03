@@ -105,7 +105,7 @@ const getUser = async (data, exclude = ["password", "verification_id"]) => {
         exclude,
       },
     })
-  ).dataValues;
+  )?.dataValues;
   return user;
 };
 

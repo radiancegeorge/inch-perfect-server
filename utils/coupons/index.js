@@ -32,9 +32,7 @@ const addUsage = async (id) => {
   });
   return { ...(await getCoupon(id)) };
 };
-addUsage("56df")
-  .then((item) => console.log(item))
-  .catch((err) => console.log(err));
+
 module.exports = {
   generateCoupon,
   getCoupon,

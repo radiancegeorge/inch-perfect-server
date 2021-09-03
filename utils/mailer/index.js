@@ -12,15 +12,15 @@ const sendMail = async ({
 }) => {
   try {
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
+      host: "inchperfectstores.com",
+      port: 465,
+      secure: true,
       auth: {
         user,
         pass,
       },
     });
-    const from = `Perfect Inch <${user}>`;
+    const from = `Inch Perfect <${user}>`;
     const info = await transporter.sendMail({
       subject,
       to,
