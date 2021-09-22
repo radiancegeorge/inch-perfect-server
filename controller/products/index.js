@@ -74,7 +74,7 @@ const createCategories = asyncHandler(async (req, res, next) => {
   res.status(200).json(newCategory);
 });
 const deleteCategory = asyncHandler(async (req, res, next) => {
-  const { id } = req.body;
+  const { id } = req.query;
   const isDeleted = await removeCategory(id);
   res.status(200).json(isDeleted);
 });

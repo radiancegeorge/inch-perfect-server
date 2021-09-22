@@ -17,7 +17,7 @@ product
   .post("/create_product", uploads.array("cover", 4), register)
   .get("/", fetchProducts)
   .get("/single", fetchProductById)
-  .post("/delete", removeProduct)
+  .delete("/", removeProduct)
   .post("/rate", protect, addRatings)
   .get("/categories", fetchCategories)
   .post("/category", createCategories)
