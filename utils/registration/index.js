@@ -6,6 +6,7 @@ const { salt, server_url, app_url } = process.env;
 const uuid = require("uuid").v1;
 const verification_code = require("uuid").v1;
 const sendMail = require("../mailer");
+const emailBody = require("../extras/emailVerificationBody");
 
 /**
  *
@@ -32,7 +33,11 @@ const registration = async (data) => {
       verification_id: code,
     });
     await sendMail({
-      html: `<a href="${server_url}user/verify_email?email=${email}&code=${code}">click to verify</a>`,
+      html: emailBody({
+        server_url,
+        email,
+        code,
+      }),
       to: [email],
       subject: "Email Verification",
     });

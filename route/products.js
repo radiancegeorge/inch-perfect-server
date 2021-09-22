@@ -5,6 +5,9 @@ const {
   fetchProductById,
   removeProduct,
   addRatings,
+  fetchCategories,
+  createCategories,
+  deleteCategory,
 } = require("../controller/products");
 const { protect } = require("../middlewares/protect.middleware");
 const uploads = require("../middlewares/uploads.middleware");
@@ -15,6 +18,9 @@ product
   .get("/", fetchProducts)
   .get("/single", fetchProductById)
   .post("/delete", removeProduct)
-  .post("/rate", protect, addRatings);
+  .post("/rate", protect, addRatings)
+  .get("/categories", fetchCategories)
+  .post("/category", createCategories)
+  .delete("/category", deleteCategory);
 
 module.exports = product;
