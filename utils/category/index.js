@@ -40,6 +40,8 @@ const checkCategory = async (category) => {
 };
 
 const removeCategory = async (id) => {
+  if (id === undefined || id?.trim() === "")
+    throw "invalid category id, please make sure it is not empty";
   try {
     await Categories.destroy({
       where: {

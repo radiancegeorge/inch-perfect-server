@@ -1,5 +1,11 @@
 const asyncHandler = require("express-async-handler");
 const {
+  getCategories,
+  addCategory,
+  removeCategory,
+  checkCategory,
+} = require("../../utils/category");
+const {
   registerProducts,
   getProducts,
   getSingleProduct,
@@ -57,10 +63,34 @@ const addRatings = asyncHandler(async (req, res, next) => {
   if (!rating) throw "error with rating";
   res.status(200).json({ newRating: rating });
 });
+const fetchCategories = asyncHandler(async (req, res, next) => {
+  res.status(200).json({
+    categories: await getCategories(),
+  });
+});
+const createCategories = asyncHandler(async (req, res, next) => {
+  const { name } = req.body;
+  const newCategory = await addCategory(name);
+  res.status(200).json(newCategory);
+});
+const deleteCategory = asyncHandler(async (req, res, next) => {
+  const { id } = req.query;
+  const isDeleted = await removeCategory(id);
+  res.status(200).json(isDeleted);
+});
+const ifExist = asyncHandler(async (req, res, next) => {
+  const { category } = req.body;
+  const exist = await checkCategory(category);
+  res.status(200).json(exist);
+});
 module.exports = {
   register,
   fetchProducts,
   fetchProductById,
   removeProduct,
   addRatings,
+  fetchCategories,
+  createCategories,
+  deleteCategory,
+  ifExist,
 };
