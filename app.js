@@ -7,9 +7,11 @@ const coupons = require("./route/coupons");
 const orders = require("./route/orders");
 const product = require("./route/products");
 const user = require("./route/user");
+const cors = require('cors')
 const port = process.env.port || 4000;
 
 // middlewares
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
