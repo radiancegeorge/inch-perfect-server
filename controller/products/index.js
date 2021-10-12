@@ -33,7 +33,7 @@ const register = asyncHandler(async (req, res, next) => {
 });
 
 const fetchProducts = asyncHandler(async (req, res, next) => {
-  const { body } = req;
+  const { query: body } = req;
   res.status(200).json(await getProducts(body));
 });
 
