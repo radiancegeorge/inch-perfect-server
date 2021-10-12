@@ -20,7 +20,7 @@ const register = asyncHandler(async (req, res, next) => {
   if (!files?.length) throw "file empty";
   data.product_image = JSON.stringify(
     files.map(
-      (file) => `${process.env.server_url}product_image/${file.originalname}`
+      (file) => `${process.env.server_url}product_image/${file.filename}`
     )
   );
   try {
