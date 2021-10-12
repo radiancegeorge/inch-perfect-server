@@ -3,19 +3,24 @@ const { maxRating } = process.env;
 const { Products, Rating } = require("../../models");
 const UUIDV1 = require("uuid").v4;
 const { Op, UUID } = require("sequelize");
-const getProducts = async ({
-  limit = 10,
-  order = [["createdAt", "DESC"]],
-  page = 1,
-  category,
-  sold_out = "1",
-  pattern,
-  color,
-  rating,
-}) => {
+
+const getProducts = async (data) => {
+  const {
+    limit = 10,
+    order = [["createdAt", "DESC"]],
+    page = 1,
+    category,
+    sold_out = "1",
+    pattern,
+    color,
+    rating,
+    price_ngn,
+    price_usd,
+  } = data;
   const maxColumns = await Products.count({
     where: {
       sold_out: "1",
+      ...data,
     },
   });
   const totalPages = Math.ceil(maxColumns / limit);
@@ -26,6 +31,8 @@ const getProducts = async ({
     await Products.findAll({
       where: {
         sold_out,
+        ...(price_ngn && { price_ngn }),
+        ...(price_usd && { price_usd }),
         ...(category && { category }),
         ...(pattern && { pattern }),
         ...(color && {
