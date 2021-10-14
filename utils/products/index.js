@@ -17,14 +17,27 @@ const getProducts = async (data) => {
     price_ngn,
     price_usd,
   } = data;
+
+  const keys = Object.keys(data);
+  const getObjectForCount = () => {
+    const nonSuported = ["limit", "page", "order"]
+    const newObject = {};
+    keys.forEach(item => {
+      if(!nonSuported.includes(item)){
+        newObject[item] = data[item]
+      }
+    })
+    return newObject;
+  }
+
   const maxColumns = await Products.count({
     where: {
       sold_out: "1",
-      ...data,
+      ...getObjectForCount()
     },
   });
   const totalPages = Math.ceil(maxColumns / limit);
-  if (page > totalPages) throw "maximum page reached!";
+  if (page > totalPages) return [];
   const maxItem = Number(page) * limit;
   offset = maxItem - limit;
   const products = (
@@ -33,7 +46,9 @@ const getProducts = async (data) => {
         sold_out,
         ...(price_ngn && { price_ngn }),
         ...(price_usd && { price_usd }),
-        ...(category && { category }),
+        ...(category && { category: {
+          [Op.like]: `%${category}%`
+        } }),
         ...(pattern && { pattern }),
         ...(color && {
           color: {

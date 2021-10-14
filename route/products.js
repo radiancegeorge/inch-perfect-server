@@ -15,7 +15,7 @@ const product = express.Router();
 
 product
   .post("/create_product", uploads.array("cover", 4), register)
-  .post("/", fetchProducts)
+  .get("/", fetchProducts)
   .get("/single", fetchProductById)
   .delete("/", removeProduct)
   .post("/rate", protect, addRatings)
