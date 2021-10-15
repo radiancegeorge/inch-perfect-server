@@ -14,26 +14,54 @@ const getProducts = async (data) => {
     pattern,
     color,
     rating,
-    price_ngn,
-    price_usd,
+    price_ngn_start,
+    price_ngn_end,
+    price_usd_start,
+    price_usd_end,
   } = data;
 
   const keys = Object.keys(data);
   const getObjectForCount = () => {
-    const nonSuported = ["limit", "page", "order"]
+    const nonSuported = [
+      "limit",
+      "page",
+      "order",
+      "price_usd_start",
+      "price_usd_end",
+      "price_ngn_start",
+      "price_ngn_end",
+    ];
     const newObject = {};
-    keys.forEach(item => {
-      if(!nonSuported.includes(item)){
-        newObject[item] = data[item]
+    keys.forEach((item) => {
+      if (!nonSuported.includes(item)) {
+        newObject[item] = data[item];
       }
-    })
+    });
     return newObject;
-  }
+  };
 
   const maxColumns = await Products.count({
     where: {
       sold_out: "1",
-      ...getObjectForCount()
+      ...getObjectForCount(),
+      ...(price_ngn_end &&
+        price_ngn_start && {
+          price_ngn: {
+            [Op.between]:
+              price_ngn_start < price_ngn_end
+                ? [price_ngn_start, price_ngn_end]
+                : [price_ngn_end, price_ngn_start],
+          },
+        }),
+      ...(price_usd_start &&
+        price_usd_end && {
+          price_usd: {
+            [Op.between]:
+              price_usd_start < price_usd_end
+                ? [price_usd_start, price_usd_end]
+                : [price_usd_end, price_usd_start],
+          },
+        }),
     },
   });
   const totalPages = Math.ceil(maxColumns / limit);
@@ -44,11 +72,29 @@ const getProducts = async (data) => {
     await Products.findAll({
       where: {
         sold_out,
-        ...(price_ngn && { price_ngn }),
-        ...(price_usd && { price_usd }),
-        ...(category && { category: {
-          [Op.like]: `%${category}%`
-        } }),
+        ...(price_ngn_end &&
+          price_ngn_start && {
+            price_ngn: {
+              [Op.between]:
+                price_ngn_start < price_ngn_end
+                  ? [price_ngn_start, price_ngn_end]
+                  : [price_ngn_end, price_ngn_start],
+            },
+          }),
+        ...(price_usd_start &&
+          price_usd_end && {
+            price_usd: {
+              [Op.between]:
+                price_usd_start < price_usd_end
+                  ? [price_usd_start, price_usd_end]
+                  : [price_usd_end, price_usd_start],
+            },
+          }),
+        ...(category && {
+          category: {
+            [Op.like]: `%${category}%`,
+          },
+        }),
         ...(pattern && { pattern }),
         ...(color && {
           color: {
