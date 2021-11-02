@@ -74,5 +74,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.ENUM("USD", "NGN"),
       allowNull: false,
     },
+    referrence: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+      unique: true,
+    },
   });
 };
