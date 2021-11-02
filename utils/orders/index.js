@@ -2,6 +2,7 @@ const { Op } = require("sequelize");
 const { v4 } = require("uuid");
 const { Products, Orders } = require("../../models");
 const { getCoupon, addUsage } = require("../coupons");
+const sendMail = require("../mailer");
 const { getUser } = require("../registration");
 
 const createOrder = async (id, orderObject) => {
@@ -10,6 +11,7 @@ const createOrder = async (id, orderObject) => {
   Object.keys(orderObject).forEach((key) => {
     if (invalidKeys.includes(key)) throw `invald field ${key}`;
   });
+
   orderObject.id = v4();
   const { currency } = await getUser(id);
   orderObject.currency = currency;
@@ -54,6 +56,10 @@ const createOrder = async (id, orderObject) => {
   await setProcessing(orderObject.id);
 
   //remember to send an email confirming order later******
+  sendMail({
+    html: "your order is",
+    to: (await getUser(id)).email,
+  });
 
   return await getSingleOrder(orderObject.id);
 };

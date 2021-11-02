@@ -20,7 +20,7 @@ const makeOrder = asyncHandler(async (req, res, next) => {
     "updatedAt",
   ]);
   const preOrderObject = { ...req.body, ...(useDefault && defaultUserData) };
-  console.log(preOrderObject);
+  // console.log(preOrderObject);
   const order = await createOrder(req.user.id, preOrderObject);
   if (!order) throw "error making order";
   res.status(200).json(order);

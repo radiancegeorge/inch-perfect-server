@@ -79,5 +79,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
     },
+    email: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
   });
 };
