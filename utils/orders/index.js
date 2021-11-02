@@ -52,6 +52,9 @@ const createOrder = async (id, orderObject) => {
   //after successful payments;
   await addToOrder(orderObject);
   await setProcessing(orderObject.id);
+
+  //remember to send an email confirming order later******
+
   return await getSingleOrder(orderObject.id);
 };
 
