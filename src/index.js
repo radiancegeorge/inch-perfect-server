@@ -3,11 +3,28 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {configure} from "axios-hooks";
+import axios from './config/Axios.config';
+import {Provider} from 'react-redux'
+import { createStore} from 'redux';
+import combinedReducer from "./appStore/index"
+import persistStore, { persisited }  from './appStore/store.js'
+import { PersistGate } from 'redux-persist/integration/react'
+
+const store = createStore(combinedReducer)
+const persistStor = persistStore(store)
+
+configure({axios})
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    
+  </Provider>
+  ,
   document.getElementById('root')
 );
 

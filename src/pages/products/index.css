@@ -1,0 +1,491 @@
+.appContainer {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  background: rgba(13, 13, 13, 0.8);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 999999;
+  height: 90vh;
+  overflow-y: hidden;
+}
+
+.overlay .cartDiv {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: auto;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.overlay .cartDiv .cart {
+  -ms-flex-preferred-size: 90%;
+      flex-basis: 90%;
+  background: white;
+  margin-left: auto;
+  padding: 20px 40px;
+}
+
+.overlay .cartDiv .cart .cartBag {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct {
+  -ms-flex-preferred-size: 32%;
+      flex-basis: 32%;
+  position: relative;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct img {
+  width: 100%;
+  height: 100%;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct .details {
+  padding: 8px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(13, 13, 13, 0.4);
+  color: white;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct .details p {
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct .details .priceAdd {
+  margin-top: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct .details .priceAdd span.price {
+  font-size: 14px;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct .details .priceAdd div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: auto;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct .details .priceAdd div span {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct .details .priceAdd div .units {
+  border-radius: 10px;
+  font-size: 11px;
+  width: 40px;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid white;
+}
+
+.overlay .cartDiv .cart .checkoutDiv {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.overlay .cartDiv .cart .checkoutDiv .checkout {
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
+  text-align: center;
+}
+
+.overlay .cartDiv .cart .checkoutDiv .checkout p {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.overlay .cartDiv .cart .checkoutDiv .checkout p.price {
+  font-size: 28px;
+  font-weight: 700;
+  color: #797774;
+}
+
+.overlay .cartDiv .cart .checkoutDiv .checkout .checkoutButton {
+  width: 100%;
+  padding: 10px 0px;
+  text-align: center;
+  background: black;
+  color: white;
+}
+
+.overlay .cartDiv .cancel {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: black;
+}
+
+.productContaainer {
+  padding: 48px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+  height: 80vh;
+  overflow-y: none;
+}
+
+.productContaainer .filterDiv {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 90vh;
+  background: rgba(13, 13, 13, 0.7);
+  z-index: 999;
+}
+
+.productContaainer .filterDiv .filterOptions {
+  -ms-flex-preferred-size: 18%;
+      flex-basis: 18%;
+  background: white;
+  padding: 0px 30px;
+}
+
+.productContaainer .filterDiv .filterOptions .filterButton {
+  padding: 12px 15px;
+  border: 0.2px solid #797774;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.productContaainer .filterDiv .filterOptions .filterButton:hover {
+  cursor: pointer;
+}
+
+.productContaainer .filterDiv .filterOptions .filterButton svg {
+  margin-left: 10px;
+}
+
+.productContaainer .filterDiv .filterOptions .filterSettings {
+  margin-top: 70px;
+}
+
+.productContaainer .filterDiv .filterOptions .filterSettings p {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.productContaainer .filterDiv .filterOptions .filterSettings input {
+  padding: 11px 16px;
+  margin-bottom: 16px;
+  border: 0.2px solid #797774;
+  width: 100%;
+}
+
+.productContaainer .filterDiv .filterOptions .filterSettings .pattern {
+  margin-top: 70px;
+}
+
+.productContaainer .filterDiv .filterOptions .filterSettings .pattern div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 0.2px solid #797774;
+  padding: 11px 16px;
+}
+
+.productContaainer .filterDiv .filterOptions .filterSettings .pattern div span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.productContaainer .filterDiv .filterOptions .filterSettings .pattern div span input {
+  margin-bottom: 0;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 7px;
+}
+
+.productContaainer .filterDiv .filterOptions .filterSettings .filterSubmit {
+  margin-top: 70px;
+}
+
+.productContaainer .filterDiv .filterOptions .filterSettings .filterSubmit p {
+  padding: 11px 0px;
+  border-radius: 7px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.productContaainer .filterDiv .filterOptions .filterSettings .filterSubmit p.save {
+  background: black;
+  color: white;
+}
+
+.productContaainer .filterDiv .filterOptions .filterSettings .filterSubmit p.reset {
+  color: black;
+  border: 1px solid black;
+}
+
+.productContaainer .filterDiv .filterOptions .filterSettings .dropTrigger {
+  padding: 11px 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 16px;
+  border: 0.2px solid #797774;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.productContaainer .filterDiv .filterOptions .filterSettings .dropTrigger:hover {
+  cursor: pointer;
+}
+
+.productContaainer .filterDiv .filterOptions .filterSettings ul {
+  list-style-type: none;
+}
+
+.productContaainer .filterDiv .filterOptions .filterSettings ul li {
+  padding: 11px 16px;
+  margin-bottom: 16px;
+  border: 0.2px solid #797774;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.productContaainer .categories {
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
+}
+
+.productContaainer .categories h4 {
+  padding: 16px 30px;
+  border-bottom: 2px solid;
+}
+
+.productContaainer .categories ul {
+  list-style-type: none;
+}
+
+.productContaainer .categories ul li {
+  padding: 12px 15px;
+  border: 0.2px solid #797774;
+  font-size: 16px;
+  text-align: center;
+}
+
+.productContaainer .categories ul li:hover {
+  background: rgba(121, 119, 116, 0.2);
+  cursor: pointer;
+}
+
+.productContaainer .categories ul .active {
+  background-color: #0d0d0d !important;
+  color: white;
+}
+
+.productContaainer .categories .filterButton {
+  padding: 12px 15px;
+  border: 0.2px solid #797774;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.productContaainer .categories .filterButton span {
+  margin-left: 10px;
+}
+
+.productContaainer .categories .filterButton:hover {
+  cursor: pointer;
+}
+
+.productContaainer .productDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-preferred-size: 70%;
+      flex-basis: 70%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  overflow-y: scroll;
+  height: 80vh;
+}
+
+.productContaainer .productDiv .product {
+  cursor: pointer;
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
+  position: relative;
+  height: 278px;
+  border-radius: 7px;
+  margin: 16px 0px;
+}
+
+.productContaainer .productDiv .product img {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  border-radius: 7px;
+}
+
+.productContaainer .productDiv .product .productDetails {
+  position: absolute;
+  bottom: 0;
+  background: rgba(13, 13, 13, 0.5);
+  color: white;
+  padding: 10px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.productContaainer .productDiv .product .productDetails .productDescription {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.productContaainer .productDiv .product .productDetails .priceAndAdd {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 10px;
+}
+
+.productContaainer .productDiv .product .productDetails .priceAndAdd .addProduct {
+  margin-left: auto;
+  position: relative;
+  z-index: 9999;
+}
+
+.productContaainer .frame {
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  max-width: 10%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.productContaainer .frame p {
+  font-size: 50px;
+  font-weight: 900;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  color: rgba(121, 119, 116, 0.3);
+  line-height: 1;
+  padding: 21px 121px;
+  background: linear-gradient(145.58deg, rgba(235, 87, 87, 0.1) -86.12%, rgba(164, 255, 250, 0.1) 183.27%);
+  border-radius: 7px;
+}
+/*# sourceMappingURL=index.css.map */

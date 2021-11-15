@@ -1,0 +1,169 @@
+.overlay {
+  position: absolute;
+  width: 100%;
+  background: rgba(13, 13, 13, 0.8);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 999999;
+  height: 90vh;
+  overflow-y: hidden;
+}
+
+.overlay .cartDiv {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: auto;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.overlay .cartDiv .cart {
+  -ms-flex-preferred-size: 90%;
+      flex-basis: 90%;
+  background: white;
+  margin-left: auto;
+  padding: 20px 40px;
+}
+
+.overlay .cartDiv .cart .cartBag {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct {
+  -ms-flex-preferred-size: 32%;
+      flex-basis: 32%;
+  position: relative;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct img {
+  width: 100%;
+  height: 100%;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct .details {
+  padding: 8px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(13, 13, 13, 0.4);
+  color: white;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct .details p {
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct .details .priceAdd {
+  margin-top: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct .details .priceAdd span.price {
+  font-size: 14px;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct .details .priceAdd div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: auto;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct .details .priceAdd div span {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.overlay .cartDiv .cart .cartBag .cartProduct .details .priceAdd div .units {
+  border-radius: 10px;
+  font-size: 11px;
+  width: 40px;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid white;
+}
+
+.overlay .cartDiv .cart .checkoutDiv {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.overlay .cartDiv .cart .checkoutDiv .checkout {
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
+  text-align: center;
+}
+
+.overlay .cartDiv .cart .checkoutDiv .checkout p {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.overlay .cartDiv .cart .checkoutDiv .checkout p.price {
+  font-size: 28px;
+  font-weight: 700;
+  color: #797774;
+}
+
+.overlay .cartDiv .cart .checkoutDiv .checkout .checkoutButton {
+  width: 100%;
+  padding: 10px 0px;
+  text-align: center;
+  background: black;
+  color: white;
+}
+
+.overlay .cartDiv .cancel {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: black;
+}
+/*# sourceMappingURL=index.css.map */

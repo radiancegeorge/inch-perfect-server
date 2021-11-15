@@ -1,6 +1,6 @@
 import SuccessfulTick from "../../../assets/svg/successfulTick"
 
-const RegistrationSuccessful = ({setViewToLogin}) => {
+const RegistrationSuccessful = ({setView}) => {
     return(
         <div className='register verificationComponent'>
             <div className="centerDiv">
@@ -12,7 +12,7 @@ const RegistrationSuccessful = ({setViewToLogin}) => {
                     Check your email for a link to verify your account
                 </p>
             </div>
-            <p onClick={() => setViewToLogin()} className='submitBtn'>
+            <p onClick={() => setView('Log in')} className='submitBtn'>
                 Verified? Login
             </p>
         </div>

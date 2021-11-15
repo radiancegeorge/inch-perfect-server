@@ -3,14 +3,41 @@ import EyeOff from '../../../assets/svg/eyeOff'
 import Lock from '../../../assets/svg/lock'
 import Eye from '../../../assets/svg/eye'
 import { useState } from 'react'
+import useLogin from '../../../hooks/login'
+import { Router, Redirect} from 'react-router'
+import Loader from "react-loader-spinner";
 
-const Login =({setViewToSignup})=>{
+
+const Login =({setView})=>{
+    const {login, loginObject} = useLogin()
     const [eye, setEye] = useState(false)
     const toggleEyeOn = () => {
         eye ? setEye(false) : setEye(true)
     }
+    const [userLoginData, setUserLoginData] = useState({
+        email:'',
+        password:''
+    })
+    const handleLogin = e => {
+        e.preventDefault();
+        console.log(userLoginData)
+        try{
+            login(
+                {
+                    data: userLoginData
+                }
+            )
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
     return(
         <div className="register">
+            {/* {
+                loginObject.error === null && <Redirect to='/'/>
+            } */}
+            
             <div className="header">
                 <h3 className="headerBold">
                     Login
@@ -19,14 +46,14 @@ const Login =({setViewToSignup})=>{
                     Please input your email address and password correctly.
                 </p>
             </div>
-            <form action="">
+            <form action="" onSubmit={handleLogin}>
                 <label htmlFor="">
                     <Mail />
-                    <input type="email" name="" id="" placeholder='Email Address'/>
+                    <input onChange={e=>setUserLoginData({...userLoginData, email:e.target.value})} type="email" name="email" id="" placeholder='Email Address'/>
                 </label>
                 <label htmlFor="">
                     <Lock />
-                    <input type={eye? "text" : 'password'} name="" id="" placeholder='Password'/>
+                    <input onChange={e=>setUserLoginData({...userLoginData, password:e.target.value})} type={eye? "text" : 'password'} name="password" id="" placeholder='Password'/>
                     {
                         eye === false && <EyeOff toggleEyeOn={toggleEyeOn}/>
                     }
@@ -36,11 +63,13 @@ const Login =({setViewToSignup})=>{
                 </label>
                 <label htmlFor="" className='submitBtn'>
                     <button>
-                        Login
+                        Login{
+                            loginObject.loading && <Loader type="Circles" color="#FFF" height={10} width={10}/>
+                        }
                     </button>
                     <p className='switch'>
                         Dont have an account? 
-                        <span onClick={()=>setViewToSignup()}>
+                        <span onClick={()=>setView('Sign Up')}>
                             Sign up
                         </span>
                     </p>

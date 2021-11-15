@@ -1,0 +1,114 @@
+.overlay {
+  position: absolute;
+  width: 100%;
+  background: rgba(13, 13, 13, 0.8);
+  display: flex;
+  z-index: 999999;
+  height: 90vh;
+  overflow-y: hidden;
+  .cartDiv {
+    flex-basis: 50%;
+    display: flex;
+    margin-left: auto;
+    height: 100%;
+    overflow-y: hidden;
+    .cart {
+      flex-basis: 90%;
+      background: white;
+      margin-left: auto;
+      padding: 20px 40px;
+      .cartBag {
+        margin-top: 10px;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        flex-flow: row wrap;
+        height: 600px;
+        overflow-y: scroll;
+        .cartProduct {
+          flex-basis: 32%;
+          position: relative;
+          height: 200px;
+          margin-bottom: 10px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+          .details {
+            padding: 8px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(13, 13, 13, 0.4);
+            color: white;
+            p {
+              font-size: 14px;
+              font-weight: 200;
+            }
+            .priceAdd {
+              margin-top: 8px;
+              display: flex;
+              span.price {
+                font-size: 14px;
+              }
+              div {
+                display: flex;
+                margin-left: auto;
+                flex-basis: 50%;
+                justify-content: space-between;
+                span {
+                  font-size: 14px;
+                  cursor: pointer;
+                }
+                .units {
+                  border-radius: 10px;
+                  font-size: 11px;
+                  width: 40px;
+                  color: white;
+                  display: flex;
+                  justify-content: center;
+                  border: 1px solid white;
+                }
+              }
+            }
+          }
+        }
+      }
+      .checkoutDiv {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .checkout {
+          flex-basis: 30%;
+          text-align: center;
+          p {
+            font-size: 14px;
+            margin-bottom: 12px;
+            &.price {
+              font-size: 28px;
+              font-weight: 700;
+              color: rgba(121, 119, 116, 1);
+            }
+          }
+          .checkoutButton {
+            width: 100%;
+            padding: 10px 0px;
+            text-align: center;
+            background: black;
+            color: white;
+          }
+        }
+      }
+    }
+    .cancel {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: black;
+    }
+  }
+}

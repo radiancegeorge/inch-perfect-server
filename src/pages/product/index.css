@@ -1,0 +1,213 @@
+.container {
+  max-width: 88.7%;
+  margin: auto;
+}
+
+.container .productContainer {
+  width: 100%;
+}
+
+.container .productContainer .top {
+  padding: 16px 0px;
+}
+
+.container .productContainer .top span {
+  margin: 0px 10px;
+}
+
+.container .productContainer .top span:hover {
+  cursor: pointer;
+}
+
+.container .productContainer .div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container .productContainer .div .left {
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
+}
+
+.container .productContainer .div .left .imgLarge {
+  height: 548px;
+  width: 100%;
+}
+
+.container .productContainer .div .left .bottomImages {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .productContainer .div .left .bottomImages .imgSmall {
+  -ms-flex-preferred-size: 22%;
+      flex-basis: 22%;
+}
+
+.container .productContainer .div .right {
+  -ms-flex-preferred-size: 68%;
+      flex-basis: 68%;
+}
+
+.container .productContainer .div .right h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  padding-bottom: 0px;
+}
+
+.container .productContainer .div .right p {
+  margin-top: 0px;
+  padding-top: 0px;
+  color: #797774;
+  font-size: 14px;
+}
+
+.container .productContainer .div .right p span {
+  font-size: 14px;
+  cursor: none;
+}
+
+.container .productContainer .div .right .sizes div {
+  margin-top: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container .productContainer .div .right .sizes div div {
+  margin-right: 10px;
+  border: 1px solid #797774;
+  width: 30px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .productContainer .div .right .colors {
+  margin-top: 20px;
+}
+
+.container .productContainer .div .right .colors div {
+  margin-top: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container .productContainer .div .right .colors div div {
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.container .productContainer .div .right .colors div div svg {
+  width: 100%;
+  height: 100%;
+}
+
+.container .productContainer .div .right .units {
+  margin-top: 20px;
+}
+
+.container .productContainer .div .right .units div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .productContainer .div .right .units div div {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(13, 13, 13, 0.4);
+  margin: 0 5px;
+}
+
+.container .productContainer .div .right .units div div:hover {
+  cursor: pointer;
+}
+
+.container .productContainer .div .right .units div div span {
+  color: white;
+  display: inline-block;
+  padding-bottom: 3px;
+}
+
+.container .productContainer .div .right .units div input {
+  width: 43px;
+  border-radius: 9px;
+  border: 1px solid rgba(13, 13, 13, 0.4);
+  padding: 3px 16px;
+  font-size: 11px;
+}
+
+.container .productContainer .div .right div.price {
+  margin-top: 20px;
+}
+
+.container .productContainer .div .right div.price p {
+  margin-top: 5px;
+}
+
+.container .productContainer .div .right .purchase {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 105px;
+}
+
+.container .productContainer .div .right .purchase div {
+  margin-right: 36px;
+  padding: 10px 40px;
+  border-radius: 7px;
+  font-size: 18px;
+}
+
+.container .productContainer .div .right .purchase div:hover {
+  cursor: pointer;
+}
+
+.container .productContainer .div .right .purchase .buy {
+  background: black;
+  color: white;
+}
+
+.container .productContainer .div .right .purchase .bag {
+  border: 1px solid rgba(13, 13, 13, 0.4);
+  color: rgba(13, 13, 13, 0.4);
+}
+/*# sourceMappingURL=index.css.map */

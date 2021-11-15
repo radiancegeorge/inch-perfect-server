@@ -53,6 +53,7 @@
 .container .rightContainer .register {
   height: 100vh;
   background: white;
+  position: relative;
 }
 
 .container .rightContainer .register .header {
@@ -119,7 +120,7 @@
 
 .container .rightContainer .register form .submitBtn {
   position: absolute;
-  bottom: 83px;
+  bottom: 7%;
   left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -185,7 +186,7 @@
 
 .container .rightContainer .verificationComponent .submitBtn {
   position: absolute;
-  bottom: 83px;
+  bottom: 10%;
   left: 45%;
   display: -webkit-box;
   display: -ms-flexbox;

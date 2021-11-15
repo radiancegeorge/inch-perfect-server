@@ -1,0 +1,340 @@
+.appContainer {
+  position: relative;
+}
+.overlay {
+  position: absolute;
+  width: 100%;
+  background: rgba(13, 13, 13, 0.8);
+  display: flex;
+  z-index: 999999;
+  height: 90vh;
+  overflow-y: hidden;
+  .cartDiv {
+    flex-basis: 50%;
+    display: flex;
+    margin-left: auto;
+    height: 100%;
+    overflow-y: hidden;
+    .cart {
+      flex-basis: 90%;
+      background: white;
+      margin-left: auto;
+      padding: 20px 40px;
+      .cartBag {
+        margin-top: 10px;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        flex-flow: row wrap;
+        height: 600px;
+        overflow-y: scroll;
+        .cartProduct {
+          flex-basis: 32%;
+          position: relative;
+          height: 200px;
+          margin-bottom: 10px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+          .details {
+            padding: 8px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(13, 13, 13, 0.4);
+            color: white;
+            p {
+              font-size: 14px;
+              font-weight: 200;
+            }
+            .priceAdd {
+              margin-top: 8px;
+              display: flex;
+              span.price {
+                font-size: 14px;
+              }
+              div {
+                display: flex;
+                margin-left: auto;
+                flex-basis: 50%;
+                justify-content: space-between;
+                span {
+                  font-size: 14px;
+                  cursor: pointer;
+                }
+                .units {
+                  border-radius: 10px;
+                  font-size: 11px;
+                  width: 40px;
+                  color: white;
+                  display: flex;
+                  justify-content: center;
+                  border: 1px solid white;
+                }
+              }
+            }
+          }
+        }
+      }
+      .checkoutDiv {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .checkout {
+          flex-basis: 30%;
+          text-align: center;
+          p {
+            font-size: 14px;
+            margin-bottom: 12px;
+            &.price {
+              font-size: 28px;
+              font-weight: 700;
+              color: rgba(121, 119, 116, 1);
+            }
+          }
+          .checkoutButton {
+            width: 100%;
+            padding: 10px 0px;
+            text-align: center;
+            background: black;
+            color: white;
+          }
+        }
+      }
+    }
+    .cancel {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: black;
+    }
+  }
+}
+.productContaainer {
+  padding: 48px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  height: 80vh;
+  overflow-y: none;
+  .filterDiv {
+    width: 100%;
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 90vh;
+    background: rgba(13, 13, 13, 0.7);
+    z-index: 999;
+    .filterOptions {
+      flex-basis: 18%;
+      background: white;
+      padding: 0px 30px;
+      .filterButton {
+        padding: 12px 15px;
+        border: 0.2px solid #797774;
+        font-size: 16px;
+        text-align: center;
+        margin-top: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover {
+          cursor: pointer;
+        }
+        svg {
+          margin-left: 10px;
+        }
+      }
+      .filterSettings {
+        margin-top: 70px;
+        p {
+          margin-bottom: 8px;
+          font-size: 14px;
+        }
+        input {
+          padding: 11px 16px;
+          margin-bottom: 16px;
+          border: 0.2px solid #797774;
+          width: 100%;
+        }
+        .pattern {
+          margin-top: 70px;
+          div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 0.2px solid #797774;
+            padding: 11px 16px;
+            span {
+              display: flex;
+              align-items: center;
+              input {
+                margin-bottom: 0;
+                padding: 0;
+                width: 20px;
+                height: 20px;
+                border-radius: 7px;
+              }
+            }
+          }
+        }
+        .filterSubmit {
+          margin-top: 70px;
+          p {
+            padding: 11px 0px;
+            border-radius: 7px;
+            text-align: center;
+            cursor: pointer;
+            &.save {
+              background: black;
+              color: white;
+            }
+            &.reset {
+              color: black;
+              border: 1px solid black;
+            }
+          }
+        }
+        .dropTrigger {
+          padding: 11px 16px;
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 16px;
+          border: 0.2px solid #797774;
+          align-items: center;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        ul {
+          list-style-type: none;
+          li {
+            padding: 11px 16px;
+            margin-bottom: 16px;
+            border: 0.2px solid #797774;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+          }
+        }
+      }
+    }
+  }
+  .categories {
+    flex-basis: 10%;
+    // height: 80vh;
+    h4 {
+      padding: 16px 30px;
+      border-bottom: 2px solid;
+    }
+    ul {
+      list-style-type: none;
+      li {
+        padding: 12px 15px;
+        border: 0.2px solid #797774;
+        font-size: 16px;
+        text-align: center;
+        &:hover {
+          background: rgba(121, 119, 116, 0.2);
+          cursor: pointer;
+        }
+      }
+      .active {
+        background-color: #0d0d0d !important;
+        color: white;
+      }
+    }
+    .filterButton {
+      padding: 12px 15px;
+      border: 0.2px solid #797774;
+      font-size: 16px;
+      text-align: center;
+      margin-top: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span {
+        margin-left: 10px;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .productDiv {
+    display: flex;
+    flex-basis: 70%;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    overflow-y: scroll;
+    height: 80vh;
+    .product {
+      cursor: pointer;
+      flex-basis: 30%;
+      position: relative;
+      height: 278px;
+      border-radius: 7px;
+      margin: 16px 0px;
+      img {
+        width: 100%;
+        max-width: 100%;
+        min-height: 100%;
+        max-height: 100%;
+        border-radius: 7px;
+      }
+      .productDetails {
+        position: absolute;
+        bottom: 0;
+        background: rgba(13, 13, 13, 0.5);
+        color: white;
+        // height: 94px;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        .productDescription {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .priceAndAdd {
+          display: flex;
+          align-items: center;
+          padding-top: 10px;
+          .addProduct {
+            margin-left: auto;
+            position: relative;
+            z-index: 9999;
+          }
+        }
+      }
+    }
+  }
+  .frame {
+    flex-basis: 10%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    max-width: 10%;
+    justify-content: center;
+    p {
+      font-size: 50px;
+      font-weight: 900;
+      transform: rotate(90deg);
+      color: rgba(121, 119, 116, 0.3);
+      line-height: 1;
+      padding: 21px 121px;
+      background: linear-gradient(
+        145.58deg,
+        rgba(235, 87, 87, 0.1) -86.12%,
+        rgba(164, 255, 250, 0.1) 183.27%
+      );
+      border-radius: 7px;
+    }
+  }
+}
