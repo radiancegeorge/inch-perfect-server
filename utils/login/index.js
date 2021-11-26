@@ -20,14 +20,14 @@ const login = async (email, password) => {
 
   //create token
   const token = encryptUser({
-    ...user,
-    password,
-    id,
-  });
-  return {
     first_name,
     last_name,
     email,
+    id,
+  });
+  return {
+    ...user,
+    password,
     token,
   };
 };
