@@ -5,15 +5,40 @@ const { getCoupon, addUsage } = require("../coupons");
 const sendMail = require("../mailer");
 const { getUser } = require("../registration");
 
-const createOrder = async (id, orderObject) => {
+const createOrder = async (id, object) => {
   //handle invalid fields
   const invalidKeys = ["total", "processing", "shipped", "delivered"];
-  Object.keys(orderObject).forEach((key) => {
+  Object.keys(object).forEach((key) => {
     if (invalidKeys.includes(key)) throw `invald field ${key}`;
   });
 
-  orderObject.id = v4();
-  const { currency } = await getUser(id);
+  object.id = v4();
+  const {
+    currency,
+    referrence,
+    first_name,
+    last_name,
+    country,
+    state,
+    town,
+    street,
+    email,
+    phone_number,
+    postal_code,
+  } = await getUser(id);
+  const orderObject = {
+    ...object,
+    referrence,
+    first_name,
+    last_name,
+    country,
+    state,
+    town,
+    street,
+    email,
+    phone_number,
+    postal_code,
+  };
   orderObject.currency = currency;
   const prices = orderObject.product.map(async (orderProduct) => {
     const { id, unit } = orderProduct;
@@ -51,6 +76,8 @@ const createOrder = async (id, orderObject) => {
   }
   //handle transactions with automatic payments
 
+  if (!orderObject.referrence || orderObject.referrence === "")
+    throw "Invalid Refereence";
   //after successful payments;
   await addToOrder(orderObject);
   await setProcessing(orderObject.id);
