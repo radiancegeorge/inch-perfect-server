@@ -15,7 +15,6 @@ const createOrder = async (id, object) => {
   object.id = v4();
   const {
     currency,
-    referrence,
     first_name,
     last_name,
     country,
@@ -28,7 +27,6 @@ const createOrder = async (id, object) => {
   } = await getUser(id);
   const orderObject = {
     ...object,
-    referrence,
     first_name,
     last_name,
     country,
@@ -77,7 +75,7 @@ const createOrder = async (id, object) => {
   //handle transactions with automatic payments
 
   if (!orderObject.referrence || orderObject.referrence === "")
-    throw "Invalid Refereence";
+    throw "Invalid Reference";
   //after successful payments;
   await addToOrder(orderObject);
   await setProcessing(orderObject.id);
