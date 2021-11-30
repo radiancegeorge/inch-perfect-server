@@ -14,7 +14,6 @@ const createOrder = async (id, object) => {
 
   object.id = v4();
   const {
-    currency,
     first_name,
     last_name,
     country,
@@ -37,7 +36,7 @@ const createOrder = async (id, object) => {
     phone_number,
     postal_code,
   };
-  orderObject.currency = currency;
+  orderObject.currency = object.currency;
   const prices = orderObject.product.map(async (orderProduct) => {
     const { id, unit } = orderProduct;
     const { price_ngn, price_usd } = (
