@@ -1,14 +1,13 @@
-import useAxios from "axios-hooks"
+// import useAxios from "axios-hooks"
+// import axios from 'axios'
+// import {useState} from 'react'
+// import {test} from '../config/config.json'
 
-const useGetSingleProduct = () =>{
-    const [{...singleProduct}, getSingleProduct] = useAxios({
-        method:'get'
-    },{
-        manual: true
-    })
-    return{
-        singleProduct, getSingleProduct
-    }
-}
+// const useGetSingleProduct = () =>{
+    
+//     return{
+//         singleProduct, getSingleProduct
+//     }
+// }
 
-export default useGetSingleProduct
+// export default useGetSingleProduct

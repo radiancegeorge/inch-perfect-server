@@ -10,7 +10,7 @@ export const removeFromCart = (payload) =>({
     payload
 })
    
-export const updateCartProprties = (payload) => (
+export const updateCartProperties = (payload) => (
     {
         type: EDIT_PROPERTIES,
         payload

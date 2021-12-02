@@ -6,6 +6,7 @@ import Eye from '../../../assets/svg/eye'
 import { useState } from 'react'
 import Loader from "react-loader-spinner";
 import useSignUp from '../../../hooks/signup'
+import '../signup.scss'
 
 const SignUp = ({setView}) =>{
     const [eye, setEye] = useState(false)
@@ -21,24 +22,25 @@ const SignUp = ({setView}) =>{
     const {signUpObject, signUp} = useSignUp()
     const handleSignUp = e =>{
         e.preventDefault();
+        signUp(userData)
         console.log(userData)
-        try{
-            signUp(
-                {
-                    data: userData
-                }
-            )
-        }
-        catch(err){
-            console.log(err)
-        }
+        // try{
+        //     signUp(
+        //         {
+        //             data: userData
+        //         }
+        //     )
+        // }
+        // catch(err){
+        //     console.log(err)
+        // }
         
 
     }
-    console.log(signUpObject)
-    if(signUpObject){
-        signUpObject?.response?.status === 200 && setView('Registration Successful')
-    }
+    // console.log(signUpObject)
+    // if(signUpObject){
+    //     signUpObject?.response?.status === 200 && setView('Registration Successful')
+    // }
     // console.log(userData)
     return(
         <div className='register'>
@@ -76,7 +78,7 @@ const SignUp = ({setView}) =>{
                 <label htmlFor="" className='submitBtn'>
                     <button>
                         Register {
-                            signUpObject.loading && <Loader type="Circles" color="#FFF" height={10} width={10}/>
+                            signUpObject && <Loader type="Circles" color="#FFF" height={10} width={10}/>
                         }
                     </button>
                     <p className='switch'>

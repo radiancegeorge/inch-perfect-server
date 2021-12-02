@@ -44,7 +44,7 @@
   -ms-flex-preferred-size: 45%;
       flex-basis: 45%;
   background: rgba(0, 0, 0, 0.1);
-  padding-left: 20px;
+  /* padding-left: 20px; */
   height: 100vh;
   overflow-y: scroll;
   position: relative;

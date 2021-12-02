@@ -2,14 +2,15 @@ import Mail from '../../../assets/svg/mail'
 import EyeOff from '../../../assets/svg/eyeOff'
 import Lock from '../../../assets/svg/lock'
 import Eye from '../../../assets/svg/eye'
-import { useState } from 'react'
+import { useState ,useEffect,useRef } from 'react'
 import useLogin from '../../../hooks/login'
 import { Router, Redirect} from 'react-router'
 import Loader from "react-loader-spinner";
+import {Link} from 'react-router-dom'
 
 
 const Login =({setView})=>{
-    const {login, loginObject} = useLogin()
+    const {login, loginObject,redirect} = useLogin()
     const [eye, setEye] = useState(false)
     const toggleEyeOn = () => {
         eye ? setEye(false) : setEye(true)
@@ -18,22 +19,27 @@ const Login =({setView})=>{
         email:'',
         password:''
     })
+    const linkRef =useRef(null)
+    useEffect(()=>redirect?linkRef.current.click():'',[redirect])
     const handleLogin = e => {
         e.preventDefault();
         console.log(userLoginData)
-        try{
-            login(
-                {
-                    data: userLoginData
-                }
-            )
-        }
-        catch(err){
-            console.log(err)
-        }
+        login(userLoginData)
+        // try{
+        //     login(
+        //         {
+        //             data: userLoginData
+        //         }
+        //     )
+        // }
+        // catch(err){
+        //     console.log(err)
+        // }
     }
     return(
+
         <div className="register">
+        <Link ref={linkRef} to='/' style={{display:'none'}} />
             {/* {
                 loginObject.error === null && <Redirect to='/'/>
             } */}

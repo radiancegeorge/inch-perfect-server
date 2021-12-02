@@ -2,64 +2,85 @@ import { useEffect, useRef, useState } from "react";
 import { useHistory, useParams, Link} from "react-router-dom";
 import ColorCircle from "../../assets/svg/colorCircle";
 import Star from "../../assets/svg/star";
-import useGetSingleProduct from "../../hooks/getSingleProduct";
+// import useGetSingleProduct from "../../hooks/getSingleProduct";
 import colors from "../../utils/colors";
 import NavBar from "../navbar"
-import './index.css'
-const Product = () => {
-    const history = useHistory()
-    let { id } = useParams();
-    const inputReference = useRef(null)
-    const [unit, setUnit] = useState(0)
-    const {singleProduct, getSingleProduct} = useGetSingleProduct()
+import axios from 'axios'
+import {test} from '../../config/config.json'
+import './index.scss'
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import {addToCart, removeFromCart } from "../../appStore/cart/index.actions"
 
-    useEffect(()=>{
-        getSingleProduct({
-            url: `products/single?id=${id}`
-        })
-    },[])
-    useEffect(()=>{
-        if(unit!=0){
-            inputReference.current.value = unit
-        }
-        console.log(unit)
-    }, [unit])
+
+
+
+
+
+
+
+const Product = () => {
+      const dispatch = useDispatch() 
+    const history = useHistory()
+    const id  = localStorage.getItem('itemId');
+    const inputReference = useRef(null)
+     const url=test;
+    const [singleProduct,setSingleProduct]=useState({})
+    const [image, setImage] = useState([])
+    const [sizes, setSizes] = useState([])
+    const [colors, setColors] = useState([])
+    const [order,setOrder]=useState({})
+    useEffect(()=>{  
+        console.log('hi');  
+       axios.get(`${url}products/single?id=${id}`).then(response=>{
+           setSingleProduct(response.data)
+           const imgSrc =JSON.parse(response.data.product_image)
+           setImage(imgSrc);
+           const size=JSON.parse(response.data.sizes)
+           setSizes(size)
+          const color =JSON.parse(response.data.color)
+           setColors(color)
+       })
+
+    },[url])
+    useEffect(()=>setOrder(singleProduct),[singleProduct])
+    
+    
+   
+    
     const [imageIndex, setImageIndex] = useState(0)
-    const [image, setImage] = useState()
-    const [sizes, setSizes] = useState()
+    // console.log(image[imageIndex])
+    const [unit, setUnit] = useState(0)
+
     const [sizeIndex, setSizeIndex] = useState()
-    const [colors, setColors] = useState()
-    useEffect(()=>{
-        singleProduct?.data && setImage(JSON.parse(singleProduct.data.product_image));
-        singleProduct?.data && setSizes(JSON.parse(singleProduct.data.sizes));
-        singleProduct?.data && setColors(JSON.parse(singleProduct.data.color));
-    },[singleProduct?.data])
-        
-    console.log(singleProduct?.data)
+
+    useEffect(()=>setOrder({...order,unit:unit,selected:true}),[unit])
+    const checkout=useRef(null)   
+console.log(order)
 
     return(
-        <div>
-            <NavBar />
-            {singleProduct.data &&<div className="container">
-                <div className="productContainer">
+    
+    
+            <div className="container">
+                 <div className="productContainer">
                     <p className='top'>
                         <Link to={'/'}>Home</Link>
                         {'>'}
-                        <span onClick={()=> history.push('/')}>{singleProduct?.data?.category}</span>
+                        <span class='colored' onClick={()=> history.goBack()}>{singleProduct.category}</span>
                         {'>'}
-                        <span>{singleProduct?.data?.product_name}</span>
+                        <span>{singleProduct.product_name}</span>
                     </p>
                     <div className="div">
                         <div className="left">
                             <div className="imgLarge">
-                                <img src={image && image[imageIndex]} alt={`Product image ${imageIndex}`} />
+                                <img src={image[imageIndex]} alt="" />
                             </div>
                             <div className="bottomImages">
                                 {
-                                    image && image.map(img =>{
+                                     image.map(img =>{
                                        let index = image.indexOf(img)
                                         return <div className="imgSmall" onClick={()=>setImageIndex(index)}>
-                                            <img src={img[index]} alt={`small image ${index}`} />
+                                            <img src={img} alt={`small image ${index}`} />
                                         </div>
                                     })
                                 } 
@@ -67,10 +88,10 @@ const Product = () => {
                         </div>
                         <div className="right">
                             <h3>
-                                {singleProduct.data.product_name}
+                                {singleProduct.product_name}
                             </h3>
                             <p>
-                                {singleProduct.data.product_detail}
+                                {singleProduct.product_detail}
                             </p>
                             <p style={{
                                 display: 'flex',
@@ -81,15 +102,10 @@ const Product = () => {
                                 <span style={{
                                     marginLeft: '5px'
                                 }}>
-                                    {singleProduct.data.rating>0?singleProduct.data.rating: 'Not rated'}
+                                    {singleProduct.rating>0?singleProduct.rating: 'Not rated'}
                                 </span>
                             </p>
-                            <p style={{
-                                borderBottom: '2px solid black',
-                                display: 'inline-block',
-                                marginTop: '25px',
-                                padding: '5px 0px'
-                            }}>
+                            <p class='item_spec'>
                                 Item Specifications
                             </p>
                             <div className='sizes' style={{
@@ -100,9 +116,9 @@ const Product = () => {
                                 </p>
                                 <div>
                                     {
-                                       sizes && sizes.map( size => {
+                                        sizes.map( size => {
                                             let index = sizes?.indexOf(size)
-                                            return <div>
+                                            return <div onClick={()=>setOrder({...order,sizes:size})} class='size'>
                                                 <span>
                                                     {size}
                                                 </span>
@@ -117,9 +133,9 @@ const Product = () => {
                                 </p>
                                 <div>
                                     {
-                                        colors && colors.map(
+                                        colors.map(
                                             color =>{
-                                                return <div>
+                                                return <div onClick={()=>setOrder({...order,color:color})}>
                                                     <ColorCircle fill={color}/>
                                                 </div>
                                             }
@@ -132,44 +148,46 @@ const Product = () => {
                                     How many?
                                 </p>
                                 <div>
-                                    <div onClick={()=> unit > 0 && setUnit(unit-1)}>
-                                        <span>
+                                    <div >
+                                        <span onClick={()=>{unit>0?setUnit(unit-1):setUnit(0)}}>
                                             -
                                         </span>
                                     </div>
-                                    <input ref={inputReference} type="tel" placeholder='0'/>
-                                    <div onClick={()=>unit < 5 && setUnit(unit+1)}>
-                                        <span>
+                                    <input ref={inputReference} type="tel"  value={unit}/>
+                                    <div >
+                                        <span onClick={()=>setUnit(unit +1)} >
                                             +
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            <div className="price">
+                            <div className="price-div">
                                     <p>
                                         Price
                                     </p>
                                     <p className="price">
-                                        {
-                                          `$ ${singleProduct.data.price_usd}`  
-                                        }
+                                       ${singleProduct.price_usd}
                                     </p>
                             </div>
                             <div className="purchase">
-                                <div className="buy">
-                                    Buy now
+                                <div className="buy" onClick={()=>{
+                                    if(unit>0)dispatch(addToCart(order))
+                                    checkout.current.click()
+                                    }}>
+                                     Buy now
                                 </div>
-                                <div className="bag">
+                                <div className="bag" onClick={()=>{
+                                    if(unit>0)dispatch(addToCart(order))}} >
                                     Add to bag
                                 </div>
+                                <Link to='/checkout' ref={checkout} style={{display:'none'}}/>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
-            }
             
-        </div>
+        // </div>
     )
 }
 export default Product

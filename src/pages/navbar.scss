@@ -1,16 +1,29 @@
-.navbar {
+@mixin responsive ($size) {
+    @if $size == desktop {
+        @media only screen and (min-width:750px) {@content};
+    }
+    @if $size == Phones {
+        @media only screen and (max-width:500px){@content};
+    }
+}
+
+@include responsive(desktop){
+  .navbar {
   background: #0d0d0d;
   padding: 26px 0px;
   display: flex;
+  width:100%;
   .navbarLeft {
     display: flex;
     flex-basis: 68%;
+    justify-content:space-around;
     .img {
       display: flex;
       justify-content: center;
       flex-basis: 28%;
     }
     .search {
+      
       display: flex;
       border: 1px solid #797774;
       padding: 2px;
@@ -35,7 +48,8 @@
         }
       }
     }
-    .colorSection {
+  }
+  .colorSection {
       display: flex;
       flex-basis: 30%;
       justify-content: center;
@@ -95,3 +109,116 @@
     }
   }
 }
+.navbar2{
+     background:none;
+}
+
+
+  @include responsive(Phones){
+    .navbar {
+  background: #0d0d0d;
+  padding: 26px 0px;
+  display: flex;
+  width:100%;
+  justify-content:space-around;
+  .navbarLeft {
+    display: flex;
+    flex-basis: 65%;
+    margin-left:10px;
+    justify-content:space-around;
+    .img {
+      display: flex;
+      justify-content: center;
+      flex-basis: 28%;
+    }
+    .search {
+      display: flex;
+      // // border: 1px solid #797774;
+      // border:none;
+      // padding: 2px;
+      // flex-basis: 55%;
+      // border-radius: 7px;
+      div {
+        background: black;
+        display: flex;
+        align-items: center;
+        padding: 8px 16px;
+        flex-basis: 100%;
+        input {
+          background: none;
+          border: none;
+          outline: none;
+          color: #797774;
+          font-size: 16px;
+          flex-basis: 93%;
+          display: none;
+        }
+        svg {
+          margin-left: 2px;
+        }
+      }
+    }
+  }
+  .colorSection {
+      display: flex;
+      flex-basis: 30%;
+      justify-content: center;
+      align-items: center;
+      .colorMode {
+        background: #797774;
+        width: 70px;
+        display: flex;
+        border-radius: 21px;
+        padding: 2px;
+        .lightDark {
+          background: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 32px;
+          width: 32px;
+          border-radius: 50%;
+          position: relative;
+          right: 0;
+          transition: all 0.5s;
+        }
+        .dark {
+          position: relative !important;
+          right: -39px !important;
+          background: black;
+          transition: all 0.5s;
+        }
+      }
+    }
+  }
+  .navbarRight {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    padding-right: 40px;
+    justify-content:space-around;
+    .svg {
+      display: flex;
+      flex-flow: column;
+      position: relative;
+      cursor: pointer;
+      svg {
+        padding-left: 0px;
+        .cartDot {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          width: 8px;
+          height: 8px;
+        }
+      }
+    }
+    svg {
+      width: 18px;
+      height: 18px;
+      margin-left: 41px;
+    }
+  }
+}
+  
+    

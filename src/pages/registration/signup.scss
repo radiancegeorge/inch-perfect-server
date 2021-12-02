@@ -1,4 +1,17 @@
-.container{
+@mixin responsive($size) {
+    @if $size ==desktop {
+        @media only screen and (min-width:750px) {@content};
+    }
+    @if $size == Phones {
+        @media only screen and (max-width:500px){@content};
+    }
+}
+
+
+
+
+@include responsive(desktop){
+  .container{
     display: flex;
     max-width: 100;
     width: 100%;
@@ -145,4 +158,161 @@
             }
         }
     }
+ }
+}
+@include responsive(Phones){
+  .container{
+    display: flex;
+    max-width: 100;
+    width: 100%;
+    height: fit-content;
+    flex-direction:column;
+    
+    .leftContainer{
+        flex-basis: 55%;
+        position: relative;
+        padding:40px;
+        
+        .leftContainerBackgroundImage{
+            position: relative;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            max-height: 100vh;
+        }
+        .Logo{
+            position: absolute;
+            z-index: 3;
+            top: 40px;
+            right: 50px;
+        }
+        .overlay{
+            background: rgba($color: #000000, $alpha: 0.8);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            height: 90%;
+            width: 100%;
+            max-width: 100%;
+            margin:auto;
+        }
+    }
+    .rightContainer{
+        // flex-basis: 45%;
+        width:100%;
+        // background: rgba($color: #000000, $alpha: 0.1);
+        // padding-left: 20px;
+        height: 100vh;
+        overflow-y: scroll;
+        position: relative;
+        .register{
+            height: 100vh;
+            background: white;
+            position: relative;
+            .header{
+                padding: 12px 12px;
+                margin-bottom: 80px;
+                text-align:center;
+                h3{
+                    font-size: 28px;
+                    font-weight: 700;
+                }
+                p{
+                    display: block;
+                    font-size: 18px;
+                    font-weight: 300;
+                }
+            }
+            form{
+                padding-left: 14px;
+                margin-bottom: 28px;
+                label{
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 64px;
+                    position: relative;
+                    svg{
+                        width: 18px!important;
+                        height: 18px;
+                        flex-basis: 5%;
+                    }
+                    input{
+                        border-top: none;
+                        border-right: none;
+                        border-left: none;
+                        outline: none;
+                        flex-basis: 90%;
+                        padding: 12px 0px;
+                        color: #797774;
+                        border-color: #797774;
+                        border-width: 1px;
+                    }
+                    .eye{
+                        position: absolute;
+                        right: 24.75px;
+                        cursor: pointer;
+                    }
+                }
+                .submitBtn{
+                    // margin-top: 217px;
+                    position: absolute;
+                    bottom: 7%;
+                    left: 0;
+                    display: flex;
+                    justify-content: center;
+                    flex-flow: column wrap;
+                    button{
+                        background: black;
+                        color: white;
+                        padding: 12px 72px;
+                        border: none;
+                        outline: none;
+                        cursor: pointer;
+                    }
+                    .switch{
+                        text-align: center;
+                        color: #797774;
+                        margin-top: 28px;
+                        span{
+                            opacity: 0.5;
+                            cursor: pointer;
+                            margin-left: 5px;
+                        }
+                    }
+                }
+            }
+            
+        }
+        .verificationComponent{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .centerDiv{
+                text-align: center;
+                svg{
+                    display: block;
+                    margin: auto;
+                }
+                .headerBold{
+                    margin-top: 28px;
+                }
+                .headerText{
+                    margin-top: 14px;
+                }
+            }
+            .submitBtn{
+                position: absolute;
+                bottom: 10%;
+                left: 45%;
+                display: flex;
+                flex-flow: column wrap;
+                cursor: pointer;
+            }
+        }
+    }
+ }
 }
