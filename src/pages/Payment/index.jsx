@@ -22,15 +22,64 @@ export default function Payment() {
    const mail =localStorage.getItem('email')
   const paystack = new PaystackPop();
     const {TakeOrder}=Order()
-    
+    const [fee,setFee]=useState(0)
+    const state=localStorage.getItem('state')
+    const town =localStorage.getItem('town')
+    const country=localStorage.getItem('country')
     const [currency,setCurrency]=useState('USD')
     const[priceUsd,setPriceUsd]=useState(0)
      const [priceNgn,setPriceNgn]=useState(0)
-   const [cost,setCost]=useState(priceUsd)
+
+    const lagos=/lagos/i
+    const region =/island|lekki|vgc|ajah|ikoyi|bannana/i
+    const nigeria=/nigeria/i
+    const USA=/usa|canada|uk/i
+    // console.log(lagos.test('Lagos'))
+   useEffect(()=>{
+       if(nigeria.test(country)){
+          if(lagos.test(state)){
+              if(region.test(town)){
+               setFee(2500)
+           }
+           else{
+           setFee(2000)
+           }
+       }
+       else{
+           setFee(3500)
+       }
+       }
+       else if(USA.test(country)){
+            setCurrency('USD')
+            if(order.length<4){
+                setFee(50)
+            }
+            if(order.length>3 && order.length<7){
+                setFee(100)
+            }
+       }
+       else{
+           setCurrency('USD')
+            if(order.length<4){
+                setFee(60)
+            }
+            if(order.length>3 && order.length<7){
+                setFee(110)
+            }
+       }
+   })
+
+
+
+
+   const [cost,setCost]=useState(priceUsd )
+
+
+
   const initiateTransaction = () => {
      if(cost>0){
     paystack.newTransaction({
-      amount: cost*100,
+      amount: (cost+ fee)*100,
       email: mail,
       key: testkey,
       currency:currency,
@@ -121,10 +170,14 @@ export default function Payment() {
                         </div>
           
                         <DeliveryDetails new={newDet} />
+
                         <button class={`next-button ${nextNone}`} onClick={()=>{
                             setDetNone('none')
                             setPayNone('')
                         }}>Next</button>
+
+                        <div class='total'><span>Total:</span>{currency==='USD'?`$${cost}`:`$${cost}`}</div>
+
                     </div>
                     }
                     {

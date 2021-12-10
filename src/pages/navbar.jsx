@@ -1,4 +1,4 @@
-import { useState,useRef } from "react"
+import { useState,useRef,useEffect } from "react"
 import Logo from "../assets/svg/logo"
 import Bag from '../assets/svg/bag'
 import Search from "../assets/svg/search"
@@ -8,19 +8,25 @@ import Moon from '../assets/svg/moon'
 import './navbar.scss'
 import User from "../assets/svg/user"
 import CartDot from "../assets/svg/cartDot"
+// import 
 
 const NavBar = ({handleSetOverlay ,search ,nav ,display} ) => {
     const linkRef=useRef(null)
     const [theme, setTheme] = useState(true)
+    const html= document.getElementsByTagName('html')
+     useEffect(()=>{
+         theme?html[0].setAttribute('theme','light'):html[0].setAttribute('theme','dark')
+     },[theme])
+
     return(
         <div className={`navbar ${nav}`}>
             <div className='navbarLeft'>
-                <div className="img">
+                <Link to='/' className="img">
                     <Logo />
-                </div>
+                </Link>
                 <div className='search'>
                     <div onClick={()=>search()}>
-                        <input type="text" placeholder='Search..'/>
+                        <input type="text"  placeholder='Search..'/>
                         <Search />
                     </div>
                 </div>

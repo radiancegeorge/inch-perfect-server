@@ -4,6 +4,22 @@
     padding: 0;
     box-sizing: border-box;
 }
-html[data-theme = "dark"] {
+html[theme = "light"] {
+   --line:rgb(121, 119, 116);
+   --line-rgba:rgba(121, 119, 116, 0.24);
+   --line-bg:rgba(121,119,116,0.1);
 
+   --black-bg:rgba(13, 13, 13, 1);
+   --white-bg:rgb(255,255,255);
+   --gradient: linear-gradient(145.58deg, #EB5757 -86.12%, #A4FFFA 183.27%);
+   --blur-bg: rgba(13, 13, 13, 0.5);
+}
+html[theme = "dark"] {
+   --line:rgb(225, 225, 225);
+   --line-rgba:rgba(225, 225, 225, 0.24);
+   --black-bg:rgb(255,255,255);
+   --line-bg:rgba(255,255,255,0.1);
+   --white-bg:rgba(13, 13, 13, 1);
+   --gradient:rgba(255,255,255,0.1) ;
+   --blur-bg: rgba(255, 255, 255, 0.5);
 }

@@ -1,4 +1,4 @@
-import React, {Fragment,useEffect} from 'react'
+import React, {Fragment,useEffect,useState} from 'react'
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import {Link} from 'react-router-dom'
@@ -9,7 +9,7 @@ import Add from '../../assets/svg/add.jsx';
 
 
 
-export default function Components({data}) {
+export default function Components({data ,page}) {
     const history = useHistory()
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart);
@@ -22,13 +22,16 @@ export default function Components({data}) {
     data.selected=true
     // },[])
     const imageLink=image[0]
-
+     const [productLink,setLink]=useState('')
     console.log(imageLink);
-
+    useEffect(()=>{
+        if(page)setLink('/product')
+        else setLink('/admin/product')
+    },[page])
     const linkRef =React.useRef(null)
     return (
         <Fragment>
-                       <Link ref={linkRef} to='/product'></Link>
+                       <Link ref={linkRef} to={productLink}></Link>
                        <div className="product">
                                 <img  onClick={()=>{
                            localStorage.setItem('itemId',data.id)
@@ -47,7 +50,7 @@ export default function Components({data}) {
                                                 dispatch(addToCart(data))
                                                 // console.log(image[0]);
                                             }} className="addProduct">
-                                                <Add />
+                                              {page &&  <Add />}
                                             </div>
                                         }
                                     </div>

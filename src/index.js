@@ -13,7 +13,6 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 const store = createStore(combinedReducer)
 const persistStor = persistStore(store)
-
 configure({axios})
 
 ReactDOM.render(

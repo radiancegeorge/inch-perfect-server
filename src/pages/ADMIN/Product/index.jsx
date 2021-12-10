@@ -1,17 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { useHistory, useParams, Link} from "react-router-dom";
-import ColorCircle from "../../assets/svg/colorCircle";
-import Star from "../../assets/svg/star";
-// import useGetSingleProduct from "../../hooks/getSingleProduct";
-import colors from "../../utils/colors";
-import NavBar from "../navbar"
+import ColorCircle from "../../../assets/svg/colorCircle";
+import Star from "../../../assets/svg/star";
+import colors from "../../../utils/colors";
 import axios from 'axios'
-import {test} from '../../config/config.json'
+import {test} from '../../../config/config.json'
 import './index.scss'
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import {addToCart, removeFromCart } from "../../appStore/cart/index.actions"
-import Components from '../products/Components'
+import Components from '../../../pages/products/Components'
 
 
 
@@ -20,8 +15,9 @@ import Components from '../products/Components'
 
 
 
-const Product = () => {
-      const dispatch = useDispatch() 
+
+const AdminProduct = () => {
+      
     const history = useHistory()
     const id  = localStorage.getItem('itemId');
     const inputReference = useRef(null)
@@ -47,7 +43,9 @@ const Product = () => {
     useEffect(()=>setOrder(singleProduct),[singleProduct])
     const [simProducts,setSimProducts]=useState([])
     
-   
+   const deleteProd=()=>{
+       axios.delete(`${url}products?id=${singleProduct.id}`).then(response=> homeLink.current.click())
+   }
     
     const [imageIndex, setImageIndex] = useState(0)
     // console.log(image[imageIndex])
@@ -65,15 +63,15 @@ console.log(order)
        response.data && setSimProducts(response.data)
        })
        },[singleProduct])
-
+  const homeLink=useRef(null)
 
     return(
     
     
-            <div className="container">
+            <div className="container admin">
                  <div className="productContainer">
                     <p className='top'>
-                        <Link to={'/'}>Home</Link>
+                        <Link ref={homeLink} to={'/admin/products'}>Home</Link>
                         {'>'}
                         <span class='colored' onClick={()=> history.goBack()}>{singleProduct.category}</span>
                         {'>'}
@@ -154,7 +152,7 @@ console.log(order)
                             </div>
                             <div className="units">
                                 <p>
-                                    How many?
+                                    in stock
                                 </p>
                                 <div>
                                     <div >
@@ -179,32 +177,21 @@ console.log(order)
                                     </p>
                             </div>
                             <div className="purchase">
-                                <div className="buy" onClick={()=>{
-                                    if(unit>0)dispatch(addToCart(order))
-                                    checkout.current.click()
-                                    }}>
-                                     Buy now
+                                <div className="buy" onClick={()=>deleteProd()} >
+                                     Delete
                                 </div>
-                                <div className="bag" onClick={()=>{
-                                    if(unit>0)dispatch(addToCart(order))}} >
-                                    Add to bag
+                                <div className="bag"  >
+                                    Edit details
                                 </div>
                                 <Link to='/checkout' ref={checkout} style={{display:'none'}}/>
                             </div>
                         </div>
                     </div>
                 </div> 
-                 <div class='similar-products'>
-                              <p>Similar products</p>
-                              {
-                                  simProducts.filter(items=> {return items.id !== singleProduct.id}).map(items=>(
-                                      <Components data={items} />
-                                  ))
-                              }
-                        </div>
+               
             </div>
             
         // </div>
     )
 }
-export default Product
+export default AdminProduct

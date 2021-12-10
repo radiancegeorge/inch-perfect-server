@@ -1,0 +1,41 @@
+.admin {
+    .right{
+        p{
+            color:rgb(121,116,119) !important;
+
+        }
+        .item_spec{
+            border-bottom: 2px solid black !important;
+        }
+        .sizes{
+            div{
+                div{
+                    border: 0.6px solid rgba(121,116,119,0.3) !important;
+                }
+            }
+        }
+        .units{
+            div{
+                div{
+                    background: rgba(13,13,13,0.5) !important;
+                }
+            }
+        }
+
+        .buy{
+            background:black !important;
+            color: white !important;
+        }
+        .bag{
+            border:1px solid black !important;
+
+        }
+    }
+    .similar-products{
+        background:rgba(121,116,119,0.1) !important;
+
+        p{
+            color:rgb(121,116,119) !important;
+        }
+    }
+}

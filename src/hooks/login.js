@@ -6,13 +6,7 @@ import {Redirect} from 'react-router-dom'
 const useLogin = () =>{
     const [redirect,setRedirect]=useState(false)
     const url =test;
-    //  const [{...loginObject}, login] = useAxios({
-    //      url: "/user/login",
-    //      method: "post"
-    //  }, 
-    //  {
-    //      manual: true
-    // }
+    
     const [loginObject,setLoginObject]=useState(false)
     // )
     // useEffect(()=>{

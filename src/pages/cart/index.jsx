@@ -62,10 +62,13 @@ const Cart = ({setOverlay, overlay}) =>{
                                 <p className="price">
                                     ${totalPrice}
                                 </p>
-                                <div onClick={checkout} className="checkoutButton">
+                                <div onClick={()=>{
+                                   setOverlay(false)
+                                    checkout()}} className="checkoutButton">
                                     Checkout
                                     <Link style={{display:'none'}} ref={checkoutButton} to='/checkout'></Link>
                                 </div>
+                        
                             </div>
                         </div>
                     </div>

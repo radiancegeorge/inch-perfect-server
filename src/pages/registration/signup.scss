@@ -1,9 +1,9 @@
 @mixin responsive($size) {
     @if $size ==desktop {
-        @media only screen and (min-width:750px) {@content};
+        @media only screen and (min-width:800px) {@content};
     }
     @if $size == Phones {
-        @media only screen and (max-width:500px){@content};
+        @media only screen and (max-width:799px){@content};
     }
 }
 

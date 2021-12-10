@@ -1,9 +1,9 @@
 @mixin responsive ($size) {
     @if $size == desktop {
-        @media only screen and (min-width:750px) {@content};
+        @media only screen and (min-width:800px) {@content};
     }
     @if $size == Phones {
-        @media only screen and (max-width:500px){@content};
+        @media only screen and (max-width:799px){@content};
     }
 }
 
@@ -46,7 +46,7 @@
                 margin-top:70px;
                 height: 43px;
                 width: 292px;
-                background: rgba(13, 13, 13, 1);
+                background: var(--black-bg);
                 border-radius: 7px;
                 color:white;
                 font-family: Mulish;
@@ -58,7 +58,7 @@
 
             }
                  p{
-                    color: rgba(121, 119, 116, 1);
+                    color: var(--line);
                     font-family: Mulish;
                     flex-basis:30%;
                     font-size: 18px;
@@ -107,7 +107,7 @@
                 align-items:center;
                 justify-content:space-around;
                 text-transform:capitalize;
-                border-right:0.6px solid rgba(121, 119, 116, 0.24);
+                border-right:0.6px solid var(--line-rgba);
                 
                 
                 input{
@@ -127,7 +127,7 @@
                         input,select{
                             height:40px;
                             border-radius:7px;
-                                border: 0.6px solid rgba(121, 119, 116, 0.24);
+                                border: 0.6px solid var(--line-rgba);
                             // border: 1px solid;
                             // -webkit-border-image: -webkit-linear-gradient(145.58deg, rgba(235, 87, 87, 0.24) -86.12%, rgba(164, 255, 250, 0.24) 183.27%);
 
@@ -142,7 +142,7 @@
                                 width:42px;
                                 height:42px;
                                 background: rgba(255, 255, 255, 1);
-                                border: 0.6px solid rgba(121, 119, 116, 0.24);
+                                border: 0.6px solid var(--line-rgba);
                                 justify-content:center;
                                 border-right:none;
                             }
@@ -156,7 +156,7 @@
                     font-weight: 300;
                     line-height: 18px;
                     letter-spacing: 0em;
-                    color: rgba(121, 119, 116, 1);
+                    color: var(--line);
                     text-align: left;
                     margin-bottom:8px;
                     display:flex;
@@ -203,13 +203,13 @@
                         input{
                             height:70px;
                              border-radius:7px;
-                                border: 0.6px solid rgba(121, 119, 116, 0.24);
+                                border: 0.6px solid var(--line-rgba);
                         }
                     }
                 }
 
                 button{
-                    color: rgba(255, 255, 255, 1);
+                    color: var(--white-bg);
                     font-family: Mulish;
                     font-size: 18px;
                     font-style: normal;
@@ -217,7 +217,7 @@
                     line-height: 23px;
                     letter-spacing: 0em;
                     // text-align: left;
-                    background: rgba(13, 13, 13, 1);
+                    background: var(--black-bg);
                     height: 43px;
                     width: 292px;
                     border-radius: 7px;
@@ -237,7 +237,7 @@
                         input{
                             height:70px;
                              border-radius:7px;
-                                border: 0.6px solid rgba(121, 119, 116, 0.24);
+                                border: 0.6px solid var(--line-rgba);
                         }
                     }
                 }
@@ -245,7 +245,7 @@
 
            
             .details{
-                background: linear-gradient(145.58deg, rgba(235, 87, 87, 0.1) -86.12%, rgba(164, 255, 250, 0.1) 183.27%);
+                background: var(--gradient);
                 height:150px;
                 padding:8px;
                 border-radius:7px;
@@ -279,7 +279,7 @@
                     display:flex;
                     justify-content:space-between;
                     align-items:center;
-                    color: rgba(121, 119, 116, 1);
+                    color: var(--line);
                     font-family: Mulish;
                      font-size: 12px;
                      font-style: normal;
@@ -288,7 +288,7 @@
                      letter-spacing: 0em;
                     text-align: left;
                     
-                    //   color: rgba(121, 119, 116, 1);
+                    //   color: var(--line);
                     span{
                         text-transform:capitalize;
                     }
@@ -311,8 +311,8 @@
         box-shadow:0px 0px 2px gray;
         width:100%;
         height:68%;
-        background: rgba(121, 119, 116, 0.03);
-        border: 1px solid rgba(121, 119, 116, 0.1);
+        background: var(--line-bg);
+        border: 1px solid var(--line-bg);
          box-sizing: border-box;
 
         .heading{
@@ -324,7 +324,7 @@
             height:70px;
             
             .fat_block{
-                background: rgba(13, 13, 13, 1);
+                background: var(--black-bg);
                 height: 28px;
                 width: 14px;
 
@@ -344,7 +344,7 @@
             .long_block{
                 height: 8px;
                 width: 80%;
-                background: rgba(13, 13, 13, 1);
+                background:var(--black-bg);
 
             }
         }
@@ -362,7 +362,7 @@
 
                 .coupon{
                      width:70%;
-                     border: 0.2px solid rgba(121, 119, 116, 0.24);
+                     border: 0.2px solid var(--line-rgba);
                      height:42px;
                      border-radius:7px;
                      display:flex;
@@ -387,14 +387,14 @@
                 button{
                       height: 43px;
                       width: 298px;
-                      background: rgba(121, 119, 116, 1);
+                      background: var(--line);
                       font-family: Mulish;
                       font-size: 18px;
                       font-style: normal;
                        font-weight: 600;
                       line-height: 23px;
                       letter-spacing: 0em;
-                      color: rgba(255, 255, 255, 1);
+                      color:var(--white-bg);
                       border:none;
                       padding:8px;
 
@@ -404,7 +404,7 @@
                 }
                 
                 p{
-                    color: rgba(121, 119, 116, 1);
+                    color: var(--line);
                     font-family: Mulish;
                     font-size: 18px;
                      font-style: normal;
@@ -467,10 +467,10 @@
                         width:25%;
                         justify-content:space-between;
                         align-items:center;
-                        border: 0.2px solid rgba(121, 119, 116, 0.24);
+                        border: 0.2px solid var(--line-rgba);
                         border-radius:7px;
                         padding:16px;
-                        color: rgba(121, 119, 116, 1);
+                        color: var(--line);
                         font-family: Mulish;
                         font-size: 16px;
                         font-style: normal;
@@ -487,11 +487,37 @@
 
             .address{
                 width:60%;
-                border-right: 0.5px solid rgba(121, 119, 116, 0.1);
+                border-right: 0.5px solid var(--line-bg);
                 padding:0 16px;
                 height:100%;
+                position:relative;
                    
-                  
+                   .total{
+                         width:95%;
+                         text-align:right;
+                         position:absolute;
+                         bottom:0;
+                         font-family: Mulish;
+                         font-size: 22px;
+                          font-style: normal;
+                        font-weight: 700;
+                        line-height: 28px;
+                         letter-spacing: 0em;
+                        // text-align: left;
+                        span{
+                            font-family: Mulish;
+                             font-size: 18px;
+                             font-style: normal;
+                             font-weight: 300;
+                             line-height: 23px;
+                             letter-spacing: 0em;
+                             text-align: left;
+                             margin-right:14px;
+                            color:var(--line);
+
+                        }
+
+                     }
                 .empty{
                     width:100%;
                     display:flex;
@@ -501,7 +527,7 @@
                     p{
                         width:25%;
                         // text-align:center;
-                        color: rgba(121, 119, 116, 1);
+                        color: var(--line);
                         font-family: Mulish;
                         font-size: 14px;
                         font-style: normal;
@@ -514,11 +540,11 @@
 
                     }
                     button{
-                        background: rgba(13, 13, 13, 1);
+                        background:var(--black-bg);
                         height: 43px;
                         width: 292px;
                         border-radius: 7px;
-                        color: rgba(255, 255, 255, 1);
+                        color:var(--white-bg);
                         font-family: Mulish;
                         font-size: 18px;
                         font-style: normal;
@@ -543,7 +569,7 @@
                         line-height: 23px;
                         letter-spacing: 0em;
                         text-align: left;
-                     color: rgb(121, 119, 116);
+                     color: var(--line);
                          
                      }
 
@@ -613,7 +639,7 @@
                     display:flex;
                     justify-content:space-between;
                     align-items:center;
-                    color: rgba(121, 119, 116, 1);
+                    color: var(--line);
                     font-family: Mulish;
                      font-size: 12px;
                      font-style: normal;
@@ -622,7 +648,7 @@
                      letter-spacing: 0em;
                     text-align: left;
                     
-                    //   color: rgba(121, 119, 116, 1);
+                    //   color: var(--line);
                     span{
                         text-transform:capitalize;
                     }
@@ -636,32 +662,7 @@
                 }
             }
               }
-                     .total{
-                         width:100%;
-                         text-align:right;
-                         position:absolute;
-                         bottom:0;
-                         font-family: Mulish;
-                         font-size: 22px;
-                          font-style: normal;
-                        font-weight: 700;
-                        line-height: 28px;
-                         letter-spacing: 0em;
-                        // text-align: left;
-                        span{
-                            font-family: Mulish;
-                             font-size: 18px;
-                             font-style: normal;
-                             font-weight: 300;
-                             line-height: 23px;
-                             letter-spacing: 0em;
-                             text-align: left;
-                             margin-right:14px;
-                            color: rgb(121, 119, 116);
-
-                        }
-
-                     }
+                    
                 }
  
 
@@ -701,8 +702,8 @@
                 .top_details{
                     position: absolute;
                 // bottom: 0;
-                 background: rgba(255, 255, 255, 0.5);
-                 color: rgba(13, 13, 13, 1);
+                 background:var(--blur-bg);
+                 color:var(--black-bg);
                  font-family: Mulish;
                  font-size: 16px;
                  font-style: normal;
@@ -726,7 +727,7 @@
           .productDetails {
         position: absolute;
         bottom: 0;
-        background: rgba(13, 13, 13, 0.5);
+        background:var(--blur-bg);
         color: white;
         // height: 94px;
         padding: 10px;
@@ -762,7 +763,9 @@
     height:90vh;
     overflow-y:scroll;
        
-   
+        .total{
+            display:none;
+        }
 
          .delivery_details{
             
@@ -795,7 +798,7 @@
                 margin-top:70px;
                 height: 43px;
                 width: 292px;
-                background: rgba(13, 13, 13, 1);
+                background: var(--blur-bg);
                 border-radius: 7px;
                 color:white;
                 font-family: Mulish;
@@ -807,7 +810,7 @@
 
             }
                  p{
-                    color: rgba(121, 119, 116, 1);
+                    color: var(--line);
                     font-family: Mulish;
                     flex-basis:35%;
                     font-size: 18px;
@@ -857,7 +860,7 @@
                 align-items:center;
                 justify-content:space-around;
                 text-transform:capitalize;
-                border-right:0.6px solid rgba(121, 119, 116, 0.24);
+                border-right:0.6px solid var(--line-rgba);
                 
                 
                 input{
@@ -877,7 +880,7 @@
                         input,select{
                             height:40px;
                             border-radius:7px;
-                                border: 0.6px solid rgba(121, 119, 116, 0.24);
+                                border: 0.6px solid var(--line-rgba);
                             // border: 1px solid;
                             // -webkit-border-image: -webkit-linear-gradient(145.58deg, rgba(235, 87, 87, 0.24) -86.12%, rgba(164, 255, 250, 0.24) 183.27%);
 
@@ -892,7 +895,7 @@
                                 width:42px;
                                 height:42px;
                                 background: rgba(255, 255, 255, 1);
-                                border: 0.6px solid rgba(121, 119, 116, 0.24);
+                                border: 0.6px solid var(--line-rgba);
                                 justify-content:center;
                                 border-right:none;
                             }
@@ -906,7 +909,7 @@
                     font-weight: 300;
                     line-height: 18px;
                     letter-spacing: 0em;
-                    color: rgba(121, 119, 116, 1);
+                    color: var(--line);
                     text-align: left;
                     margin-bottom:8px;
                     display:flex;
@@ -953,7 +956,7 @@
                         input{
                             height:70px;
                              border-radius:7px;
-                                border: 0.6px solid rgba(121, 119, 116, 0.24);
+                                border: 0.6px solid var(--line-rgba);
                         }
                     }
                 }
@@ -967,7 +970,7 @@
                     line-height: 23px;
                     letter-spacing: 0em;
                     // text-align: left;
-                    background: rgba(13, 13, 13, 1);
+                    background:var(--black-bg);
                     height: 43px;
                     width: 292px;
                     border-radius: 7px;
@@ -987,7 +990,7 @@
                         input{
                             height:70px;
                              border-radius:7px;
-                                border: 0.6px solid rgba(121, 119, 116, 0.24);
+                                border: 0.6px solid var(--line-rgba);
                         }
                     }
                 }
@@ -1034,7 +1037,7 @@
                     display:flex;
                     justify-content:space-between;
                     align-items:center;
-                    color: rgba(121, 119, 116, 1);
+                    color: var(--line);
                     font-family: Mulish;
                      font-size: 12px;
                      font-style: normal;
@@ -1043,7 +1046,7 @@
                      letter-spacing: 0em;
                     text-align: left;
                     
-                    //   color: rgba(121, 119, 116, 1);
+                    //   color: var(--line);
                     span{
                         text-transform:capitalize;
                     }
@@ -1066,8 +1069,8 @@
         box-shadow:0px 0px 2px gray;
         width:100%;
         height:fit-content;
-        background: rgba(121, 119, 116, 0.03);
-        border: 1px solid rgba(121, 119, 116, 0.1);
+        background:var(--line-bg);
+        border: 1px solid var(--line-bg);
          box-sizing: border-box;
 
         .heading{
@@ -1079,12 +1082,13 @@
             height:70px;
             
             .fat_block{
-                background: rgba(13, 13, 13, 1);
+                background: var(--black-bg);
                 height: 28px;
                 width: 14px;
 
             }
             h2{
+                color:var(--black-bg);
                 font-family: Mulish;
                  font-size: 22px;
                 font-style: normal;
@@ -1097,9 +1101,10 @@
 
             }
             .long_block{
+
                 height: 8px;
                 width: 45%;
-                background: rgba(13, 13, 13, 1);
+                background: var(--black-bg);
 
             }
         }
@@ -1117,9 +1122,13 @@
                 flex-direction:column;
                 justify-content:space-around;
 
+                input{
+                    background:none;
+                }
+
                 .coupon{
                      width:100%;
-                     border: 0.2px solid rgba(121, 119, 116, 0.24);
+                     border: 0.2px solid var(--line-rgba);
                      height:42px;
                      border-radius:7px;
                      display:flex;
@@ -1131,6 +1140,7 @@
                      }
                      
                      input{
+                         background:none;
                          border:none;
                          height:100%;
                          width:90%;
@@ -1144,14 +1154,14 @@
                 button{
                       height: 43px;
                       width: 298px;
-                      background: rgba(121, 119, 116, 1);
+                      background: var(--line);
                       font-family: Mulish;
                       font-size: 18px;
                       font-style: normal;
                        font-weight: 600;
                       line-height: 23px;
                       letter-spacing: 0em;
-                      color: rgba(255, 255, 255, 1);
+                      color:var(--white-bg);
                       border:none;
                       padding:8px;
 
@@ -1161,7 +1171,7 @@
                 }
                 
                 p{
-                    color: rgba(121, 119, 116, 1);
+                    color: var(--line);
                     font-family: Mulish;
                     font-size: 18px;
                      font-style: normal;
@@ -1201,6 +1211,7 @@
                         margin-right:16px;
 
                     input{
+                        background:none;
                         width: 100%;
                         height:100%;
                         border:none;
@@ -1224,10 +1235,10 @@
                         width:40%;
                         justify-content:space-between;
                         align-items:center;
-                        border: 0.2px solid rgba(121, 119, 116, 0.24);
+                        border: 0.2px solid var(--line-rgba);
                         border-radius:7px;
                         padding:16px;
-                        color: rgba(121, 119, 116, 1);
+                        color: var(--line);
                         font-family: Mulish;
                         font-size: 16px;
                         font-style: normal;
@@ -1244,21 +1255,21 @@
 
             .address{
                 width:100%;
-                border-right: 0.5px solid rgba(121, 119, 116, 0.1);
+                border-right: 0.5px solid var(--line-bg);
                 padding:0 16px;
                 height:80vh;
                 display:flex;
                 flex-direction:column;
 
                     .next-button{
-                 color: rgba(255, 255, 255, 1);
+                 color:var(--white-bg);
                  font-family: Mulish;
                  font-size: 18px;
                  font-style: normal;
                 font-weight: 600;
                  line-height: 23px;
                 letter-spacing: 0em;
-                background: rgba(13, 13, 13, 1);
+                background:var(--black-bg);
                 height: 43px;
                  width: 292px;
                 align-self:center;
@@ -1278,7 +1289,7 @@
                     p{
                         width:25%;
                         // text-align:center;
-                        color: rgba(121, 119, 116, 1);
+                        color: var(--line);
                         font-family: Mulish;
                         font-size: 14px;
                         font-style: normal;
@@ -1291,7 +1302,7 @@
 
                     }
                     button{
-                        background: rgba(13, 13, 13, 1);
+                        background:var(--black-bg);
                         height: 43px;
                         width: 292px;
                         border-radius: 7px;
@@ -1320,7 +1331,7 @@
                         line-height: 23px;
                         letter-spacing: 0em;
                         text-align: left;
-                     color: rgb(121, 119, 116);
+                     color:var(--line);
                          
                      }
 
@@ -1390,7 +1401,7 @@
                     display:flex;
                     justify-content:space-between;
                     align-items:center;
-                    color: rgba(121, 119, 116, 1);
+                    color: var(--line);
                     font-family: Mulish;
                      font-size: 12px;
                      font-style: normal;
@@ -1399,7 +1410,7 @@
                      letter-spacing: 0em;
                     text-align: left;
                     
-                    //   color: rgba(121, 119, 116, 1);
+                    //   color: var(--line);
                     span{
                         text-transform:capitalize;
                     }
@@ -1413,32 +1424,7 @@
                 }
             }
               }
-                     .total{
-                         width:100%;
-                         text-align:right;
-                         position:absolute;
-                         bottom:0;
-                         font-family: Mulish;
-                         font-size: 22px;
-                          font-style: normal;
-                        font-weight: 700;
-                        line-height: 28px;
-                         letter-spacing: 0em;
-                        // text-align: left;
-                        span{
-                            font-family: Mulish;
-                             font-size: 18px;
-                             font-style: normal;
-                             font-weight: 300;
-                             line-height: 23px;
-                             letter-spacing: 0em;
-                             text-align: left;
-                             margin-right:14px;
-                            color: rgb(121, 119, 116);
-
-                        }
-
-                     }
+                    
                 }
  
 
@@ -1479,8 +1465,8 @@
                 .top_details{
                     position: absolute;
                 // bottom: 0;
-                 background: rgba(255, 255, 255, 0.5);
-                 color: rgba(13, 13, 13, 1);
+                 background: var(--blur-bg);
+                 color: var(--black-bg);
                  font-family: Mulish;
                  font-size: 16px;
                  font-style: normal;
@@ -1504,7 +1490,7 @@
           .productDetails {
         position: absolute;
         bottom: 0;
-        background: rgba(13, 13, 13, 0.5);
+        background: var(--blur-bg);
         color: white;
         // height: 94px;
         padding: 10px;

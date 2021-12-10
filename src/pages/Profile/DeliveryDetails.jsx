@@ -39,6 +39,10 @@ export default function DeliveryDetails(props) {
                 localStorage.setItem('first_name',data.first_name)
                 localStorage.setItem('last_name',data.last_name)
                 localStorage.setItem('inchToken',data.token)
+                localStorage.setItem('town',data.town)
+                localStorage.setItem('country',data.country)
+                localStorage.setItem('street',data.street)
+                localStorage.setItem('code',data.postal_code)
 
         } catch (error) {
             

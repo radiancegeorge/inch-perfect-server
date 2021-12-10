@@ -13,12 +13,16 @@ import ContainerImage from '../../assets/png/containerImage.png'
 import './pay.scss'
 import {Link} from 'react-router-dom'
 import { useState } from 'react'
+import {useSelector} from 'react-redux'
 
 
 const Pay = () => {
      const homeLink=React.useRef(null) 
      const uploadRef=React.useRef(null)
+     const cart= useSelector(state=>state.cart)
 
+     React.useEffect(()=>
+     [cart,cart])
      const [done,setDone]=useState(false)
     return(
         <div className='pay containerr '>
@@ -33,7 +37,30 @@ const Pay = () => {
                    </div>
 
                    <div class='images'>
-                       
+                       {
+                           cart.map(
+                               item=>{
+                                    // let image=JSON.parse(item.product_image)
+                                    const image=item.product_image;
+                                    // console.log();
+                                 return <div className="product">
+                                 <div class='top_details'>{item.unit} {item.unit>1?'peices':'peice'}</div>
+                              {image && <img src={JSON.parse(image)[0]} alt="" />}
+                                <div className="productDetails">
+                                    <div className="productDescription">
+                                        {item.product_detail}
+                                    </div>
+                                    <div className="priceAndAdd">
+                                        <span>
+                                            ${item.price_usd}
+                                        </span>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                           )
+                       }
                    </div>
                 </div>
                 <div class='bottom'><span class='copy_right'>© Inch perfect, Inc. All rights reserved.</span> <Link class='a'>Terms and condition</Link> <Link class='a'>privacy</Link>  <span class='socials'><a href=''><YellowFacebook one='#EB5757' two="#A4FFFA" /></a><a href=''><YellowInstagram one='#EB5757' two="#A4FFFA" /></a><a href=''><YellowLinkedIn one='#EB5757' two="#A4FFFA"/></a><a href=''><YellowTweet one='#EB5757' two="#A4FFFA"/></a></span></div>
@@ -52,7 +79,7 @@ const Pay = () => {
                             </div>
                             <div style={{marginTop:'24px'}}>
                                <label>Order number</label>
-                               <input type='number' />
+                               <input type='number' value={localStorage.getItem('orderId')} />
                             </div>
                             <div style={{marginTop:'24px'}}>
                            <label>Bank details</label>
@@ -61,7 +88,7 @@ const Pay = () => {
                               <p>Inchperfectclothing</p>
 
                               <label>Account number</label>
-                              <p class='aza'>6086610017 <span><Copy /></span></p>
+                              <p class='aza'>6086610017 <span onClick={()=>navigator.clipboard.writeText('6086610017')}><Copy /></span></p>
                               <label>Bank</label>
                               <p>FCMB</p>
                            </div></div>

@@ -1,35 +1,27 @@
 import React from 'react'
-import useGetProductCategory from '../../hooks/getProductCategory';
+import useGetProductCategory from '../../../hooks/getProductCategory';
 import { useEffect, useRef, useState } from 'react';
-import productImg from '../../assets/png/product.png'
-import Add from '../../assets/svg/add.jsx';
-import useGetProducts from '../../hooks/getProducts.js';
+import productImg from '../../../assets/png/product.png'
+import Add from '../../../assets/svg/add.jsx';
+import useGetProducts from '../../../hooks/getProducts.js';
 import { useLoadMore } from 'react-load-more-hook';
 import Loader from "react-loader-spinner";
 import {RiArrowDownSLine} from 'react-icons/all'
-import colors from '../../utils/colors'
-import Tick from '../../assets/svg/tick.jsx';
-import Close from '../../assets/svg/Close';
-
-import Cancel from '../../assets/svg/cancel.jsx';
+import colors from '../../../utils/colors'
+import Tick from '../../../assets/svg/tick.jsx';
+import Close from '../../../assets/svg/Close';
+import './index.scss'
+import Cancel from '../../../assets/svg/cancel.jsx';
 import { useHistory } from 'react-router';
-import { useSelector } from 'react-redux';
-import {addToCart, removeFromCart } from "../../appStore/cart/index.actions"
-import Components from './Components'
+import Components from '../../../pages/products/Components'
 import { useDispatch } from 'react-redux';
 
-export default function ProductsContainer() {
+export default function ProductList() {
     const [productData, setProductData] = useState([])
     const [chosenCategory, setChosenCategory] = useState('All Products');
     const [patternValue, setPatternValue] = useState(0)
     
-    // const handleGetProducts = (reqParams) =>{
-    //     getProducts({
-    //         url:`products?limit=9&${reqParams}`
-    //     })
-
-    // }
-
+    
     
     const handleDropdown = () =>{
         setDropped(!dropped)
@@ -55,9 +47,7 @@ export default function ProductsContainer() {
     const [filter, setFilter] = useState(false)
     const [dropped,setDropped] = useState(false)
 
-    // useEffect(()=> {
-    //     handleGetProducts(reqParams)
-    // }, [reqParams])
+  
     const patternReference = useRef(null)
  const categories = productCategoryObject 
 
@@ -74,20 +64,11 @@ export default function ProductsContainer() {
         }
     }, [filter])
 
-    const cart = useSelector(state => state.cart);
-    const [includedInCart, setIncludedInCart] = useState(false)
-    useEffect(()=>{
-        cart.includes(productData) && setIncludedInCart(true)
-    }, [])
-
-    const sortedPorductData = productData.map(item => {
-        console.log(cart)
-         return cart.indexOf(item) > -1 && true
-    })
 
     
+    
     return (
-        <div className="productContaainer">
+        <div className="productContaainer admin">
                 {filter &&
                     <div className="filterDiv">
                         <div className="filterOptions">
@@ -192,7 +173,7 @@ export default function ProductsContainer() {
                 </div>
                 <div className="productDiv">
                   { products.map(product=>(
-                       <Components data={product} page={true} />
+                       <Components data={product} page={false} />
                    ))}
                 </div>
                 <div className="frame">
