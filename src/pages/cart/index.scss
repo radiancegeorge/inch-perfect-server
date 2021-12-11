@@ -13,7 +13,7 @@
 .overlay {
   position: absolute;
   width: 100%;
-  background: var(--blur-bg);
+  background: var(--overlay);
   display: flex;
   z-index: 999999;
   height: 90vh;
@@ -202,7 +202,7 @@ color:var(--black-bg);
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: var(--white-bg);
+      background: var(--blur-bg);
       display: flex;
       justify-content: center;
       align-items: center;

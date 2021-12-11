@@ -99,7 +99,7 @@ export default function Payment() {
  const paidRef=React.useRef(null)
 
   const manualOrder=()=>{
-      payRef.current.click()
+     if(cost>0) {payRef.current.click()}
       TakeOrder(items,'MANUAL','',currency)}
     useEffect(()=>{
         currency==='USD'?setCost(priceUsd):setCost(priceNgn)
@@ -147,7 +147,7 @@ export default function Payment() {
        const [detNone,setDetNone]=React.useState('')
       const [payNone,setPayNone]=React.useState('none')
       const [nextNone,setNextNone]=React.useState('')
-
+      const [agree,setAgree]=React.useState(false)
        const [transactionType,setTransactionType]=React.useState(1)
       return (
         <div class='payment'>
@@ -176,7 +176,7 @@ export default function Payment() {
                             setPayNone('')
                         }}>Next</button>
 
-                        <div class='total'><span>Total:</span>{currency==='USD'?`$${cost}`:`$${cost}`}</div>
+                        <div class='total'><span>Total:</span>{currency==='USD'?`$${cost + fee}`:`N${cost + fee}`}</div>
 
                     </div>
                     }
@@ -209,11 +209,13 @@ export default function Payment() {
                         <p>Coupon code</p>
                         <div class='coupon'><input /><Good /></div></div>
                         <div class='t_c'>
-                          <div><input type='checkbox' /></div>
+                          <div><input type='checkbox' onChange={(e)=>e.target.checked?setAgree(true):setAgree(false)} /></div>
                           <span>I have read and agree to inch perfect’s
                           <Link> Terms and conditions</Link></span>
                         </div>
-                        <button onClick={()=>transactionType===1?initiateTransaction():manualOrder()}>Pay now</button>
+                        <button onClick={()=>{
+                             if(agree)
+                            {transactionType===1?initiateTransaction():manualOrder()}}}>Pay now</button>
                         <Link style={{display:'none'}} ref={payRef} to='/checkout/pay'/>
                         <Link style={{display:'none'}} ref={paidRef} to='/checkout/paid'/>
 

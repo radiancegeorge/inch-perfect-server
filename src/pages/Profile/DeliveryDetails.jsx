@@ -25,6 +25,9 @@ export default function DeliveryDetails(props) {
         }
      const [newDetails,setNewDetails]=React.useState(false)
      console.log(localStorage.getItem("inchToken"))
+
+
+
          const update=async (body)=>{
     
          try {
@@ -43,6 +46,7 @@ export default function DeliveryDetails(props) {
                 localStorage.setItem('country',data.country)
                 localStorage.setItem('street',data.street)
                 localStorage.setItem('code',data.postal_code)
+                localStorage.setItem('state',data.state)
 
         } catch (error) {
             

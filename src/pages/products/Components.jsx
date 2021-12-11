@@ -43,7 +43,7 @@ export default function Components({data ,page}) {
                                     </div>
                                     <div className="priceAndAdd" onClick={e=>e.stopPropagation()}>
                                         <span>
-                                            {data.price_ngn}
+                                            ${data.price_usd}
                                         </span>
                                         {
                                             !cart.includes(data) && <div onClick={()=>{

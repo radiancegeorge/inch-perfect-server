@@ -167,7 +167,7 @@
             right: 50px;
         }
         .overlay{
-            background: rgba($color:var(--black-bg), $alpha: 0.8);
+            background: rgba($color:black, $alpha: 0.8);
             position: absolute;
             top: 0;
             left: 0;
@@ -197,7 +197,9 @@
             flex-direction:column;
             .success{
                 height:50%;
-
+                h2{
+                    color:var(--black-bg);
+                }
                 p{
                     color:var(--line);
                     font-family: Mulish;
@@ -260,8 +262,13 @@
 
     .right_cont{
         height:80% !important;
+        color:var(--black-bg);
+        h2{
+            color:var(--black-bg);
+        }
 
         p{
+            color:var(--black-bg);
             font-family: Mulish;
             font-size: 18px;
             font-style: normal;
@@ -482,6 +489,7 @@
             background: rgba($color: var(--black-bg), $alpha: 0.8);
             position: absolute;
             top: 0;
+            // display:none;
             left: 0;
             z-index: 2;
             height: 100vh;

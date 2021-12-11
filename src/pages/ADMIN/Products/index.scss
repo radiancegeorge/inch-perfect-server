@@ -1,4 +1,6 @@
 .admin{
+
+   
      ul{
             li{
             border: 0.2px solid rgba(121,119,116,0.3) !important;    
@@ -6,6 +8,8 @@
             }
         }
         .productDetails{
+        background:rgba(13,13,13,0.5) !important;
+
             color:white !important;
         }
         .categories{
@@ -85,7 +89,7 @@
       flex-direction:column;
       align-items:center;
       justify-content:flex-start;
-      padding:88px;
+      padding:44px 88px;
        div{
            margin-bottom:32px;
        }
@@ -184,7 +188,23 @@
              
             }
       }
+    button{
+        width:292px;
+        height:43px;
+        color:white;
+        border-radius:7px;
+        background:rgba(13,13,13,1);
+        font-family: Mulish;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: 23px;
+letter-spacing: 0em;
+// text-align: left;
+padding:8px;
+margin-bottom:24px;
 
+    }
       .image{
           flex-direction:column;
           width:100%;
@@ -235,6 +255,18 @@
 
 
        }
+      }
+
+      textarea, ::placeholder{
+             font-family: Mulish;
+                     font-size: 16px;
+                      font-style: normal;
+                     font-weight: 400;
+                     line-height: 20px;
+                       letter-spacing: 0em;
+                    text-align: left;
+                    color:black;
+                    padding:16px;
       }
   }
  .red{

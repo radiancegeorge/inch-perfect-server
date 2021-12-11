@@ -9,7 +9,7 @@ import axios from 'axios'
 
 export default function AddProduct() {
     
-    const [images,setImages]=React.useState([{}])
+    const [images,setImages]=React.useState([{id:'',image:''}])
     const imageRef =React.useRef(null)
     const [imageId,setImageId]=React.useState(0)
     const [imageUrl,setImageUrl]=React.useState();
@@ -23,6 +23,8 @@ export default function AddProduct() {
             reader.onloadend = ()=>{
               setImages([...images,{id:imageId,image:reader.result}])
               console.log(images);
+
+             
             }
             reader.readAsDataURL(imageUrl)
       }
@@ -40,7 +42,12 @@ export default function AddProduct() {
     const [pattern,setPattern]=React.useState(1)
     const star=<span class='red'>*</span>
      console.log(imgArray)
-   
+     React.useEffect(()=>{
+       const sortColor=colors.filter(color=>color!=='')
+       setColors(sortColor)
+     },[color])
+
+     console.log(images)
     const addProduct= async(e)=>{
        e.preventDefault()
 
@@ -48,14 +55,8 @@ export default function AddProduct() {
           formData.append('cover',imgArray[index])
          
        }
-      //  for (let index = 0; index < colors.length; index++) {
-          formData.append('color',colors) 
-      //  }
-      //  for (let index = 0; index < sizes.length; index++) {
-          formData.append('sizes',sizes)
-         
-      //  }
-
+          formData.append('color',JSON.stringify(colors)) 
+          formData.append('sizes',JSON.stringify(sizes))
        formData.append('category',product.category)
        formData.append('product_name',product.name)
        formData.append('product_detail',product.detail)
@@ -78,13 +79,12 @@ export default function AddProduct() {
     console.log(formData);
     console.log(status, data);
    }
- catch (error) {
-   console.log(error.response)
+       catch (error) {
+           console.log(error.response)
    console.log(formData);
     
-}  
+  }  
     
-            // axios.post(`${url}products/create_product?price_ngn=${prices.price_ngn}&price_usd=${prices.price_usd}&sizes=${sizes}&product_name=${product.name}&cover=${imgArray}&color=${color}&pattern=${pattern}&category=${product.category}&product_detail=${product.detail}`).then(response=>console.log(response))
     }
 
     return (
@@ -103,7 +103,9 @@ export default function AddProduct() {
             <div>
                <label>
                  <span>color(s){star}</span>
-                <div class='pattern'> <input type='text' onChange={(e)=>setColor(e.target.value)} class='size' onClick={()=>setColors([...colors,color])} /><span><Good /></span></div>
+                <div class='pattern'> <input type='text' onChange={(e)=>setColor(e.target.value)} class='size' onClick={()=>
+                      setColors([...colors,color])         
+                      } /><span><Good /></span></div>
                </label>
                <label>
                  <span>pattern{star}</span>
@@ -137,11 +139,11 @@ export default function AddProduct() {
                   
                 </div>
               <div class='image' style={{marginBottom:'0'}}> 
-                   <p>Add Images*</p>
+                   <p>Add Images<span>{star}</span></p>
                <div class='container' style={{marginBottom:'0'}}>
                   <div class='imageArray' style={{marginBottom:'0'}}>
                    {
-                    imageId>0 && images.filter(image=>image.image!=='').map(image=>
+                    imageId>0 && images.filter(image=> {return image.image!==''}).map(image=>
                        ( <div class='addImage' style={{marginBottom:'0'}}>
                           <img src={image.image} alt=''/>
                           <span class='add' onClick={()=>{
@@ -168,7 +170,7 @@ export default function AddProduct() {
                 </div>
             </div>
             </div>
-                <button>Add product</button>
+                <button >Add product</button>
         </form>
     )
 }

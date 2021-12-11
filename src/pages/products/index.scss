@@ -31,7 +31,7 @@
     top: 0;
     left: 0;
     height: 90vh;
-    background: var(--blur-bg);
+    background: var(--overlay);
     z-index: 999;
     .filterOptions {
       flex-basis: 18%;
@@ -242,7 +242,7 @@ color: var(--line);
       cursor: pointer;
       flex-basis: 30%;
       position: relative;
-      margin:0 12px;
+      margin: 12px;
       height: 278px;
       border-radius: 7px;
       // margin: 16px 0px;
@@ -257,7 +257,7 @@ color: var(--line);
       .productDetails {
         position: absolute;
         bottom: 0;
-        background: rgba(13, 13, 13, 0.5);
+        background: var(--blur-bg);
         color: var(--white-bg);
         // height: 94px;
         padding: 10px;
@@ -268,7 +268,15 @@ color: var(--line);
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          color:var(--black-bg);
+          color:var(--white-bg);
+          font-family: Mulish;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0em;
+text-align: left;
+
         }
         .priceAndAdd {
           display: flex;
