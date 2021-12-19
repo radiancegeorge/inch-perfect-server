@@ -12,7 +12,7 @@ const sendMail = async ({
 }) => {
   try {
     const transporter = nodemailer.createTransport({
-      host: "inchperfectstores.com",
+      host: "business132.web-hosting.com",
       port: 465,
       secure: true,
       auth: {

@@ -9,18 +9,24 @@ const {
   createCategories,
   deleteCategory,
 } = require("../controller/products");
-const { protect } = require("../middlewares/protect.middleware");
+const { protect, adminProtect } = require("../middlewares/protect.middleware");
 const uploads = require("../middlewares/uploads.middleware");
 const product = express.Router();
 
 product
-  .post("/create_product", uploads.array("cover", 4), register)
+  .post(
+    "/create_product",
+    protect,
+    adminProtect,
+    uploads.array("cover", 4),
+    register
+  )
   .get("/", fetchProducts)
   .get("/single", fetchProductById)
-  .delete("/", removeProduct)
+  .delete("/", protect, adminProtect, removeProduct)
   .post("/rate", protect, addRatings)
   .get("/categories", fetchCategories)
-  .post("/category", createCategories)
-  .delete("/category", deleteCategory);
+  .post("/category", protect, adminProtect, createCategories)
+  .delete("/category", protect, adminProtect, deleteCategory);
 
 module.exports = product;

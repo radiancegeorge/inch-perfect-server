@@ -26,6 +26,13 @@ const protect = (req, res, next) => {
     next("unauthorized, please make sure tokens are provided!");
   }
 };
+
+const adminProtect = (req, res, next) => {
+  if (req.user.email.toLowerCase() !== process.env.admin_email)
+    throw "NO ACCESS!";
+  next();
+};
 module.exports = {
   protect,
+  adminProtect,
 };
