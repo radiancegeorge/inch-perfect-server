@@ -18,6 +18,7 @@ const getProducts = async (data) => {
     price_ngn_end,
     price_usd_start,
     price_usd_end,
+    product_name,
   } = data;
 
   const keys = Object.keys(data);
@@ -102,6 +103,11 @@ const getProducts = async (data) => {
           },
         }),
         ...(rating && { rating }),
+        ...(product_name && {
+          product_name: {
+            [Op.like]: `%${product_name}%`,
+          },
+        }),
       },
       limit: Number(limit),
       order,
