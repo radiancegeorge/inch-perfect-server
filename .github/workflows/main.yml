@@ -19,3 +19,4 @@ jobs:
           server: ${{ secrets.SERVER }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASS }}
+          protocol: ftps
