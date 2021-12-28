@@ -14,9 +14,9 @@ jobs:
       - name: Installing project dependencies
         run: npm install
       - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@2.0.0
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          ftp_server: ${{ secrets.SERVER }}
-          ftp_username: ${{ secrets.USER }}
-          ftp_password: ${{ secrets.PASS }}
-          method: ftps
+          server: ${{ secrets.SERVER }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASS }}
+          protocol: ftps
