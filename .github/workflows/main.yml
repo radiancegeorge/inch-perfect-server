@@ -16,7 +16,9 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          server: ftp.business132.web-hosting.com
+          server: ${{ secrets.SERVER}}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASS }}
           protocol: ftps
+          port: 21
+          server-dir: /home/radiance/ftp/files/inchperfect_server/
