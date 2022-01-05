@@ -1,4 +1,4 @@
-import React, {Fragment,useEffect,useState} from 'react'
+import React, {Fragment,useEffect,useState,useContext} from 'react'
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import {Link} from 'react-router-dom'
@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import {addToCart, removeFromCart } from "../../appStore/cart/index.actions"
 import Add from '../../assets/svg/add.jsx';
-
+import {PrefferedCurrency} from '../../hooks/userContext'
 
 
 export default function Components({data ,page}) {
@@ -29,9 +29,10 @@ export default function Components({data ,page}) {
         else setLink('/admin/product')
     },[page])
     const linkRef =React.useRef(null)
+    const {userCurrency,setUserCurrency}=useContext(PrefferedCurrency)
     return (
         <Fragment>
-                       <Link ref={linkRef} to={productLink}></Link>
+                       <Link style={{display:'none'}} ref={linkRef} to={productLink}></Link>
                        <div className="product">
                                 <img  onClick={()=>{
                            localStorage.setItem('itemId',data.id)
@@ -43,7 +44,7 @@ export default function Components({data ,page}) {
                                     </div>
                                     <div className="priceAndAdd" onClick={e=>e.stopPropagation()}>
                                         <span>
-                                            ${data.price_usd}
+                                            {userCurrency==='USD'?`$${data.price_usd}`:`N${data.price_ngn}`}
                                         </span>
                                         {
                                             !cart.includes(data) && <div onClick={()=>{

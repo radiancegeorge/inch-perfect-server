@@ -2,6 +2,7 @@ import Logo from '../../../assets/png/logo.png'
 import ContainerImage from '../../../assets/png/containerImage.png'
 import EyeOff from '../../../assets/svg/eyeOff'
 import Lock from '../../../assets/svg/lock'
+import Mail from '../../../assets/svg/mail'
 import Eye from '../../../assets/svg/eye'
 import { useState ,useEffect,useRef } from 'react'
 import {test} from '../../../config/config.json'
@@ -11,17 +12,18 @@ import {Link} from 'react-router-dom'
 
 const Registration = () => {
     const url=test;
+    const [redirect,setRedirect]=useState(false)
  const [eye, setEye] = useState(false)
     const toggleEyeOn = () => {
         eye ? setEye(false) : setEye(true)
     }
     const [userLoginData, setUserLoginData] = useState({
-        email:'victorkhachi@gmail.com',
+        email:'',
         password:''
     })
     const linkRef =useRef(null)
-
-    // useEffect(()=>redirect?linkRef.current.click():'',[redirect])
+    const [error,setError]=useState('')
+    useEffect(()=>redirect?linkRef.current.click():'',[redirect])
     const handleLogin = async (e) => {
         e.preventDefault();
          try {
@@ -30,17 +32,17 @@ const Registration = () => {
                     "content-type": "application/json"
                 }
             });
-                console.log(data)
-               
+                console.log(data);
+                setRedirect(true)
                 localStorage.setItem('inchToken',data.token)
-                linkRef.current.click()
+                localStorage.setItem('email',data.email)
 
 
         } 
         catch (error) {
             
             console.log(error.response.data.error)
-    
+            setError(error.response.data.error)
 
         }     
     }
@@ -50,7 +52,7 @@ const Registration = () => {
 
     return(
         <div className='container'>
-         <Link ref={linkRef} to='/admin/products' style={{display:'none'}} />
+         <Link ref={linkRef} to='/admin/dashboard' style={{display:'none'}} />
 
             <div className='leftContainer'>
                 <img src={ContainerImage} alt="Background" className='leftContainerBackgroundImage'/>
@@ -66,6 +68,15 @@ const Registration = () => {
                      </p>
                 </div>
             <form onSubmit={handleLogin}>
+               {error && <p style={{width:'100%',textAlign:'center',fontWeight:'100',fontSize:'10px'}}>{error}</p>}
+
+                   <label htmlFor="">
+                    <Mail />
+                    
+                    <input type='email' name='email'  onChange={e=>setUserLoginData({...userLoginData, email:e.target.value})} id="" placeholder='Enter email'/>
+                   
+                </label>
+
                 <label htmlFor="">
                     <Lock />
                     <input  onChange={e=>setUserLoginData({...userLoginData, password:e.target.value})} type={eye? "text" : 'password'} name="password" id="" placeholder='Password'/>

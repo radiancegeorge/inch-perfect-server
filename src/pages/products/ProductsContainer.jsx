@@ -17,6 +17,7 @@ import { useSelector } from 'react-redux';
 import {addToCart, removeFromCart } from "../../appStore/cart/index.actions"
 import Components from './Components'
 import { useDispatch } from 'react-redux';
+import {ProductContext} from '../../hooks/userContext'
 
 export default function ProductsContainer() {
     const [productData, setProductData] = useState([])
@@ -36,10 +37,11 @@ export default function ProductsContainer() {
     }
      const history = useHistory()
     const {productCategoryObject} = useGetProductCategory()
-    const {products ,sort,sortCategory} = useGetProducts()
+    const {sort,sortCategory} = useGetProducts()
     const [page, setPage] = useState(1)
     const [reqParams, setReqParams] = useState('')
-
+    
+    const {products,setProducts}=React.useContext(ProductContext)
 
     // useEffect(()=>getProducts(),[])
     const dispatch = useDispatch()
@@ -84,10 +86,11 @@ export default function ProductsContainer() {
         console.log(cart)
          return cart.indexOf(item) > -1 && true
     })
-
+    const [left,setLeft]=React.useState(-50)
     
     return (
         <div className="productContaainer">
+            <p onClick={()=>setLeft(0)} class='filter-button'>Filter</p>
                 {filter &&
                     <div className="filterDiv">
                         <div className="filterOptions">
@@ -169,7 +172,7 @@ export default function ProductsContainer() {
                         </div>
                     </div>
                 }
-                <div className="categories">
+                <div className="categories" style={{left:`${left}%`}}>
                     <h4>
                         Categories
                     </h4>
@@ -185,14 +188,18 @@ export default function ProductsContainer() {
                         ) )
                         }
                     </ul>
-                    <div className="filterButton" onClick={()=> handleFilter()}>
+                    <div className="filterButton" onClick={()=> {
+                        handleFilter()
+                        setLeft(-50)
+                        }
+                        }>
                         <span>Filter</span> <RiArrowDownSLine />
                     </div>
                     
                 </div>
-                <div className="productDiv">
-                  { products.map(product=>(
-                       <Components data={product} page={true} />
+                <div onClick={()=>setLeft(-50)} className="productDiv">
+                  { products && products.map(product=>(
+                      <Components data={product} page={true} />
                    ))}
                 </div>
                 <div className="frame">

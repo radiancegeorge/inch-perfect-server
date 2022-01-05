@@ -32,7 +32,7 @@ const Product = () => {
     const [colors, setColors] = useState([])
     const [order,setOrder]=useState({})
     useEffect(()=>{  
-        console.log('hi');  
+         
        axios.get(`${url}products/single?id=${id}`).then(response=>{
            setSingleProduct(response.data)
            const imgSrc =JSON.parse(response.data.product_image)
@@ -43,7 +43,7 @@ const Product = () => {
            setColors(color)
        })
 
-    },[url])
+    },[id])
     useEffect(()=>setOrder(singleProduct),[singleProduct])
     const [simProducts,setSimProducts]=useState([])
     
@@ -70,7 +70,7 @@ console.log(order)
     return(
     
     
-            <div className="container">
+            <div className="container product-view">
                  <div className="productContainer">
                     <p className='top'>
                         <Link to={'/'}>Home</Link>
@@ -198,7 +198,7 @@ console.log(order)
                               <p>Similar products</p>
                               {
                                   simProducts.filter(items=> {return items.id !== singleProduct.id}).map(items=>(
-                                      <Components data={items} />
+                                      <Components page={true} data={items} />
                                   ))
                               }
                         </div>

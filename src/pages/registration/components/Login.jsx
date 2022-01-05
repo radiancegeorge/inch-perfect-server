@@ -10,7 +10,7 @@ import {Link} from 'react-router-dom'
 
 
 const Login =({setView})=>{
-    const {login, loginObject,redirect} = useLogin()
+    const {login, loginObject,redirect,error} = useLogin()
     const [eye, setEye] = useState(false)
     const toggleEyeOn = () => {
         eye ? setEye(false) : setEye(true)
@@ -53,6 +53,7 @@ const Login =({setView})=>{
                 </p>
             </div>
             <form action="" onSubmit={handleLogin}>
+               {error && <p style={{width:'100%',textAlign:'center',fontWeight:'100',fontSize:'10px'}}>{error}</p>}
                 <label htmlFor="">
                     <Mail />
                     <input onChange={e=>setUserLoginData({...userLoginData, email:e.target.value})} type="email" name="email" id="" placeholder='Email Address'/>

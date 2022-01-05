@@ -58,7 +58,7 @@
 
 .container .rightContainer .register .header {
   padding: 46px 54px;
-  margin-bottom: 80px;
+  /* margin-bottom: 80px; */
 }
 
 .container .rightContainer .register .header h3 {
@@ -88,7 +88,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: 64px;
+  margin-bottom: 54px;
   position: relative;
 }
 
@@ -120,7 +120,7 @@
 
 .container .rightContainer .register form .submitBtn {
   position: absolute;
-  bottom: 7%;
+  /* bottom: 7%; */
   left: 0;
   display: -webkit-box;
   display: -ms-flexbox;

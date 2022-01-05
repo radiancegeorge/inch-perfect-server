@@ -12,13 +12,14 @@ import PaystackPop from "@paystack/inline-js";
 import Order from './Order'
 import DeliveryDetails from '../Profile/DeliveryDetails'
 import House from '../../assets/png/pana.png'
+import Products from '../products'
 
 
 
 export default function Payment() {
 
     //   const key ='pk_test_ec128fa38ab84805f73c5f3f91086b03c2dbca97'
-     const testkey = "pk_test_ec128fa38ab84805f73c5f3f91086b03c2dbca97";
+     const testkey = "pk_live_75358a68596ef15871f956613902a268b46deaf8";
    const mail =localStorage.getItem('email')
   const paystack = new PaystackPop();
     const {TakeOrder}=Order()
@@ -67,7 +68,7 @@ export default function Payment() {
                 setFee(110)
             }
        }
-   })
+   },[country])
 
 
 
@@ -111,7 +112,7 @@ export default function Payment() {
 
     const [order,setOrder]=useState({})
     const [items,setItems]=useState([{}])
-     console.log(order);
+    
        useEffect(()=>{
            const selected=cart.filter(item=>{return item.selected===true})
            const orders = selected.map(item=>{
@@ -140,23 +141,40 @@ export default function Payment() {
        },[cart])
        const [newDet,setNew]=useState(false)
        const [display,setDisplay]=useState('')
+       let getCountry= localStorage.getItem('country')
        const [location,setLocation]=useState(false)
        useEffect(()=>{
-           localStorage.getItem('country')?setLocation(true):setLocation(false)
-       })
+           getCountry!=='null'?setLocation(true):setLocation(false)
+       },[getCountry]) 
        const [detNone,setDetNone]=React.useState('')
       const [payNone,setPayNone]=React.useState('none')
       const [nextNone,setNextNone]=React.useState('')
       const [agree,setAgree]=React.useState(false)
        const [transactionType,setTransactionType]=React.useState(1)
+      console.log(getCountry==='null');
+      const homeRef=React.useRef(null) 
+    const flags = document.querySelectorAll('.flag')
+    const transType =document.querySelectorAll('.platform')
+      const select=(e,selector) => {
+        selector.forEach(currency => {   
+            if (e === currency) {
+                currency.classList.add('focused-flag')
+                console.log(currency.classList)
+            }
+            else currency.classList.remove('focused-flag')
+
+        })
+        }
+
       return (
-        <div class='payment'>
+        <Products >
+            <div class='payment'>
             <div class='payment_details'>
                  <div class='heading'>
+                 <Link ref={homeRef} style={{display:'none'}} to='/'></Link>
                    <div class='fat_block'></div>
-                   <h2>Payment details</h2>
+                   <h2 onClick={()=>homeRef.current.click()}>Payment details</h2>
                    <div class='long_block'></div>
-
                 </div>
                 <div class='body'>
                   {location &&<div class={`address ${detNone}`}>
@@ -201,10 +219,19 @@ export default function Payment() {
 
 
                     <div class={`payment_option ${payNone}`}>
-                        <p>Chose Payment method</p>
-                        <div><span onClick={()=>setTransactionType(2)}><BriefCase /> Bank</span> <span onClick={()=>setTransactionType(1)} ><Card /> Card</span></div>
+                        <p> Chose Payment method</p>
+                              <div><span class='platform' onClick={(e) => {setTransactionType(2)
+                                  select(e.target, transType)  
+                            }}><BriefCase /> Bank</span> <span class='platform' onClick={(e)=>{setTransactionType(1)
+                               select(e.target,transType)
+                            }} ><Card /> Card</span></div>
                         <p>Chose currency</p>
-                        <div><span onClick={()=>setCurrency('NGN')}><Nigeria /> NGN</span> <span onClick={()=>setCurrency('USD')} ><America /> USD</span></div>
+                        <div><span class='flag' onClick={(e)=>{setCurrency('NGN')
+                                                          select(e.target,flags)
+                              }}><Nigeria /> NGN</span> <span class='flag' onClick={(e) => {
+                                  setCurrency('USD')
+                                  select(e.target,flags)
+                              }} ><America /> USD</span></div>
                        <div style={{flexDirection:'column'}}>
                         <p>Coupon code</p>
                         <div class='coupon'><input /><Good /></div></div>
@@ -254,7 +281,7 @@ export default function Payment() {
                         })
                            }</div>
             </div> 
-        
-        </div>
+            </div>
+            </Products>
     )
 }

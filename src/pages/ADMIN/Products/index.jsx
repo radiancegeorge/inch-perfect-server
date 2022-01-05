@@ -5,7 +5,7 @@ import Search from '../../../assets/svg/search'
 
 
 
-export default function ViewProducts(props) {
+export default function ViewProducts({children}) {
 
 
 
@@ -25,7 +25,7 @@ export default function ViewProducts(props) {
                
             </div>
          </div>
-         {props.content}
+         {children}
         </div>
     )
 }

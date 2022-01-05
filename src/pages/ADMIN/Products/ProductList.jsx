@@ -15,6 +15,7 @@ import Cancel from '../../../assets/svg/cancel.jsx';
 import { useHistory } from 'react-router';
 import Components from '../../../pages/products/Components'
 import { useDispatch } from 'react-redux';
+import ViewProducts from '../Products'
 
 export default function ProductList() {
     const [productData, setProductData] = useState([])
@@ -65,9 +66,10 @@ export default function ProductList() {
     }, [filter])
 
 
-    
+  
     
     return (
+        <ViewProducts >
         <div className="productContaainer admin">
                 {filter &&
                     <div className="filterDiv">
@@ -156,10 +158,10 @@ export default function ProductList() {
                     </h4>
                     <ul>
                         {
-                        categories.map( category=>(
-                            <li onClick={()=>{
-                                sortCategory(category.category)
-                                setChosenCategory(category.category)
+                           categories.map( category=>(
+                                <li onClick={()=>{
+                                     sortCategory(category.category)
+                                     setChosenCategory(category.category)
                             }} className={`${chosenCategory === category.category && 'active'}`}>
                                 {category.category}
                             </li>
@@ -179,12 +181,12 @@ export default function ProductList() {
                 <div className="frame">
                     
                         <p>
-                            {
-                                chosenCategory
-                            }
+                            {chosenCategory}
                         </p>
                     
                 </div>
             </div>
-    )
+ 
+        </ViewProducts>
+           )
 }

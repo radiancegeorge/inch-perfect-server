@@ -8,16 +8,19 @@ import Moon from '../assets/svg/moon'
 import './navbar.scss'
 import User from "../assets/svg/user"
 import CartDot from "../assets/svg/cartDot"
-// import 
+import useGetProducts from '../hooks/getProducts'
 
 const NavBar = ({handleSetOverlay ,search ,nav ,display} ) => {
     const linkRef=useRef(null)
+    const authRef=useRef(null)
     const [theme, setTheme] = useState(true)
     const html= document.getElementsByTagName('html')
      useEffect(()=>{
          theme?html[0].setAttribute('theme','light'):html[0].setAttribute('theme','dark')
      },[theme])
 
+     const {searchProducts,products} =useGetProducts()
+    
     return(
         <div className={`navbar ${nav}`}>
             <div className='navbarLeft'>
@@ -26,7 +29,7 @@ const NavBar = ({handleSetOverlay ,search ,nav ,display} ) => {
                 </Link>
                 <div className='search'>
                     <div onClick={()=>search()}>
-                        <input type="text"  placeholder='Search..'/>
+                        <input type="text" onChange={(e)=>searchProducts(e.target.value)}  placeholder='Search..'/>
                         <Search />
                     </div>
                 </div>
@@ -48,9 +51,11 @@ const NavBar = ({handleSetOverlay ,search ,nav ,display} ) => {
                         <CartDot />
                     </svg>
                 </div>
-                <div onClick={()=>linkRef.current.click()}>
+                <div onClick={()=>localStorage.getItem('inchToken')?linkRef.current.click():authRef.current.click()}>
                    <User width={18}/>
                    <Link ref={linkRef} style={{display:'none'}} to='/profile'></Link>
+                   <Link ref={authRef} style={{display:'none'}} to='/auth'></Link>
+
                 </div>
             </div>
         </div>

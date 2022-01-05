@@ -1,9 +1,9 @@
 @mixin responsive($size) {
     @if $size ==desktop {
-        @media only screen and (min-width:750px) {@content};
+        @media only screen and (min-width:800px) {@content};
     }
     @if $size == Phones {
-        @media only screen and (max-width:500px){@content};
+        @media only screen and (max-width:799px){@content};
     }
 }
 
@@ -24,6 +24,10 @@
   position: relative;
   height: 96vh;
   overflow-y: none;
+
+  .filter-button{
+    display:none;
+  }
   .filterDiv {
     width: 100%;
     display: flex;
@@ -240,10 +244,10 @@ color: var(--line);
     padding:0 8px;
     .product {
       cursor: pointer;
-      flex-basis: 30%;
+      flex-basis: 28%;
       position: relative;
       margin: 12px;
-      height: 278px;
+      height: 258px;
       border-radius: 7px;
       // margin: 16px 0px;
       img {
@@ -349,6 +353,14 @@ text-align: left;
   position: relative;
   height: 100vh;
   overflow-y: scroll;
+
+  .filter-button{
+    position: absolute;
+    top: 4px;
+    font-size: medium;
+    font-weight: bold;
+    color: var(--black-bg);
+  }
   .filterDiv {
     width: 100%;
     display: flex;
@@ -357,9 +369,9 @@ text-align: left;
     left: 0;
     height: 90vh;
     background: rgba(13, 13, 13, 0.7);
-    z-index: 999;
+    z-index: 9998;
     .filterOptions {
-      flex-basis: 45%;
+      flex-basis: 50%;
       background: var(--white-bg);
       padding: 0px 15px;
       overflow-y: scroll;
@@ -412,6 +424,7 @@ text-align: left;
             span {
               display: flex;
               align-items: center;
+              color:var(--black-bg);
               input {
                 margin-bottom: 0;
                 padding: 0;
@@ -449,6 +462,7 @@ text-align: left;
           margin-bottom: 16px;
           border: 0.2px solid var(--line-rgba);
           align-items: center;
+          color:var(--black-bg);
           &:hover {
             cursor: pointer;
           }
@@ -467,15 +481,23 @@ text-align: left;
             width: 100%;
             display: flex;
             justify-content: space-between;
+            color:var(--black-bg)
           }
         }
       }
     }
   }
+  
   .categories {
     width: 50%;
-    // height: 80vh;
-    padding-right:12px;
+    height:100%;
+    position:absolute;
+    background:var(--white-bg);
+    z-index:9999;
+    top:0;
+    padding:0 16px;
+    
+    transition:0.3s;
     h4 {
       padding: 16px 30px;
       border-bottom: 2px solid;
@@ -519,24 +541,28 @@ text-align: left;
       }
     }
   }
+
   .productDiv {
-    display: flex;
-    flex-basis: 50%;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    display: grid;
+    flex-basis: 100%;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:1fr 1fr 1fr;
+
+    grid-gap:16px;
     overflow-y: scroll;
     height: 100%;
+    margin-top:15px;
     // padding:0 8px;
 
 
     .product {
       cursor: pointer;
-      flex-basis: 100%;
+      flex-basis: 46%;
       position: relative;
       // height: 278px;
       border-radius: 7px;
-      margin: 16px 0px;
-      height:25%;
+      
+      height:180px;
       img {
         width: 100%;
         height:100%;
@@ -559,7 +585,7 @@ text-align: left;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          color:var(--black-bg);
+          color:var(--white-bg);
         }
         .priceAndAdd {
           display: flex;
@@ -568,7 +594,7 @@ text-align: left;
           .addProduct {
             margin-left: auto;
             position: relative;
-            z-index: 9999;
+            z-index: 999;
           }
         }
       }
@@ -606,7 +632,8 @@ text-align: left;
     display: flex;
     justify-content: center;
     position:absolute;
-    // z-index:-1;
+    z-index:9999;
+    background:var(--white-bg);
 
     input{
       width:100%;
@@ -615,6 +642,7 @@ text-align: left;
       border:1px solid var(--line);
       padding:4px 8px;
       background:none;
+      color:var(--line)
     }
 }
 }

@@ -16,11 +16,12 @@ import { useSelector } from 'react-redux';
 import {addToCart, removeFromCart } from "../../appStore/cart/index.actions"
 import { useDispatch } from 'react-redux';
 import Cart from '../cart/index.jsx';
+import useGetProducts from '../../hooks/getProducts'
 
 
-const Products = (props) =>{
+const Products = ({children}) =>{
    
-   
+    const {searchProducts}=useGetProducts()
     const [overlay, setOverlay] = useState(false)
     const handleSetOverlay = () =>{
         setOverlay(!overlay)
@@ -32,11 +33,12 @@ const Products = (props) =>{
     }
     
     return(
+        
         <div className='appContainer'>
             <NavBar search={clickSearch} handleSetOverlay={handleSetOverlay}/>
-            {sc_search && <div class='sc_search'><input placeholder='Search.....'  /></div>}
+            {sc_search && <div class='sc_search'><input placeholder='Search.....' onChange={(e)=>searchProducts(e.target.value)} /></div>}
             {overlay && <Cart overlay = {overlay} setOverlay={setOverlay}/>}
-             {props.content}
+             {children}
         </div>
     )
 }

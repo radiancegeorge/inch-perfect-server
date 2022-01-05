@@ -85,8 +85,8 @@ color:var(--black-bg);
           overflow:hidden;
           // flex-basis: 32%;
           position: relative;
-          height: 200px;
-          margin: 10px;
+          
+          margin: 5px;
 
           .top{
             position:absolute;
@@ -206,6 +206,7 @@ color:var(--black-bg);
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor:pointer;
       color: var(--black-bg);
     }
   }

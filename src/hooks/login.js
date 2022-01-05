@@ -8,7 +8,7 @@ const useLogin = () =>{
     const url =test;
     
     const [loginObject,setLoginObject]=useState(false)
-    // )
+    const [error,setError]=useState('')
     // useEffect(()=>{
     //     if(redirect){
     //        <Redirect to='/'/>
@@ -40,12 +40,13 @@ const useLogin = () =>{
         } catch (error) {
             
             console.log(error.response.data.error)
-                setLoginObject(false)
+            setError(error.response.data.error)
+            setLoginObject(false)
 
         }     
     }
     return{
-        loginObject,login,redirect
+        loginObject,login,redirect,error
     }
 }
 export default useLogin

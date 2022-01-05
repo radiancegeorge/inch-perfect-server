@@ -7,7 +7,7 @@ import axios from 'axios'
 import {test} from '../../../config/config.json'
 import './index.scss'
 import Components from '../../../pages/products/Components'
-
+import ViewProducts from '../Products'
 
 
 
@@ -42,9 +42,13 @@ const AdminProduct = () => {
     },[url])
     useEffect(()=>setOrder(singleProduct),[singleProduct])
     const [simProducts,setSimProducts]=useState([])
-    
+    const token=localStorage.getItem('inchToken')
+    const headers= {
+                      "content-type": "application/json",
+                      "Authorization": `Bearer ${token}`
+        }
    const deleteProd=()=>{
-       axios.delete(`${url}products?id=${singleProduct.id}`).then(response=> homeLink.current.click())
+       axios.delete(`${url}products?id=${singleProduct.id}`,{headers:headers}).then(response=> homeLink.current.click())
    }
     
     const [imageIndex, setImageIndex] = useState(0)
@@ -65,10 +69,10 @@ console.log(order)
        },[singleProduct])
   const homeLink=useRef(null)
 
+       
     return(
-    
-    
-            <div className="container admin">
+       <ViewProducts>
+        <div className="container product-view admin">
                  <div className="productContainer">
                     <p className='top'>
                         <Link ref={homeLink} to={'/admin/products'}>Home</Link>
@@ -190,8 +194,7 @@ console.log(order)
                 </div> 
                
             </div>
-            
-        // </div>
+  </ViewProducts>
     )
 }
 export default AdminProduct

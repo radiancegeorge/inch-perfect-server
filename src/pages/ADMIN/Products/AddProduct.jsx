@@ -4,7 +4,8 @@ import RemoveImage from '../../../assets/svg/RemoveImage'
 import Good from '../../../assets/svg/Good'
 import {test}  from '../../../config/config.json'
 import axios from 'axios'
-
+import ViewProducts from '../Products'
+import ColorCircle from '../../../assets/svg/colorCircle'
 
 
 export default function AddProduct() {
@@ -71,7 +72,9 @@ export default function AddProduct() {
                    method: 'post',
                     url: `${url}products/create_product`,
                   headers: {
-                      "content-type": "application/json"
+                      "content-type": "application/json",
+                      "Authorization": `Bearer ${token}`
+
         },
         data:formData
 
@@ -86,9 +89,21 @@ export default function AddProduct() {
   }  
     
     }
+    const token = localStorage.getItem('inchToken')
+    const headers= {
+                      "content-type": "application/json",
+                      "Authorization": `Bearer ${token}`
+        }
+    const [cats,setCats]=React.useState([])    
+  console.log(colors);
 
+ React.useEffect(()=>axios.get(`${url}products/categories`,{headers:headers}).then(response=>{console.log(response.data.categories)
+        setCats(response.data.categories)})
+        ,[url])
+    const colorSet=['red','blue','black','white','purple','yellow','gray','green']
     return (
-        <form class='form' onSubmit={addProduct}>
+      <ViewProducts>
+          <form class='form' onSubmit={addProduct}>
             <p>Item Information</p>
             <div>
                <label>
@@ -97,15 +112,32 @@ export default function AddProduct() {
                </label>
                <label>
                 <span>Category{star}</span>
-                <input type='text' name='category' placeholder='Enter Category' onChange={(e)=>setProuct({...product,[e.target.name]:e.target.value})}/>
+                <select onChange={(e)=>setProuct({...product,category:e.target.value})}>
+                   <option selected disabled hidden>Select Category</option>
+                   {cats && cats.map(category=>(
+                     <option value={category.category}>{category.category}</option>
+                   ))}
+                
+                </select>
                </label>
             </div>
             <div>
-               <label>
+               <label style={{position:'relative',width:'20%'}}>
                  <span>color(s){star}</span>
-                <div class='pattern'> <input type='text' onChange={(e)=>setColor(e.target.value)} class='size' onClick={()=>
-                      setColors([...colors,color])         
-                      } /><span><Good /></span></div>
+              <div class='pattern' style={{ padding: '2px' }}> <select type='text' style={{ padding: '2px' }} onChange={(e) => setColor(e.target.value)} class='size'>
+                    {colorSet.map((color)=>(
+                        <option value={color}>{color}</option>
+                      )
+                    )}
+                </select><span onClick={() =>
+                setColors([...colors, color])
+              }><Good /></span></div>
+              <div style={{display:'flex',position:'absolute',marginBottom:'0',top:'80px'}}>{
+                colors.map(size =>
+                  (<span style={{ height:'fit-content', marginRight: '8px', display:'flex' }}><ColorCircle fill={size} /></span>)
+                )
+              }
+              </div>
                </label>
                <label>
                  <span>pattern{star}</span>
@@ -172,5 +204,7 @@ export default function AddProduct() {
             </div>
                 <button >Add product</button>
         </form>
-    )
+
+      </ViewProducts>
+           )
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import './profile.scss'
 import Open from '../../assets/svg/Open'
 import Nigeria from '../../assets/svg/Nigeria'
@@ -7,13 +7,14 @@ import LogOut from '../../assets/svg/LogOut'
 import DeliveryDetails from './DeliveryDetails'
 import PersonalDetails from './PersonalDetails'
 import {Link} from 'react-router-dom'
-
+import {PrefferedCurrency} from '../../hooks/userContext'
 
 export default function Profile() {
     const [content,setContent]=React.useState(<PersonalDetails />)
     const [focusName,setFocusName]=React.useState('')
     const [personal,setPersonal]=React.useState(false)
     const [delivery,setDelivery]=React.useState(false)
+    const {userCurrency,setUserCurrency}=useContext(PrefferedCurrency)
    const focus=(e)=>{
         setFocusName(e.target.id)
         if(e.target.id==='personal')setPersonal(!personal)
@@ -42,8 +43,24 @@ export default function Profile() {
    const linkRef=React.useRef(null)
    const logout=()=>{
          linkRef.current.click()
+         localStorage.clear()
    }
+       const currency=document.querySelectorAll('.flag')
+       
+    React.useEffect((e)=>{
+      currency.forEach(currency=>{
+          console.log(currency,userCurrency);
 
+          if (userCurrency===currency.id){
+              currency.classList.add('focused-flag')
+              console.log(currency.classList)
+              }
+              else currency.classList.remove('focused-flag')
+          
+          
+          },[userCurrency])
+
+    })
     return (
         <div class='profile'>
             <div class='profileNav'>
@@ -64,8 +81,8 @@ export default function Profile() {
                 <div class='currency'>
                   <p>Currency</p>
                   <div class='country'>
-                  <div class='flag'><Nigeria /> NGN</div>
-                  <div class='flag'><America /> USD</div>
+                      <div id='NGN' onClick={(e)=>setUserCurrency(e.target.id)} class='flag'><Nigeria /> NGN</div>
+                      <div id='USD' onClick={(e)=>setUserCurrency(e.target.id)} class='flag'><America /> USD</div>
                   </div>
                 
                 </div>
