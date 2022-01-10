@@ -11,17 +11,17 @@ const requestOtp = asyncHandler(async (req, res, next) => {
   const { email } = req.body;
   const isMailValid = await checkEmail(email);
   if (!isMailValid) throw new Error("Email not found!");
-
+  const otp = await genOTP(4);
   await sendMail({
     html: `
             <p style="font-size: 20px">Please use the OTP below to proceed with your request</p>
-            <h4>${await genOTP(4)}</h4>
+            <h4>${otp}</h4>
         `,
     to: [email],
     subject: "Authorization",
   });
 
-  res.status(200).json({ message: "An otp has been sent to your email!" });
+  res.status(200).json({ message: "An otp has been sent to your email!", otp });
 });
 
 const patchUser = asyncHandler(async (req, res, next) => {
