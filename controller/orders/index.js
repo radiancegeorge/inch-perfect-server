@@ -4,6 +4,8 @@ const {
   setDelivered,
   setProcessing,
   setShipped,
+  getOrderedProducts,
+  getSingleOrder,
 } = require("../../utils/orders");
 const { getUser } = require("../../utils/registration");
 
@@ -46,7 +48,14 @@ const setOrderStatus = asyncHandler(async (req, res, next) => {
   }
   throw "Nothing to update!";
 });
+
+const getOrders = asyncHandler(async (req, res, next) => {
+  const { query } = req;
+  const orders = await getOrderedProducts(query);
+  res.status(200).json(orders);
+});
 module.exports = {
   makeOrder,
   setOrderStatus,
+  getOrders,
 };

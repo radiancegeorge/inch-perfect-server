@@ -108,14 +108,47 @@ const addToOrder = async (orderObject) => {
   return true;
 };
 
-const getOrderedProducts = async (arrayOfId) => {
-  return await Products.findAll({
+const getOrderedProducts = async (data) => {
+  const {
+    limit = 10,
+    page = 1,
+    id,
+    method,
+    delivered,
+    shipped,
+    processing,
+    email,
+  } = data;
+  const totalOrders = await Products.count({
     where: {
-      id: {
-        [Op.or]: arrayOfId,
-      },
+      ...(id && { id: { [Op.like]: `%${id}%` } }),
+      ...(method && { method: { [Op.like]: `%${method}%` } }),
+      ...(delivered && { delivered: { [Op.like]: `%${delivered}%` } }),
+      ...(shipped && { shipped: { [Op.like]: `%${shipped}%` } }),
+      ...(processing && { processing: { [Op.like]: `%${processing}%` } }),
+      ...(email && { email: { [Op.like]: `%${email}%` } }),
     },
   });
+  const offset = Number(page) - 1 * Number(limit);
+  const orders = await Orders.findAll({
+    where: {
+      ...(id && { id: { [Op.like]: `%${id}%` } }),
+      ...(method && { method: { [Op.like]: `%${method}%` } }),
+      ...(delivered && { delivered: { [Op.like]: `%${delivered}%` } }),
+      ...(shipped && { shipped: { [Op.like]: `%${shipped}%` } }),
+      ...(processing && { processing: { [Op.like]: `%${processing}%` } }),
+      ...(email && { email: { [Op.like]: `%${email}%` } }),
+    },
+    limit,
+    order: ["updatedAt", "DESC"],
+    offset,
+  });
+
+  return {
+    results: orders,
+    currentPage: page,
+    totalPages: Math.ceil(totalOrders / limit),
+  };
 };
 
 const setProcessing = async (id) => {
