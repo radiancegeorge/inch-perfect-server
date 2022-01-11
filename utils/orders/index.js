@@ -141,7 +141,7 @@ const getOrderedProducts = async (data) => {
       ...(processing && { processing: { [Op.like]: `%${processing}%` } }),
       ...(email && { email: { [Op.like]: `%${email}%` } }),
     },
-    limit,
+    limit: Number(limit),
     order,
     offset,
   });
