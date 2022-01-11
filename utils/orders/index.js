@@ -118,6 +118,7 @@ const getOrderedProducts = async (data) => {
     shipped,
     processing,
     email,
+    order = ["updatedAt", "DESC"],
   } = data;
   const totalOrders = await Products.count({
     where: {
@@ -140,13 +141,13 @@ const getOrderedProducts = async (data) => {
       ...(email && { email: { [Op.like]: `%${email}%` } }),
     },
     limit,
-    order: ["updatedAt", "DESC"],
+    order,
     offset,
   });
 
   return {
     results: orders,
-    currentPage: page,
+    page,
     totalPages: Math.ceil(totalOrders / limit),
   };
 };

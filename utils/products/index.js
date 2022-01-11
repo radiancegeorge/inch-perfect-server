@@ -105,7 +105,7 @@ const getProducts = async (data) => {
         ...(rating && { rating }),
         ...(product_name && {
           product_name: {
-            [Op.like]: `%${product_name}%`,
+            [Op.like]: `%${product_name}`,
           },
         }),
       },
