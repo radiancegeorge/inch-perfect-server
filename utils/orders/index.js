@@ -131,6 +131,7 @@ const getOrderedProducts = async (data) => {
       ...(email && { email: { [Op.like]: `%${email}%` } }),
     },
   });
+  console.log(totalOrders, "this is total");
   const offset = (Number(page) - 1) * Number(limit);
   const orders = await Orders.findAll({
     where: {
@@ -148,7 +149,7 @@ const getOrderedProducts = async (data) => {
 
   return {
     results: orders,
-    page,
+    page: Number(page),
     totalPages: Math.ceil(totalOrders / limit),
     totalOrders,
   };
