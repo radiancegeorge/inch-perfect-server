@@ -131,7 +131,7 @@ const getOrderedProducts = async (data) => {
       ...(email && { email: { [Op.like]: `%${email}%` } }),
     },
   });
-  const offset = Number(page) - 1 * Number(limit);
+  const offset = (Number(page) - 1) * Number(limit);
   const orders = await Orders.findAll({
     where: {
       ...(id && { id: { [Op.like]: `%${id}%` } }),
