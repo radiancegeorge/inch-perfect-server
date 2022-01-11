@@ -119,7 +119,7 @@ const getOrderedProducts = async (data) => {
     shipped,
     processing,
     email,
-    order = ["updatedAt", "DESC"],
+    order = [["updatedAt", "DESC"]],
   } = data;
   const totalOrders = await Products.count({
     where: {
