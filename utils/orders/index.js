@@ -2,6 +2,7 @@ const { Op } = require("sequelize");
 const { v4 } = require("uuid");
 const { Products, Orders } = require("../../models");
 const { getCoupon, addUsage } = require("../coupons");
+const emailBodyOrder = require("../extras/your order");
 const sendMail = require("../mailer");
 const { getUser } = require("../registration");
 
@@ -82,7 +83,7 @@ const createOrder = async (id, object) => {
 
   //remember to send an email confirming order later******
   sendMail({
-    html: "your order is",
+    html: emailBodyOrder({ first_name, reference: orderObject.referrence }),
     to: (await getUser(id)).email,
   });
 
