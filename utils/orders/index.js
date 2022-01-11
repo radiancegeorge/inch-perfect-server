@@ -150,6 +150,7 @@ const getOrderedProducts = async (data) => {
     results: orders,
     page,
     totalPages: Math.ceil(totalOrders / limit),
+    totalOrders,
   };
 };
 
