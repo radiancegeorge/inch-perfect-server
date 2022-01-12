@@ -1,0 +1,1317 @@
+{
+	"info": {
+		"_postman_id": "9fa26495-f652-418c-b6e4-6d6276b3ba9f",
+		"name": "InchPerfect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Password",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "new_password",
+							"value": "radiance7",
+							"type": "text"
+						},
+						{
+							"key": "re_new_password",
+							"value": "radiance7",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "radiancegeorge@gmail.com",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "req otp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "radiancegeorge@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/user/otp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"user",
+						"otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "admin@inchperfectstores.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "admin##admin",
+							"type": "default"
+						},
+						{
+							"key": "first_name",
+							"value": "Inch",
+							"type": "default"
+						},
+						{
+							"key": "last_name",
+							"value": "Perfect",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.inchperfectstores.com/user/register",
+					"protocol": "https",
+					"host": [
+						"api",
+						"inchperfectstores",
+						"com"
+					],
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@inchperfectstores.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "admin##admin",
+									"type": "default"
+								},
+								{
+									"key": "first_name",
+									"value": "Inch",
+									"type": "default"
+								},
+								{
+									"key": "last_name",
+									"value": "Perfect",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.inchperfectstores.com/user/register",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inchperfectstores",
+								"com"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Jan 2022 16:36:22 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "387"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"183-5Q9NjkI4ZQf8/Tvd4mRPsc6UFbg\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"successfully registered!\",\n    \"data\": {\n        \"id\": \"9ba1a5b0-72fc-11ec-9c84-736781c0425f\",\n        \"first_name\": \"Inch\",\n        \"last_name\": \"Perfect\",\n        \"email\": \"admin@inchperfectstores.com\",\n        \"currency\": \"USD\",\n        \"active\": \"2\",\n        \"verified\": \"1\",\n        \"phone_number\": null,\n        \"country\": null,\n        \"state\": null,\n        \"town\": null,\n        \"street\": null,\n        \"postal_code\": null,\n        \"createdAt\": \"2022-01-11T16:36:21.000Z\",\n        \"updatedAt\": \"2022-01-11T16:36:21.000Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "admin@inchperfectstores.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "admin##admin",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.inchperfectstores.com/user/login",
+					"protocol": "https",
+					"host": [
+						"api",
+						"inchperfectstores",
+						"com"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@inchperfectstores.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "admin##admin",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.inchperfectstores.com/user/login",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inchperfectstores",
+								"com"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Jan 2022 16:38:44 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "38"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"26-ZHNVa3Sp4T+QNkxOAOGhxBLpsss\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Please verify your account\"\n}"
+				},
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@inchperfectstores.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "admin##admin",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.inchperfectstores.com/user/login",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inchperfectstores",
+								"com"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Jan 2022 16:42:57 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "672"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2a0-85UzwgbvQXowk/NZ0RH84R5Sjyg\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"9ba1a5b0-72fc-11ec-9c84-736781c0425f\",\n    \"first_name\": \"Inch\",\n    \"last_name\": \"Perfect\",\n    \"email\": \"admin@inchperfectstores.com\",\n    \"password\": \"admin##admin\",\n    \"currency\": \"USD\",\n    \"active\": \"2\",\n    \"verified\": \"2\",\n    \"verification_id\": null,\n    \"phone_number\": null,\n    \"country\": null,\n    \"state\": null,\n    \"town\": null,\n    \"street\": null,\n    \"postal_code\": null,\n    \"createdAt\": \"2022-01-11T16:36:21.000Z\",\n    \"updatedAt\": \"2022-01-11T16:42:39.000Z\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiSW5jaCIsImxhc3RfbmFtZSI6IlBlcmZlY3QiLCJlbWFpbCI6ImFkbWluQGluY2hwZXJmZWN0c3RvcmVzLmNvbSIsImlkIjoiOWJhMWE1YjAtNzJmYy0xMWVjLTljODQtNzM2NzgxYzA0MjVmIiwiaWF0IjoxNjQxOTE5Mzc3fQ.4CJRVehEIK2bqcHtQGUoNASEGtEjG6-HPe1KKBD0zGo\"\n}"
+				}
+			]
+		},
+		{
+			"name": "add user billing address",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "phone_number",
+							"value": "07065240321",
+							"type": "default"
+						},
+						{
+							"key": "country",
+							"value": "Nigeria",
+							"type": "default"
+						},
+						{
+							"key": "state",
+							"value": "Lagos",
+							"type": "default"
+						},
+						{
+							"key": "town",
+							"value": "Igando",
+							"type": "default"
+						},
+						{
+							"key": "street",
+							"value": "Lagos street 01",
+							"type": "default"
+						},
+						{
+							"key": "postal_code",
+							"value": "41123",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.inchperfectstores.com/user/update_billing_info",
+					"protocol": "https",
+					"host": [
+						"api",
+						"inchperfectstores",
+						"com"
+					],
+					"path": [
+						"user",
+						"update_billing_info"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "add user billing address",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "phone_number",
+									"value": "07065240321",
+									"type": "default"
+								},
+								{
+									"key": "country",
+									"value": "Nigeria",
+									"type": "default"
+								},
+								{
+									"key": "state",
+									"value": "Lagos",
+									"type": "default"
+								},
+								{
+									"key": "town",
+									"value": "Igando",
+									"type": "default"
+								},
+								{
+									"key": "street",
+									"value": "Lagos street 01",
+									"type": "default"
+								},
+								{
+									"key": "postal_code",
+									"value": "41123",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.inchperfectstores.com/user/update_billing_info",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inchperfectstores",
+								"com"
+							],
+							"path": [
+								"user",
+								"update_billing_info"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Jan 2022 16:49:59 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "378"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"17a-28TcyBkZdBvWUlS3GQ/TcEEZzIQ\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"9ba1a5b0-72fc-11ec-9c84-736781c0425f\",\n    \"first_name\": \"Inch\",\n    \"last_name\": \"Perfect\",\n    \"email\": \"admin@inchperfectstores.com\",\n    \"currency\": \"USD\",\n    \"active\": \"2\",\n    \"verified\": \"2\",\n    \"phone_number\": \"07065240321\",\n    \"country\": \"Nigeria\",\n    \"state\": \"Lagos\",\n    \"town\": \"Igando\",\n    \"street\": \"Lagos street 01\",\n    \"postal_code\": \"41123\",\n    \"createdAt\": \"2022-01-11T16:36:21.000Z\",\n    \"updatedAt\": \"2022-01-11T16:49:59.000Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Products",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "product_name",
+							"value": "sleakest v2 jean",
+							"type": "default"
+						},
+						{
+							"key": "color",
+							"value": "#00000",
+							"type": "default"
+						},
+						{
+							"key": "price_usd",
+							"value": "2",
+							"type": "default"
+						},
+						{
+							"key": "price_ngn",
+							"value": "1000",
+							"type": "default"
+						},
+						{
+							"key": "rating",
+							"value": "",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "product_detail",
+							"value": "",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "cover",
+							"type": "file",
+							"src": [
+								"/Users/radianceobi/Downloads/WhatsApp Image 2021-12-25 at 6.56.39 AM.jpg",
+								"/Users/radianceobi/Downloads/WhatsApp Image 2021-12-25 at 7.00.25 AM.jpeg",
+								"/Users/radianceobi/Downloads/6016.jpeg"
+							]
+						},
+						{
+							"key": "pattern",
+							"value": "",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "sizes",
+							"value": "[\"xxl\", \"l\", \"xl\"]",
+							"type": "default"
+						},
+						{
+							"key": "category",
+							"value": "jean",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.inchperfectstores.com/products/create_product",
+					"protocol": "https",
+					"host": [
+						"api",
+						"inchperfectstores",
+						"com"
+					],
+					"path": [
+						"products",
+						"create_product"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Products",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_name",
+									"value": "sleakest v2 jean",
+									"type": "default"
+								},
+								{
+									"key": "color",
+									"value": "#00000",
+									"type": "default"
+								},
+								{
+									"key": "price_usd",
+									"value": "2",
+									"type": "default"
+								},
+								{
+									"key": "price_ngn",
+									"value": "1000",
+									"type": "default"
+								},
+								{
+									"key": "rating",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "product_detail",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "cover",
+									"type": "file",
+									"src": [
+										"/Users/radianceobi/Downloads/WhatsApp Image 2021-12-25 at 6.56.39 AM.jpg",
+										"/Users/radianceobi/Downloads/WhatsApp Image 2021-12-25 at 7.00.25 AM.jpeg",
+										"/Users/radianceobi/Downloads/6016.jpeg"
+									]
+								},
+								{
+									"key": "pattern",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "sizes",
+									"value": "[\"xxl\", \"l\", \"xl\"]",
+									"type": "default"
+								},
+								{
+									"key": "category",
+									"value": "jean",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.inchperfectstores.com/products/create_product",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inchperfectstores",
+								"com"
+							],
+							"path": [
+								"products",
+								"create_product"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Jan 2022 16:57:43 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "549"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"225-2qOzEE71l57YQeRuPIAjJhm4WiM\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"2acb052b-a0ef-4a69-97af-93ef66344406\",\n    \"product_name\": \"sleakest v2 jean\",\n    \"color\": \"#00000\",\n    \"price_usd\": \"2\",\n    \"price_ngn\": \"1000\",\n    \"sizes\": \"[\\\"xxl\\\", \\\"l\\\", \\\"xl\\\"]\",\n    \"category\": \"jean\",\n    \"product_image\": \"[\\\"https://api.inchperfectstores.com/uploads/9806c450-72ff-11ec-9c84-736781c0425fWhatsApp Image 2021-12-25 at 6.56.39 AM.jpg\\\",\\\"https://api.inchperfectstores.com/uploads/98073980-72ff-11ec-9c84-736781c0425fWhatsApp Image 2021-12-25 at 7.00.25 AM.jpeg\\\",\\\"https://api.inchperfectstores.com/uploads/980787a0-72ff-11ec-9c84-736781c0425f6016.jpeg\\\"]\"\n}"
+				}
+			]
+		},
+		{
+			"name": "create category",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "undies",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.inchperfectstores.com/products/category",
+					"protocol": "https",
+					"host": [
+						"api",
+						"inchperfectstores",
+						"com"
+					],
+					"path": [
+						"products",
+						"category"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "create category",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "undies",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.inchperfectstores.com/products/category",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inchperfectstores",
+								"com"
+							],
+							"path": [
+								"products",
+								"category"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Jan 2022 16:59:36 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3d-KqEyLTigpF2H1+bloZQ8VC5400U\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"db933f50-72ff-11ec-9c84-736781c0425f\",\n    \"name\": \"undies\"\n}"
+				}
+			]
+		},
+		{
+			"name": "get products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.inchperfectstores.com/products?product_name=sleak jean",
+					"protocol": "https",
+					"host": [
+						"api",
+						"inchperfectstores",
+						"com"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "product_name",
+							"value": "sleak jean"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get products",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.inchperfectstores.com/products?product_name",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inchperfectstores",
+								"com"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "product_name",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Jan 2022 17:01:33 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2143"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"85f-JT+mt1M2Xrr70cO+TJ+EjoV2gNQ\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": \"2acb052b-a0ef-4a69-97af-93ef66344406\",\n            \"product_name\": \"sleakest v2 jean\",\n            \"color\": \"#00000\",\n            \"price_usd\": \"2.000\",\n            \"price_ngn\": \"1000.000\",\n            \"rating\": \"0\",\n            \"product_detail\": null,\n            \"product_image\": \"[\\\"https://api.inchperfectstores.com/uploads/9806c450-72ff-11ec-9c84-736781c0425fWhatsApp Image 2021-12-25 at 6.56.39 AM.jpg\\\",\\\"https://api.inchperfectstores.com/uploads/98073980-72ff-11ec-9c84-736781c0425fWhatsApp Image 2021-12-25 at 7.00.25 AM.jpeg\\\",\\\"https://api.inchperfectstores.com/uploads/980787a0-72ff-11ec-9c84-736781c0425f6016.jpeg\\\"]\",\n            \"pattern\": \"1\",\n            \"sizes\": \"[\\\"xxl\\\", \\\"l\\\", \\\"xl\\\"]\",\n            \"sold_out\": \"1\",\n            \"category\": \"jean\",\n            \"createdAt\": \"2022-01-11T16:57:43.000Z\",\n            \"updatedAt\": \"2022-01-11T16:57:43.000Z\"\n        },\n        {\n            \"id\": \"4358f575-7545-4e47-9e51-6838e38c4e9e\",\n            \"product_name\": \"sleakest jean\",\n            \"color\": \"#00000\",\n            \"price_usd\": \"2.000\",\n            \"price_ngn\": \"1000.000\",\n            \"rating\": \"0\",\n            \"product_detail\": null,\n            \"product_image\": \"[\\\"https://api.inchperfectstores.com/uploads/931ea9d0-72ff-11ec-9c84-736781c0425fWhatsApp Image 2021-12-25 at 6.56.39 AM.jpg\\\",\\\"https://api.inchperfectstores.com/uploads/931f1f00-72ff-11ec-9c84-736781c0425fWhatsApp Image 2021-12-25 at 7.00.25 AM.jpeg\\\",\\\"https://api.inchperfectstores.com/uploads/931f6d20-72ff-11ec-9c84-736781c0425f6016.jpeg\\\"]\",\n            \"pattern\": \"1\",\n            \"sizes\": \"[\\\"xxl\\\", \\\"l\\\", \\\"xl\\\"]\",\n            \"sold_out\": \"1\",\n            \"category\": \"jean\",\n            \"createdAt\": \"2022-01-11T16:57:35.000Z\",\n            \"updatedAt\": \"2022-01-11T16:57:35.000Z\"\n        },\n        {\n            \"id\": \"9c7bd442-4839-4be1-8d80-b2414f7d34c6\",\n            \"product_name\": \"sleak jean\",\n            \"color\": \"#00000\",\n            \"price_usd\": \"2.000\",\n            \"price_ngn\": \"1000.000\",\n            \"rating\": \"0\",\n            \"product_detail\": null,\n            \"product_image\": \"[\\\"https://api.inchperfectstores.com/uploads/84052780-72ff-11ec-9c84-736781c0425fWhatsApp Image 2021-12-25 at 6.56.39 AM.jpg\\\",\\\"https://api.inchperfectstores.com/uploads/840638f0-72ff-11ec-9c84-736781c0425fWhatsApp Image 2021-12-25 at 7.00.25 AM.jpeg\\\",\\\"https://api.inchperfectstores.com/uploads/8406d530-72ff-11ec-9c84-736781c0425f6016.jpeg\\\"]\",\n            \"pattern\": \"1\",\n            \"sizes\": \"[\\\"xxl\\\", \\\"l\\\", \\\"xl\\\"]\",\n            \"sold_out\": \"1\",\n            \"category\": \"jean\",\n            \"createdAt\": \"2022-01-11T16:57:09.000Z\",\n            \"updatedAt\": \"2022-01-11T16:57:09.000Z\"\n        }\n    ],\n    \"page\": 1,\n    \"totalPages\": 1,\n    \"totalProducts\": 3\n}"
+				}
+			]
+		},
+		{
+			"name": "create order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"product\": [\n        {\n            \"id\": \"9c7bd442-4839-4be1-8d80-b2414f7d34c6\",\n            \"unit\": 10\n        }\n    ],\n    \"method\": \"automatic\",\n    \"referrence\":\"2233d44\",\n    \"currency\": \"NGN\"\n}\n  ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.inchperfectstores.com/orders/create_order",
+					"protocol": "https",
+					"host": [
+						"api",
+						"inchperfectstores",
+						"com"
+					],
+					"path": [
+						"orders",
+						"create_order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.inchperfectstores.com/orders",
+					"protocol": "https",
+					"host": [
+						"api",
+						"inchperfectstores",
+						"com"
+					],
+					"path": [
+						"orders"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "3",
+							"disabled": true
+						},
+						{
+							"key": "delivered",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "processing",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get orders",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.inchperfectstores.com/orders?processing=1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inchperfectstores",
+								"com"
+							],
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "delivered",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "processing",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 12 Jan 2022 14:01:40 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "54"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"36-S6F0Z22nm21aAl4dAFW/9CWTmQE\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"results\": [],\n    \"page\": 1,\n    \"totalPages\": 0,\n    \"totalOrders\": 0\n}"
+				},
+				{
+					"name": "get orders",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.inchperfectstores.com/orders?processing=2",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inchperfectstores",
+								"com"
+							],
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "delivered",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "processing",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 12 Jan 2022 14:10:20 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1140"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"474-wC7iEOWvejYnrcSNfPGQqzeCPVg\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"results\": [\n        {\n            \"id\": \"e8ca7801-567f-4066-a909-720ae8419c1f\",\n            \"first_name\": \"Inch\",\n            \"last_name\": \"Perfect\",\n            \"country\": \"Nigeria\",\n            \"state\": \"Lagos\",\n            \"town\": \"Igando\",\n            \"street\": \"Lagos street 01\",\n            \"phone_number\": \"07065240321\",\n            \"postal_code\": \"41123\",\n            \"product\": [\n                {\n                    \"id\": \"9c7bd442-4839-4be1-8d80-b2414f7d34c6\",\n                    \"unit\": 10\n                }\n            ],\n            \"total\": \"10000.000\",\n            \"processing\": \"2\",\n            \"shipped\": \"1\",\n            \"delivered\": \"1\",\n            \"coupon\": null,\n            \"method\": \"AUTOMATIC\",\n            \"currency\": \"NGN\",\n            \"referrence\": \"2233d44\",\n            \"email\": \"admin@inchperfectstores.com\",\n            \"createdAt\": \"2022-01-11T22:31:15.000Z\",\n            \"updatedAt\": \"2022-01-11T22:31:15.000Z\"\n        },\n        {\n            \"id\": \"29464907-a880-4e7c-844f-f2444ab1cf4c\",\n            \"first_name\": \"Inch\",\n            \"last_name\": \"Perfect\",\n            \"country\": \"Nigeria\",\n            \"state\": \"Lagos\",\n            \"town\": \"Igando\",\n            \"street\": \"Lagos street 01\",\n            \"phone_number\": \"07065240321\",\n            \"postal_code\": \"41123\",\n            \"product\": [\n                {\n                    \"id\": \"9c7bd442-4839-4be1-8d80-b2414f7d34c6\",\n                    \"unit\": 10\n                }\n            ],\n            \"total\": \"10000.000\",\n            \"processing\": \"2\",\n            \"shipped\": \"1\",\n            \"delivered\": \"1\",\n            \"coupon\": null,\n            \"method\": \"AUTOMATIC\",\n            \"currency\": \"NGN\",\n            \"referrence\": \"223344\",\n            \"email\": \"admin@inchperfectstores.com\",\n            \"createdAt\": \"2022-01-11T22:11:12.000Z\",\n            \"updatedAt\": \"2022-01-11T22:11:12.000Z\"\n        }\n    ],\n    \"page\": 1,\n    \"totalPages\": 1,\n    \"totalOrders\": 2\n}"
+				}
+			]
+		},
+		{
+			"name": "set order status",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "https://api.inchperfectstores.com/orders/order_status?delivered=e8ca7801-567f-4066-a909-720ae8419c1f",
+					"protocol": "https",
+					"host": [
+						"api",
+						"inchperfectstores",
+						"com"
+					],
+					"path": [
+						"orders",
+						"order_status"
+					],
+					"query": [
+						{
+							"key": "delivered",
+							"value": "e8ca7801-567f-4066-a909-720ae8419c1f"
+						},
+						{
+							"key": "shipped",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "processing",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "set order status",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "https://api.inchperfectstores.com/orders/order_status?delivered=e8ca7801-567f-4066-a909-720ae8419c1f",
+							"protocol": "https",
+							"host": [
+								"api",
+								"inchperfectstores",
+								"com"
+							],
+							"path": [
+								"orders",
+								"order_status"
+							],
+							"query": [
+								{
+									"key": "delivered",
+									"value": "e8ca7801-567f-4066-a909-720ae8419c1f"
+								},
+								{
+									"key": "shipped",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "processing",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 12 Jan 2022 14:19:46 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "543"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"21f-YATBTn6bxzFYaNMwuFIt0dgo6zY\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"e8ca7801-567f-4066-a909-720ae8419c1f\",\n    \"first_name\": \"Inch\",\n    \"last_name\": \"Perfect\",\n    \"country\": \"Nigeria\",\n    \"state\": \"Lagos\",\n    \"town\": \"Igando\",\n    \"street\": \"Lagos street 01\",\n    \"phone_number\": \"07065240321\",\n    \"postal_code\": \"41123\",\n    \"product\": [\n        {\n            \"id\": \"9c7bd442-4839-4be1-8d80-b2414f7d34c6\",\n            \"unit\": 10\n        }\n    ],\n    \"total\": \"10000.000\",\n    \"processing\": \"1\",\n    \"shipped\": \"1\",\n    \"delivered\": \"2\",\n    \"coupon\": null,\n    \"method\": \"AUTOMATIC\",\n    \"currency\": \"NGN\",\n    \"referrence\": \"2233d44\",\n    \"email\": \"admin@inchperfectstores.com\",\n    \"createdAt\": \"2022-01-11T22:31:15.000Z\",\n    \"updatedAt\": \"2022-01-12T14:19:46.000Z\"\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiSW5jaCIsImxhc3RfbmFtZSI6IlBlcmZlY3QiLCJlbWFpbCI6ImFkbWluQGluY2hwZXJmZWN0c3RvcmVzLmNvbSIsImlkIjoiOWJhMWE1YjAtNzJmYy0xMWVjLTljODQtNzM2NzgxYzA0MjVmIiwiaWF0IjoxNjQxOTE5Mzc3fQ.4CJRVehEIK2bqcHtQGUoNASEGtEjG6-HPe1KKBD0zGo",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
