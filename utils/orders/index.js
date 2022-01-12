@@ -121,7 +121,7 @@ const getOrderedProducts = async (data) => {
     email,
     order = [["updatedAt", "DESC"]],
   } = data;
-  const totalOrders = await Products.count({
+  const totalOrders = await Orders.count({
     where: {
       ...(id && { id: { [Op.like]: `%${id}%` } }),
       ...(method && { method: { [Op.like]: `%${method}%` } }),
@@ -131,7 +131,6 @@ const getOrderedProducts = async (data) => {
       ...(email && { email: { [Op.like]: `%${email}%` } }),
     },
   });
-  console.log(totalOrders, "this is total");
   const offset = (Number(page) - 1) * Number(limit);
   const orders = await Orders.findAll({
     where: {
