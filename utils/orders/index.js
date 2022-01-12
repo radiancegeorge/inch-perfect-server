@@ -173,6 +173,7 @@ const setProcessing = async (id) => {
       },
     }
   );
+  return await Orders.findOne({ where: { id } });
 };
 const setDelivered = async (id) => {
   const { delivered } = (
@@ -193,6 +194,7 @@ const setDelivered = async (id) => {
       },
     }
   );
+  return await Orders.findOne({ where: { id } });
 };
 const setShipped = async (id) => {
   const { shipped } = (
@@ -213,6 +215,7 @@ const setShipped = async (id) => {
       },
     }
   );
+  return await Orders.findOne({ where: { id } });
 };
 
 // const testOrder = JSON.stringify([
