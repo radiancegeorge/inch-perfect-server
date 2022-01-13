@@ -5,6 +5,7 @@ import './order.scss'
 import {test} from '../../../config/config.json'
 import { useEffect } from 'react'
 import Component from './Component'
+import { Link } from 'react-router-dom'
 
 
 
@@ -64,7 +65,7 @@ export default  function Order(params) {
     console.log(totalPages,numbers);
     return(
      <div class='dashBoard'>
-           <div class='head'><img src={Logo} alt='logo'/></div>
+           <Link to='/admin/dashboard' class='head'><img src={Logo} alt='logo'/></Link>
            <div class='order_body'>
                <div className="top">
                    <span className='manual'onClick={()=>setRequest(4)}>Manual</span>
