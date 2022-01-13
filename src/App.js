@@ -20,6 +20,8 @@ import AddProduct from './pages/ADMIN/Products/AddProduct'
 import ProtectedRoute from './hooks/ProtectedRoute'
 import {ProductContext} from './hooks/userContext.js'
 import {PrefferedCurrency} from './hooks/userContext.js'
+import Order from './pages/ADMIN/Order';
+import Reset from './pages/registration/components/reset';
 function App() {
 
 const [products,setProducts]=useState([])
@@ -65,6 +67,10 @@ const [userCurrency,setUserCurrency]=useState('USD')
           <ProtectedRoute path='/admin/products'  component={ProductList }/>
           <ProtectedRoute path='/admin/product'   component= {AdminProduct}  />
           <ProtectedRoute path='/admin/addproduct'   component={AddProduct}/>
+          <ProtectedRoute path='/admin/see-order'   component={Order}/>
+          <ProtectedRoute path='/reset-password'   component={Reset}/>
+
+
       </Switch>
     </Router>
     </ProductContext.Provider>

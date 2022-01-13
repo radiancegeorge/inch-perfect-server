@@ -79,7 +79,7 @@ const Pay = () => {
                             </div>
                             <div style={{marginTop:'24px'}}>
                                <label>Order number</label>
-                               <input type='number' value={localStorage.getItem('orderId')} />
+                               <input readOnly={true} type='number' value={localStorage.getItem('orderId')} />
                             </div>
                             <div style={{marginTop:'24px'}}>
                            <label>Bank details</label>
@@ -106,7 +106,7 @@ const Pay = () => {
                            
                            <button onClick={()=>setDone(!done)}>Confirm payment</button>
                              
-                           <span>or</span>
+                           <span>and</span>
 
                            <label>Send screenshots to <a href='mailto:'>support@inchperfect.com</a></label>
                            <input type='file' style={{display:'none'}} ref={uploadRef} />

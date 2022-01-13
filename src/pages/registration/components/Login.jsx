@@ -80,6 +80,12 @@ const Login =({setView})=>{
                             Sign up
                         </span>
                     </p>
+                    <p className='switch'>
+                        forgot password? 
+                        <Link to='/reset-password'>
+                            reset
+                        </Link>
+                    </p>
                 </label>
             </form>
         </div>

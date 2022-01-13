@@ -57,6 +57,8 @@ export default function DashBoard() {
                    
                
                }}>Add Category</span></div> </div></Link>
+               <Link to='/admin/see-order'> <div class='div'> <div class='white-div'><ViewEye /><span>View Order</span></div> </div></Link>
+
                <Link > <div class='div'> <div class='white-div'><ViewEye /><span onClick={()=>{
                    setShowCategory(!showCategory)
                    setView(true)

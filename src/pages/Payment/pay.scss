@@ -312,7 +312,12 @@
             height: 42px;
             width: 220px;
             border-radius: 7px;
-            background:var(--white-bg);
+            background:var(--black-bg);
+            padding: 16px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
 
 
         }
@@ -571,6 +576,7 @@
                 flex-direction:column;
                 align-items:center;
                 justify-content:space-between;
+                color: var(--black-bg);
             }
         }
         
@@ -626,7 +632,12 @@
             height: 42px;
             width: 220px;
             border-radius: 7px;
-            background:var(--white-bg);
+            background:var(--black-bg);
+            padding: 8px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
 
 
         }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useEffect, useState,  } from "react"
 import './payment.scss' 
 import { useSelector } from "react-redux"
@@ -30,7 +30,7 @@ export default function Payment() {
     const [currency,setCurrency]=useState('USD')
     const[priceUsd,setPriceUsd]=useState(0)
      const [priceNgn,setPriceNgn]=useState(0)
-
+     const authLink=useRef(null)
     const lagos=/lagos/i
     const region =/island|lekki|vgc|ajah|ikoyi|bannana/i
     const nigeria=/nigeria/i
@@ -75,8 +75,14 @@ export default function Payment() {
 
    const [cost,setCost]=useState(priceUsd )
 
-
-
+  const token=localStorage.getItem('inchToken')
+  useEffect(()=>{
+    console.log(token,'hi')
+      if(!token){authLink.current.click()
+  ;
+}
+      else return
+  },[])
   const initiateTransaction = () => {
      if(cost>0){
     paystack.newTransaction({
@@ -169,6 +175,7 @@ export default function Payment() {
       return (
         <Products >
             <div class='payment'>
+                <Link to='/auth' ref={authLink} style={{display:'none'}}></Link>
             <div class='payment_details'>
                  <div class='heading'>
                  <Link ref={homeRef} style={{display:'none'}} to='/'></Link>
@@ -219,19 +226,20 @@ export default function Payment() {
 
 
                     <div class={`payment_option ${payNone}`}>
-                        <p> Chose Payment method</p>
-                              <div><span class='platform' onClick={(e) => {setTransactionType(2)
-                                  select(e.target, transType)  
-                            }}><BriefCase /> Bank</span> <span class='platform' onClick={(e)=>{setTransactionType(1)
-                               select(e.target,transType)
-                            }} ><Card /> Card</span></div>
+                       
                         <p>Chose currency</p>
                         <div><span class='flag' onClick={(e)=>{setCurrency('NGN')
                                                           select(e.target,flags)
                               }}><Nigeria /> NGN</span> <span class='flag' onClick={(e) => {
                                   setCurrency('USD')
                                   select(e.target,flags)
-                              }} ><America /> USD</span></div>
+                              }} ><America /> USD</span></div> 
+                              <p> Chose Payment method</p>
+                              <div><span class='platform' onClick={(e) => {setTransactionType(2)
+                                  select(e.target, transType)  
+                            }}><BriefCase /> Bank</span> <span class='platform' onClick={(e)=>{setTransactionType(1)
+                               select(e.target,transType)
+                            }} ><Card /> Card</span></div>
                        <div style={{flexDirection:'column'}}>
                         <p>Coupon code</p>
                         <div class='coupon'><input /><Good /></div></div>
