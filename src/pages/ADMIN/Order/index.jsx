@@ -18,7 +18,20 @@ export default function Order(params) {
   const [numbers, setNumbers] = useState([]);
   const [orders, setOrders] = useState([]);
   const [request, setRequest] = useState(1);
+
+  const changeColor=(num)=>{
+    const categories=document.querySelectorAll('.deliverd')
+    console.log(categories);
+    categories.forEach(cats=>{
+      if(cats.id===`${num}`){
+        console.log(cats)
+        cats.style.color='red'
+    }
+      else cats.style.color='black'
+    })
+  }
   useEffect(() => {
+    changeColor(request)
     if (request === 1) {
       axios
         .get(`${url}orders?delivered=1&page=${pages}`, {
@@ -33,6 +46,8 @@ export default function Order(params) {
           setOrders(response.results);
           setTotalPages(response.totalPages);
         });
+
+    
     } else if (request === 2) {
       axios
         .get(`${url}orders?delivered=2&page=${pages}`, { headers: headers })
@@ -67,6 +82,8 @@ export default function Order(params) {
         });
     }
   }, [request, pages]);
+
+
   const displayNumbers = () => {
     let number = 1;
     let array = [];
@@ -77,6 +94,7 @@ export default function Order(params) {
       number++;
     }
   };
+  
   useEffect(() => displayNumbers(), []);
   console.log(totalPages, numbers);
   return (
@@ -86,16 +104,16 @@ export default function Order(params) {
       </Link>
       <div class="order_body">
         <div className="top">
-          <span className="manual" onClick={() => setRequest(4)}>
+          <span id='4' className="deliverd" onClick={() => setRequest(4)}>
             Manual
           </span>
-          <span class="paystack" onClick={() => setRequest(3)}>
+          <span id='3' class="deliverd" onClick={() => setRequest(3)}>
             Paid
           </span>
-          <span clas="deliverd" onClick={() => setRequest(1)}>
+          <span id='1' class="deliverd" onClick={() => setRequest(1)}>
             Pending
           </span>
-          <span clas="deliverd" onClick={() => setRequest(2)}>
+          <span id='2' class="deliverd" onClick={() => setRequest(2)}>
             Delivered
           </span>
         </div>

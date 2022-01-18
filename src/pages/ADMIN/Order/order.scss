@@ -80,10 +80,14 @@
             width: 100%;
             display: flex;
             justify-content: center;
+            span{
+                // font-size: 12px;
+                cursor: pointer;
+            }
         }
         .ordered_products{
           padding: 12px;
-          height: 250px;
+          height: 200px;
           overflow-y: scroll;
 
           .product_item{
@@ -92,6 +96,7 @@
           }
           span{
               font-size: 12px;
+              cursor: pointer;
           }
         }
         }

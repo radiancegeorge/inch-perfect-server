@@ -68,7 +68,7 @@ export default function Component({ data }) {
             </div>
             <div class="delivery_status">
               {data.delivered === "1" && (
-                <span onClick={setDelivered}>Delivered?</span>
+                <span  onClick={setDelivered}>Delivered?</span>
               )}
               {data.delivered === "2" && <span>Delivered</span>}
             </div>
