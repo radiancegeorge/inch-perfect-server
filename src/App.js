@@ -63,12 +63,15 @@ const [userCurrency,setUserCurrency]=useState('USD')
           <Route exact path='/admin' >
                 <Login />
           </Route>
+          <Route path='/reset-password'>
+              <Reset/>
+          </Route>
           <ProtectedRoute path='/admin/dashboard' component={DashBoard }/>
           <ProtectedRoute path='/admin/products'  component={ProductList }/>
           <ProtectedRoute path='/admin/product'   component= {AdminProduct}  />
           <ProtectedRoute path='/admin/addproduct'   component={AddProduct}/>
           <ProtectedRoute path='/admin/see-order'   component={Order}/>
-          <ProtectedRoute path='/reset-password'   component={Reset}/>
+         
 
 
       </Switch>

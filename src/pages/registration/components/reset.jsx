@@ -91,7 +91,7 @@ const Reset = () => {
             {!showOtp &&  <div className='rightContainer'>
             <div className="register">
             
-            {/* {
+            {/* {ad
                 loginObject.error === null && <Redirect to='/'/>
             } */}
             
