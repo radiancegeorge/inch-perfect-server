@@ -6,6 +6,7 @@ import axios from 'axios'
 const useSignUp = () =>{
     const url=test;
     const [signUpObject,setSignUpObject]=useState()
+    const [showSuccess,setShowSucess]=useState(false)
     const signUp=async (body)=>{
         setSignUpObject(true)
          try {
@@ -16,6 +17,7 @@ const useSignUp = () =>{
             });
                 console.log(data)
                 setSignUpObject(false)
+                setShowSucess(true)
         } catch (error) {
             
             console.log(error.response.data.error)
@@ -30,7 +32,7 @@ const useSignUp = () =>{
     //     manual: true
     // })
     return{
-       signUpObject,  signUp
+       signUpObject,  signUp,showSuccess
     }
 }
 

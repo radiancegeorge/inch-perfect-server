@@ -7,6 +7,7 @@ import { useState } from 'react'
 import Loader from "react-loader-spinner";
 import useSignUp from '../../../hooks/signup'
 import '../signup.scss'
+import { useEffect } from 'react'
 
 const SignUp = ({setView}) =>{
     const [eye, setEye] = useState(false)
@@ -19,24 +20,18 @@ const SignUp = ({setView}) =>{
         email:'',
         password:''
     })
-    const {signUpObject, signUp} = useSignUp()
+    const {signUpObject, signUp,showSuccess} = useSignUp()
     const handleSignUp = e =>{
         e.preventDefault();
         signUp(userData)
         console.log(userData)
-        // try{
-        //     signUp(
-        //         {
-        //             data: userData
-        //         }
-        //     )
-        // }
-        // catch(err){
-        //     console.log(err)
-        // }
+    
         
 
     }
+    useEffect(()=>{
+        if(showSuccess)setView('Registration Successful')
+    },[showSuccess])
     // console.log(signUpObject)
     // if(signUpObject){
     //     signUpObject?.response?.status === 200 && setView('Registration Successful')

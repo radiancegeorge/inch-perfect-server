@@ -70,14 +70,14 @@ export default function DashBoard() {
                <Link to='/admin/addproduct'> <div class='div'> <div class='white-div'><PlusCircle /><span>Add product</span></div> </div></Link>
                
 
-              {showCategory && <div class='add-category'>
+              {showCategory && <div onClick={()=>setShowCategory(false)} class='add-category'>
                  {
-                     !view && <div class='add-container'>
+                     !view && <div onClick={(e)=>e.stopPropagation()} class='add-container'>
                                     <input type='text'placeholder='Enter New Category' onChange={(e)=>setCat({name:e.target.value})} /> <span onClick={()=>cat?createCategory(cat):''}><PlusCircle /></span>
                               </div>
                  }
                  
-                 {view && <div class='category-list'>
+                 {view && <div onClick={(e)=>e.stopPropagation()} class='category-list'>
                             {cats.map(category=>(
                     <div class='cat-items'><span>{category.category}</span><span onClick={()=>{    
                         deleteCategory(category.id);
