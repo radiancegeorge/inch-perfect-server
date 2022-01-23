@@ -105,10 +105,10 @@ export default function Order(params) {
       <div class="order_body">
         <div className="top">
           <span id='4' className="deliverd" onClick={() => setRequest(4)}>
-            Manual
+            Transfer
           </span>
           <span id='3' class="deliverd" onClick={() => setRequest(3)}>
-            Paid
+            card
           </span>
           <span id='1' class="deliverd" onClick={() => setRequest(1)}>
             Pending
