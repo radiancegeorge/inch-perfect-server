@@ -201,7 +201,7 @@ export default function Payment() {
                             setPayNone('')
                         }}>Next</button>
 
-                        <div class='total'><span>Total:</span>{currency==='USD'?`$${cost + fee}`:`N${cost + fee}`}</div>
+                        <div class='total'><span>fee:</span>{currency==='USD'?`$${fee}`:`N${fee}`}<span>Total:</span>{currency==='USD'?`$${cost}`:`N${cost}`}</div>
 
                     </div>
                     }

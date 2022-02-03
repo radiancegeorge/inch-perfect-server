@@ -1,8 +1,7 @@
 import React,{useContext} from 'react'
 import './profile.scss'
 import Open from '../../assets/svg/Open'
-import Nigeria from '../../assets/svg/Nigeria'
-import America from '../../assets/svg/America'
+
 import LogOut from '../../assets/svg/LogOut'
 import DeliveryDetails from './DeliveryDetails'
 import PersonalDetails from './PersonalDetails'
@@ -14,7 +13,6 @@ export default function Profile() {
     const [focusName,setFocusName]=React.useState('')
     const [personal,setPersonal]=React.useState(false)
     const [delivery,setDelivery]=React.useState(false)
-    const {userCurrency,setUserCurrency}=useContext(PrefferedCurrency)
    const focus=(e)=>{
         setFocusName(e.target.id)
         if(e.target.id==='personal')setPersonal(!personal)
@@ -45,22 +43,7 @@ export default function Profile() {
          linkRef.current.click()
          localStorage.clear()
    }
-       const currency=document.querySelectorAll('.flag')
-       
-    React.useEffect((e)=>{
-      currency.forEach(currency=>{
-          console.log(currency,userCurrency);
-
-          if (userCurrency===currency.id){
-              currency.classList.add('focused-flag')
-              console.log(currency.classList)
-              }
-              else currency.classList.remove('focused-flag')
-          
-          
-          },[userCurrency])
-
-    })
+   
     return (
         <div class='profile'>
             <div class='profileNav'>
@@ -78,14 +61,7 @@ export default function Profile() {
                 {delivery && <div class='personal_content'><DeliveryDetails /></div>}
                 </div>
                 <div class='line'></div>
-                <div class='currency'>
-                  <p>Currency</p>
-                  <div class='country'>
-                      <div id='NGN' onClick={(e)=>setUserCurrency(e.target.id)} class='flag'><Nigeria /> NGN</div>
-                      <div id='USD' onClick={(e)=>setUserCurrency(e.target.id)} class='flag'><America /> USD</div>
-                  </div>
-                
-                </div>
+               
                 <div class='log_out' onClick={logout}>Logout <LogOut /></div>
                 <Link to='/auth' ref={linkRef}/>
             </div>

@@ -86,6 +86,54 @@
     display: flex;
     align-items: center;
     padding-right: 40px;
+
+    .currency{
+      width:100%;
+      padding: 0 16px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+       color: rgba(121, 119, 116, 1);
+       font-family: Mulish;
+      font-size: 16px;
+      font-style: normal;
+       font-weight: 600;
+       line-height: 20px;
+        letter-spacing: 0em;
+        text-align: left;
+
+
+
+      p{
+          width:100%;
+          margin-bottom:12px
+      }
+      .country{
+          width:100%;
+          display:flex;
+          justify-content:space-around;
+           
+          svg{
+            margin: 0;
+          }
+          .flag{
+              display:flex;
+              flex-basis:46%;
+              justify-content:space-between;
+              align-items:center;
+              border: 0.2px solid var(--line-rgba);
+              background: var(--white-bg);
+              border-radius:7px;
+              padding:8px;
+
+          }
+          .focused-flag{
+              box-shadow:0 0 4px gray;
+              
+          }
+      }
+  }
+
     .svg {
       display: flex;
       flex-flow: column;
@@ -142,7 +190,7 @@
 
         display: flex;
         align-items: center;
-        padding: 8px 16px;
+        padding: 8px 8px;
         flex-basis: 100%;
         input {
           background: none;
@@ -216,7 +264,7 @@
     svg {
       width: 18px;
       height: 18px;
-      margin-left: 41px;
+      margin-left: 22px;
     }
   }
 }

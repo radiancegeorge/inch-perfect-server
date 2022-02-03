@@ -13,7 +13,13 @@ export default function Components({data ,page}) {
     const history = useHistory()
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart);
-   
+    const [showAdd,setShowAdd]=useState(true)
+    
+
+    useEffect(()=>cart.map(item=>{
+        if(item===data)setShowAdd(false)
+        else {}
+    }),[cart])
    const image=JSON.parse(data.product_image)
    console.log(image);
     // useEffect(()=>{return {...data,unit:1}
@@ -47,7 +53,7 @@ export default function Components({data ,page}) {
                                             {userCurrency==='USD'?`$${data.price_usd}`:`N${data.price_ngn}`}
                                         </span>
                                         {
-                                            !cart.includes(data) && <div onClick={()=>{
+                                            showAdd && <div onClick={()=>{
                                                 dispatch(addToCart(data))
                                                 // console.log(image[0]);
                                             }} className="addProduct">

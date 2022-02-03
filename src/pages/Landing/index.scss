@@ -1,0 +1,174 @@
+.landing{
+    height: fit-content;
+    width: 100%;
+    .top{
+        display: flex;
+        background-color: rgb(13,13,13);
+        height: 100vh;
+        width: 100%;
+         .overlay{
+             position: absolute;
+             width: 100%;
+             height: 100%;
+             background-color: rgba(13,13,13,0.4);
+         }
+        .left{
+            width: 200px;
+            height: 100%;
+            position: relative;
+
+
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .main{
+            padding: 80px 120px;
+            width: calc(100%  - 200px);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            .nav_side{
+                width: 60%;
+                height: fit-content;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                
+
+                .homeLink{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    .span{
+                        width: 10px;
+                        height:10px;
+                        background-color: yellow;
+                        border-radius: 5px;
+                    }
+                }
+                a{
+                    color: #ffffff;
+                    // font-family: Neou;
+                    font-size: 28px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 34px;
+                     letter-spacing: 0em;
+                   text-align: left;
+                    text-decoration: none;
+
+                  
+                }
+                .blur{
+                    opacity: 70%;
+                }
+            }
+            .bottom_Img{
+                padding: 0 40px;
+                width: 100%;
+                height: 140px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .write_up{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                h1{
+                    // width: 100%;
+                    font-family: Neou;
+                  font-size: 46px;
+                  text-transform: uppercase;
+font-style: normal;
+font-weight: 400;
+line-height: 110px;
+letter-spacing: 0em;
+text-align: left;
+opacity: 80%;
+
+
+
+                }
+                p{
+                    width: 65%;
+                    padding: 16px;
+                    font-family: Mulish;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: 38px;
+letter-spacing: 0.04em;
+text-align: center;
+
+                }
+            }
+        }
+    }
+    .about{
+        width: 100%;
+        .top{
+            background-color: white;
+            padding: 64px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+            .arts{
+                width: 75%;
+                height: 200px;
+                display: flex;
+                justify-content: space-between;
+
+                .img{
+                    height: 85%;
+                    width: 30%;
+                    border-radius: 7px;
+                    overflow: hidden;
+                    position: relative;
+
+                    .overlay{
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(13,13,13,0.4);
+                    }
+
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+            h1{
+                font-family: Times New Roman;
+                 width: 40%;
+                 text-transform: uppercase;
+font-family: Neou;
+font-size: 56px;
+font-style: normal;
+font-weight: 400;
+line-height: 67px;
+letter-spacing: 0em;
+text-align: center;
+position: relative;
+
+           
+            span{
+                color:rgba(13,13,13,0.4);
+                text-transform: lowercase;
+                font-family: Neou;
+                font-weight: 500;
+                font-size: 70px;
+            }
+
+            }
+        }
+    }
+}
