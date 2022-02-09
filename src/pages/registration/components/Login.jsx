@@ -39,7 +39,7 @@ const Login =({setView})=>{
     return(
 
         <div className="register">
-        <Link ref={linkRef} to='/' style={{display:'none'}} />
+        <Link ref={linkRef} to='/products' style={{display:'none'}} />
             {/* {
                 loginObject.error === null && <Redirect to='/'/>
             } */}
