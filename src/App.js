@@ -23,6 +23,7 @@ import {PrefferedCurrency} from './hooks/userContext.js'
 import Order from './pages/ADMIN/Order';
 import Reset from './pages/registration/components/reset';
 import Landing from './pages/Landing';
+import Contact from './pages/Contact';
 function App() {
 
 const [products,setProducts]=useState([])
@@ -40,6 +41,10 @@ const [userCurrency,setUserCurrency]=useState('USD')
           <Route path='/successfulVerification'>
             <VerificationSuccessful />
           </Route>
+          <Route path='/products'>
+            <Products><ProductsContainer /></Products>
+
+          </Route>
           <Route exact path='/product'>
             <Products>
                  <Product /> 
@@ -47,7 +52,9 @@ const [userCurrency,setUserCurrency]=useState('USD')
           </Route>
           <Route exact path='/'>
             <Landing />
-            {/* <Products><ProductsContainer /></Products> */}
+          </Route>
+          <Route exact path='/contact-us'>
+            <Contact />
           </Route>
           <Route exact path='/checkout' >
             <Payment />
