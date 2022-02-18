@@ -16,7 +16,7 @@ import ios from './Images/ios.png'
 import Happy from './Images/happy.png'
 import Cats from './Images/cats.png'
 import Footer from './footer'
-
+import Pic from '../Contact/picture.png'
 
 
 export default function Landing(){
@@ -47,6 +47,9 @@ export default function Landing(){
                     <Link to='/contact-us' className='blur'>CONTACT US</Link>
                     
                     </div>
+                    <div className="small_screen_pic">
+                    <img src={Pic} alt="" />
+                </div>
                     <div className="write_up">
                         <h1>The <span>classy</span> woman’s store</h1>
                         <p>
@@ -85,10 +88,12 @@ export default function Landing(){
                             Take me there
                         </button>
                     </div>
+                    <div className="pic_container">
                     <div className="pictures">
                         {products.map(cat=>(
                             <Category data={cat} />
                         ))}
+                    </div>
                     </div>
                 </div>
                 <div className="about_us">
@@ -116,6 +121,7 @@ export default function Landing(){
                     </div>
                 </div>
                 <div className="numbers">
+
                     <img src={Cats} alt="" />
                     <img src={Happy} alt="" />
                     <img src={ios} alt="" />

@@ -1,6 +1,20 @@
-.contact{
+@mixin responsive ($size) {
+    @if $size == desktop {
+        @media only screen and (min-width:800px) {@content};
+    }
+    @if $size == Phones {
+        @media only screen and (max-width:799px){@content};
+    }
+}
+
+
+@include responsive(desktop){.contact{
     .main{
         height: 90%;
+    }
+
+    .small_screen_pic{
+        display: none;
     }
     .write_up{
         width: 65% !important;
@@ -11,6 +25,10 @@
         flex-direction: row !important;
         .left{
             width: 40%;
+
+            h2{
+                display: none;
+            }
         }
         .left,.right{
             
@@ -105,3 +123,121 @@ text-align: left;
         }
     }
 }
+}
+
+
+
+@include responsive(Phones){.contact{
+    .main{
+        justify-content: flex-start !important;
+        
+
+        .small_screen_pic{
+            margin: 16px 0;
+        }
+    .write_up{
+
+        .svg{
+            transform: rotate(90deg);
+            margin: 0;
+        }
+       
+        .left{
+            width: 80%;
+            display: inline-block;
+        }
+        .left,.right{
+            
+            height:fit-content;
+            
+
+          .contacts{
+              
+              .number,.mail{
+                  width: 100%;
+                  height: 45px;
+                  display: flex;
+                //   justify-content: space-between;
+                  align-items: center;
+                  background-color: rgba(255,255,255,0.2);
+                  padding: 4px;
+
+                  svg{
+                      margin-right: 12px;
+                  }
+
+                  a{
+                      color: white;
+                      text-decoration: none;
+                      font-family: Mulish;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 23px;
+letter-spacing: 0em;
+text-align: left;
+
+                  }
+              }
+          }
+          .socials{
+              width: 100%;
+              justify-content: space-between;
+              display: flex;
+              align-items: center;
+              margin-top: 16px;
+
+              svg{
+                  border: solid 0.5px white;
+                  padding:4px;
+              }
+          }
+
+          h2{
+            // font-family: Neou;
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 34px;
+            letter-spacing: 0em;
+            text-align: center;
+            width: 100%;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+                        
+          }
+        }
+        .right{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            form{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 90%;
+
+                button{
+                    padding: 8px;
+                }
+
+                ::placeholder{
+                    color: white;
+                }
+
+                input{
+                    width: 100%;
+                    padding: 16px;
+                    height: 38px;
+                    background-color: rgba(255,255,255,0.2);
+                    margin: 12px;
+
+                }
+            }
+        }
+    }
+}
+}}

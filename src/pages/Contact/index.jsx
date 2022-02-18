@@ -5,6 +5,7 @@ import Footer from "../Landing/footer";
 import Bottombg from '../../assets/png/bottombg.png'
 import '../Landing/index.scss'
 import './index.scss'
+import Pic from './picture.png'
 
 
 export default function Contact(){
@@ -24,8 +25,12 @@ export default function Contact(){
                 </div></div>
                 
                 </div>
+                <div className="small_screen_pic">
+                    <img src={Pic} alt="" />
+                </div>
                 <div className="write_up" >
                   <div className="left">
+                      <h2>Contact us</h2>
                       <div className="contacts">
                           <div className="number">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -54,7 +59,7 @@ export default function Contact(){
                   <path d="M23 2.9998C22.0424 3.67528 20.9821 4.19191 19.86 4.5298C19.2577 3.83731 18.4573 3.34649 17.567 3.12373C16.6767 2.90096 15.7395 2.957 14.8821 3.28426C14.0247 3.61151 13.2884 4.1942 12.773 4.95352C12.2575 5.71283 11.9877 6.61214 12 7.5298V8.5298C10.2426 8.57537 8.50127 8.18561 6.93101 7.39525C5.36074 6.60488 4.01032 5.43844 3 3.9998C3 3.9998 -1 12.9998 8 16.9998C5.94053 18.3978 3.48716 19.0987 1 18.9998C10 23.9998 21 18.9998 21 7.4998C20.9991 7.22126 20.9723 6.9434 20.92 6.6698C21.9406 5.6633 22.6608 4.39251 23 2.9998V2.9998Z" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                   </a>
-                  <a href="">
+                  <a href="https://www.instagram.com/inch__perfect/">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M17 2H7C4.23858 2 2 4.23858 2 7V17C2 19.7614 4.23858 22 7 22H17C19.7614 22 22 19.7614 22 17V7C22 4.23858 19.7614 2 17 2Z" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M15.9997 11.3703C16.1231 12.2025 15.981 13.0525 15.5935 13.7993C15.206 14.5461 14.5929 15.1517 13.8413 15.53C13.0898 15.9082 12.2382 16.0399 11.4075 15.9062C10.5768 15.7726 9.80947 15.3804 9.21455 14.7855C8.61962 14.1905 8.22744 13.4232 8.09377 12.5925C7.96011 11.7619 8.09177 10.9102 8.47003 10.1587C8.84829 9.40716 9.45389 8.79404 10.2007 8.40654C10.9475 8.01904 11.7975 7.87689 12.6297 8.0003C13.4786 8.12619 14.2646 8.52176 14.8714 9.12861C15.4782 9.73545 15.8738 10.5214 15.9997 11.3703Z" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -71,7 +76,7 @@ export default function Contact(){
 
                   </div>
 
-                  <svg style={{margin:'0 16px'}} xmlns="http://www.w3.org/2000/svg" width="16" height="158" viewBox="0 0 16 158" fill="none">
+                  <svg className="svg" style={{margin:'0 16px'}} xmlns="http://www.w3.org/2000/svg" width="16" height="158" viewBox="0 0 16 158" fill="none">
 <line opacity="0.3" x1="7.5" y1="158" x2="7.5" y2="110" stroke="white"/>
 <line opacity="0.3" x1="7.5" y1="48" x2="7.5" stroke="white"/>
 <path d="M2.86 82.45C2.86 84.41 4.45 86 6.41 86C8.37 86 9.96 84.41 9.96 82.45C9.96 80.5 8.37 78.91 6.41 78.91C4.45 78.91 2.86 80.5 2.86 82.45ZM9.23 82.45C9.23 84 7.96 85.26 6.41 85.26C4.86 85.26 3.6 84 3.6 82.45C3.6 80.9 4.86 79.64 6.41 79.64C7.96 79.64 9.23 80.9 9.23 82.45ZM6.8 74.8794C6.8 73.7994 5.91 72.9194 4.82 72.9194C3.74 72.9194 2.85 73.7994 2.85 74.8794L2.85 77.7094H10V76.9594H6.97L10 73.5594V72.4494L6.8 76.0594V74.8794ZM3.6 76.9594L3.6 74.8794C3.6 74.2094 4.15 73.6594 4.82 73.6594C5.5 73.6594 6.05 74.2094 6.05 74.8794V76.9594H3.6Z" fill="white"/>
