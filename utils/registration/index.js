@@ -38,7 +38,7 @@ const registration = async (data) => {
         email,
         code,
       }),
-      to: [email],
+      to: email,
       subject: "Email Verification",
     });
     return await getUser(email);

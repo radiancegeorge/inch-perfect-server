@@ -93,19 +93,19 @@ const getProducts = async (data) => {
           }),
         ...(category && {
           category: {
-            [Op.like]: `%${category}%`,
+            [Op.regexp]: category,
           },
         }),
         ...(pattern && { pattern }),
         ...(color && {
           color: {
-            [Op.like]: `%${color}%`,
+            [Op.regexp]: color,
           },
         }),
         ...(rating && { rating }),
         ...(product_name && {
           product_name: {
-            [Op.like]: `${product_name}`,
+            [Op.regexp]: product_name,
           },
         }),
       },

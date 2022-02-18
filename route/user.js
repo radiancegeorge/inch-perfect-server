@@ -1,4 +1,5 @@
 const express = require("express");
+const sendMessage = require("../controller/contact");
 const { update } = require("../controller/users/addBillingInfo");
 const { loginUser } = require("../controller/users/login");
 const { patchUser, requestOtp } = require("../controller/users/patchUSer");
@@ -12,6 +13,7 @@ user
   .post("/login", loginUser)
   .post("/update_billing_info", protect, update)
   .patch("/", patchUser)
-  .post("/otp", requestOtp);
+  .post("/otp", requestOtp)
+  .post("/contact-us", sendMessage);
 
 module.exports = user;
