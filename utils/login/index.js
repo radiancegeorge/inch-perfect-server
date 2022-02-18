@@ -16,7 +16,7 @@ const login = async (email, password) => {
   } = user;
   const isPassword = await verifyHashedText(hashedPassword, password);
   if (!isPassword) throw "Wrong password!";
-  checkActiveAndVerified(active, verified);
+  // checkActiveAndVerified(active, verified);
 
   //create token
   const token = encryptUser({
