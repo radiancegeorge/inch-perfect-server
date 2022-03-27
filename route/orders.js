@@ -9,7 +9,7 @@ const { protect, adminProtect } = require("../middlewares/protect.middleware");
 const orders = express.Router();
 
 orders
-  .post("/create_order", protect, makeOrder)
+  .post("/create_order", makeOrder)
   .patch("/order_status", protect, adminProtect, setOrderStatus)
   .get("/", protect, adminProtect, getOrders);
 

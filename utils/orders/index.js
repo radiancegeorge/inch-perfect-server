@@ -14,31 +14,22 @@ const createOrder = async (id, object) => {
   });
 
   object.id = v4();
-  const {
-    first_name,
-    last_name,
-    country,
-    state,
-    town,
-    street,
-    email,
-    phone_number,
-    postal_code,
-  } = await getUser(id);
+  // const {
+  //   first_name,
+  //   last_name,
+  //   country,
+  //   state,
+  //   town,
+  //   street,
+  //   email,
+  //   phone_number,
+  //   postal_code,
+  // } = await getUser(id);
   const orderObject = {
     ...object,
-    first_name,
-    last_name,
-    country,
-    state,
-    town,
-    street,
-    email,
-    phone_number,
-    postal_code,
   };
   const currency = object.currency;
-  orderObject.currency = currency;
+  orderObject.currency = object.currency;
   const prices = orderObject.product.map(async (orderProduct) => {
     const { id, unit } = orderProduct;
     const { price_ngn, price_usd } = (
@@ -82,10 +73,10 @@ const createOrder = async (id, object) => {
   await setProcessing(orderObject.id);
 
   //remember to send an email confirming order later******
-  sendMail({
-    html: emailBodyOrder({ first_name, reference: orderObject.referrence }),
-    to: (await getUser(id)).email,
-  });
+  // sendMail({
+  //   html: emailBodyOrder({ first_name, reference: orderObject.referrence }),
+  //   to: (await getUser(id)).email,
+  // });
 
   return await getSingleOrder(orderObject.id);
 };

@@ -11,16 +11,16 @@ const { getUser } = require("../../utils/registration");
 
 const makeOrder = asyncHandler(async (req, res, next) => {
   const { useDefault } = req.body;
-  const defaultUserData = await getUser(req.user.id, [
-    "password",
-    "currency",
-    "active",
-    "verified",
-    "verification_id",
-    "id",
-    "createdAt",
-    "updatedAt",
-  ]);
+  // const defaultUserData = await getUser(req.user.id, [
+  //   "password",
+  //   "currency",
+  //   "active",
+  //   "verified",
+  //   "verification_id",
+  //   "id",
+  //   "createdAt",
+  //   "updatedAt",
+  // ]);
   const preOrderObject = { ...req.body, ...(useDefault && defaultUserData) };
   // console.log(preOrderObject);
   const order = await createOrder(req.user.id, preOrderObject);
