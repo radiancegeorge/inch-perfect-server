@@ -38,7 +38,7 @@ const registration = async (data) => {
         email,
         code,
       }),
-      to: [email],
+      to: email,
       subject: "Email Verification",
     });
     return await getUser(email);
@@ -139,10 +139,19 @@ const verifyEmail = async (email, verification_id) => {
 };
 // getUser("radiancegeorge@gmail.com").then((e) => console.log(e?.dataValues));
 
+const updateUser = async (data, email) => {
+  await Users.update(data, {
+    where: {
+      email,
+    },
+  });
+  return true;
+};
 module.exports = {
   getUser,
   hashText,
   checkEmail,
   registration,
   verifyEmail,
+  updateUser,
 };

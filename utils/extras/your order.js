@@ -1,4 +1,4 @@
-const emailBody = ({ email, server_url, code }) => {
+const emailBodyOrder = ({ first_name, reference }) => {
   return `
     <div style="
     font-family: 'Mulish', sans-serif;
@@ -23,8 +23,8 @@ const emailBody = ({ email, server_url, code }) => {
             <h2>
                 Welcome to Inch Perfect stores
             </h2>
-            <p>
-                Confirm your email address to have your account set up
+            <p> Hello! ${first_name}
+                Your order is Successful and is being processed
             </p>
             <a style="
                 display: block;
@@ -37,9 +37,8 @@ const emailBody = ({ email, server_url, code }) => {
                 border-radius: 7px;
                 margin-top: 64px;
                 text-decoration: none;"
-
-                href="${server_url}user/verify_email?email=${email}&code=${code}">
-                Confirm email address
+                href="#">
+               Your Order Reference is ${reference}
             </a>
         </div>
         <p style="
@@ -55,4 +54,4 @@ const emailBody = ({ email, server_url, code }) => {
     
     `;
 };
-module.exports = emailBody;
+module.exports = emailBodyOrder;

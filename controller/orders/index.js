@@ -4,23 +4,25 @@ const {
   setDelivered,
   setProcessing,
   setShipped,
+  getOrderedProducts,
+  getSingleOrder,
 } = require("../../utils/orders");
 const { getUser } = require("../../utils/registration");
 
 const makeOrder = asyncHandler(async (req, res, next) => {
   const { useDefault } = req.body;
-  const defaultUserData = await getUser(req.user.id, [
-    "password",
-    "currency",
-    "active",
-    "verified",
-    "verification_id",
-    "id",
-    "createdAt",
-    "updatedAt",
-  ]);
+  // const defaultUserData = await getUser(req.user.id, [
+  //   "password",
+  //   "currency",
+  //   "active",
+  //   "verified",
+  //   "verification_id",
+  //   "id",
+  //   "createdAt",
+  //   "updatedAt",
+  // ]);
   const preOrderObject = { ...req.body, ...(useDefault && defaultUserData) };
-  console.log(preOrderObject);
+  // console.log(preOrderObject);
   const order = await createOrder(req.user.id, preOrderObject);
   if (!order) throw "error making order";
   res.status(200).json(order);
@@ -46,7 +48,14 @@ const setOrderStatus = asyncHandler(async (req, res, next) => {
   }
   throw "Nothing to update!";
 });
+
+const getOrders = asyncHandler(async (req, res, next) => {
+  const { query } = req;
+  const orders = await getOrderedProducts(query);
+  res.status(200).json(orders);
+});
 module.exports = {
   makeOrder,
   setOrderStatus,
+  getOrders,
 };

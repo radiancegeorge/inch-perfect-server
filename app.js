@@ -9,6 +9,7 @@ const product = require("./route/products");
 const user = require("./route/user");
 // require("./utils/paystack");
 const cors = require("cors");
+const sendMail = require("./utils/mailer");
 const port = process.env.port || 4000;
 
 // middlewares
@@ -22,6 +23,16 @@ app.use("/user", user);
 app.use("/products", product);
 app.use("/coupon", coupons);
 app.use("/orders", orders);
+
+app.get("/test-mail", (req, res) => {
+  sendMail({
+    html: "<p>Hello</p>",
+    to: ["radiancegeorge@gmail.com"],
+  }).then((data) => {
+    console.log(data);
+    res.send("sent hello!");
+  });
+});
 //handle error
 app.use(error);
 sequelize.sync().then((e) => {

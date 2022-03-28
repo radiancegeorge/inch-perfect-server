@@ -19,9 +19,7 @@ const register = asyncHandler(async (req, res, next) => {
   const data = req.body;
   if (!files?.length) throw "file empty";
   data.product_image = JSON.stringify(
-    files.map(
-      (file) => `${process.env.server_url}product_image/${file.filename}`
-    )
+    files.map((file) => `${process.env.server_url}uploads/${file.filename}`)
   );
   try {
     const product = await registerProducts(data);

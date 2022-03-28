@@ -2,17 +2,34 @@ const { Op } = require("sequelize");
 const { v4 } = require("uuid");
 const { Products, Orders } = require("../../models");
 const { getCoupon, addUsage } = require("../coupons");
+const emailBodyOrder = require("../extras/your order");
+const sendMail = require("../mailer");
 const { getUser } = require("../registration");
 
-const createOrder = async (id, orderObject) => {
+const createOrder = async (id, object) => {
   //handle invalid fields
   const invalidKeys = ["total", "processing", "shipped", "delivered"];
-  Object.keys(orderObject).forEach((key) => {
+  Object.keys(object).forEach((key) => {
     if (invalidKeys.includes(key)) throw `invald field ${key}`;
   });
-  orderObject.id = v4();
-  const { currency } = await getUser(id);
-  orderObject.currency = currency;
+
+  object.id = v4();
+  // const {
+  //   first_name,
+  //   last_name,
+  //   country,
+  //   state,
+  //   town,
+  //   street,
+  //   email,
+  //   phone_number,
+  //   postal_code,
+  // } = await getUser(id);
+  const orderObject = {
+    ...object,
+  };
+  const currency = object.currency;
+  orderObject.currency = object.currency;
   const prices = orderObject.product.map(async (orderProduct) => {
     const { id, unit } = orderProduct;
     const { price_ngn, price_usd } = (
@@ -49,9 +66,18 @@ const createOrder = async (id, orderObject) => {
   }
   //handle transactions with automatic payments
 
+  if (!orderObject.referrence || orderObject.referrence === "")
+    throw "Invalid Reference";
   //after successful payments;
   await addToOrder(orderObject);
   await setProcessing(orderObject.id);
+
+  //remember to send an email confirming order later******
+  // sendMail({
+  //   html: emailBodyOrder({ first_name, reference: orderObject.referrence }),
+  //   to: (await getUser(id)).email,
+  // });
+
   return await getSingleOrder(orderObject.id);
 };
 
@@ -74,14 +100,49 @@ const addToOrder = async (orderObject) => {
   return true;
 };
 
-const getOrderedProducts = async (arrayOfId) => {
-  return await Products.findAll({
+const getOrderedProducts = async (data) => {
+  const {
+    limit = 10,
+    page = 1,
+    id,
+    method,
+    delivered,
+    shipped,
+    processing,
+    email,
+    order = [["updatedAt", "DESC"]],
+  } = data;
+  const totalOrders = await Orders.count({
     where: {
-      id: {
-        [Op.or]: arrayOfId,
-      },
+      ...(id && { id: { [Op.like]: `%${id}%` } }),
+      ...(method && { method: { [Op.like]: `%${method}%` } }),
+      ...(delivered && { delivered: { [Op.like]: `%${delivered}%` } }),
+      ...(shipped && { shipped: { [Op.like]: `%${shipped}%` } }),
+      ...(processing && { processing: { [Op.like]: `%${processing}%` } }),
+      ...(email && { email: { [Op.like]: `%${email}%` } }),
     },
   });
+  const offset = (Number(page) - 1) * Number(limit);
+  const orders = await Orders.findAll({
+    where: {
+      ...(id && { id: { [Op.like]: `%${id}%` } }),
+      ...(method && { method: { [Op.like]: `%${method}%` } }),
+      ...(delivered && { delivered: { [Op.like]: `%${delivered}%` } }),
+      ...(shipped && { shipped: { [Op.like]: `%${shipped}%` } }),
+      ...(processing && { processing: { [Op.like]: `%${processing}%` } }),
+      ...(email && { email: { [Op.like]: `%${email}%` } }),
+    },
+    limit: Number(limit),
+    order,
+    offset,
+  });
+
+  return {
+    results: orders,
+    page: Number(page),
+    totalPages: Math.ceil(totalOrders / limit),
+    totalOrders,
+  };
 };
 
 const setProcessing = async (id) => {
@@ -103,6 +164,7 @@ const setProcessing = async (id) => {
       },
     }
   );
+  return await Orders.findOne({ where: { id } });
 };
 const setDelivered = async (id) => {
   const { delivered } = (
@@ -123,6 +185,7 @@ const setDelivered = async (id) => {
       },
     }
   );
+  return await Orders.findOne({ where: { id } });
 };
 const setShipped = async (id) => {
   const { shipped } = (
@@ -143,6 +206,7 @@ const setShipped = async (id) => {
       },
     }
   );
+  return await Orders.findOne({ where: { id } });
 };
 
 // const testOrder = JSON.stringify([
