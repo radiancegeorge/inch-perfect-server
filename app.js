@@ -35,7 +35,7 @@ app.get("/test-mail", (req, res) => {
 });
 //handle error
 app.use(error);
-sequelize.sync({ force: true }).then((e) => {
+sequelize.sync().then((e) => {
   app.listen(port, () => {
     console.log(`Server started on port ${port}`);
   });
