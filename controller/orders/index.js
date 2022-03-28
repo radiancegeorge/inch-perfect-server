@@ -10,8 +10,8 @@ const {
 const { getUser } = require("../../utils/registration");
 
 const makeOrder = asyncHandler(async (req, res, next) => {
-  const { useDefault } = req.body;
-  // const defaultUserData = await getUser(req.user.id, [
+  const { useDefault, id } = req.body;
+  // const defaultUserData = await getUser(id, [
   //   "password",
   //   "currency",
   //   "active",
@@ -23,7 +23,7 @@ const makeOrder = asyncHandler(async (req, res, next) => {
   // ]);
   const preOrderObject = { ...req.body, ...(useDefault && defaultUserData) };
   // console.log(preOrderObject);
-  const order = await createOrder(req.user.id, preOrderObject);
+  const order = await createOrder(id, preOrderObject);
   if (!order) throw "error making order";
   res.status(200).json(order);
 });

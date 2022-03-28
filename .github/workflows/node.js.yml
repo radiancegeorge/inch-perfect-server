@@ -25,4 +25,4 @@ jobs:
           cache: "npm"
       - run: yarn
       - run: rm -rf .env && mv .env.main .env
-      - run: forever restart app.js
+      # - run: forever restart app.js
